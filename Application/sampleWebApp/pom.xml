@@ -19,8 +19,22 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        	<version>1.5.7.RELEASE</version>
+        	<version>1.5.16.RELEASE</version>
         </dependency>
+        
+        <!-- global payments dependancy -->
+        <dependency>
+ 		 	<groupId>com.heartlandpaymentsystems</groupId>
+ 		 	<artifactId>globalpayments-sdk</artifactId>
+  			<version>4.4</version>
+		</dependency>
+	<!-- Logging logj4 -->
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+	    	<groupId>org.apache.logging.log4j</groupId>
+	    	<artifactId>log4j-core</artifactId>
+	    	<version>2.11.1</version>
+		</dependency>
         
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -53,6 +67,18 @@
             <scope>test</scope>
         </dependency>
         
+        <dependency>
+    		<groupId>com.microsoft.sqlserver</groupId>
+    		<artifactId>mssql-jdbc</artifactId>
+    		<version>7.0.0.jre8</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20180813</version>
+		</dependency>
     </dependencies>
 
     <properties>
