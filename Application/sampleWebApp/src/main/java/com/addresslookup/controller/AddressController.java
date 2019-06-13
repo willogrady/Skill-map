@@ -2,6 +2,9 @@ package com.addresslookup.controller;
 
 import java.util.List;
 
+import javax.ws.rs.BeanParam;
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.addresslookup.entity.Address;
 import com.addresslookup.service.AddressService;
+import com.addresslookup.service.impl.AddressServiceImpl;
 
 //rest apis
 @RequestMapping("/address")
@@ -35,4 +39,15 @@ public class AddressController {
 	public List<Address> getAllAddress() {
 		return addressService.getAllAddressList();
 	}
+	
+	@PostMapping("/listpostcode")
+	public String returnPostcodeURL(@BeanParam AddressServiceImpl newAddress) throws Exception {
+		
+		JSONObject js = new JSONObject();
+		//js.put("addresses", newAddress.postcodeRequeset());
+		return js.toString();
+	
+	}
+	
+	
 }
