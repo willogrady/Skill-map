@@ -1,5 +1,6 @@
 package com.addresslookup.service.impl;
 
+import java.io.Reader;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,10 @@ public class AddressServiceImpl implements AddressService{
 	}
 
 	@Override
-	public Address readAll(Address address) {
+	public Address readAll(Reader rd) {
+		StringBuilder sb = new StringBuilder();
+		int cp;
+		while ((cp = rd.read())
 		return null;
 	}
 
