@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import com.addresslookup.controller.AddressController;
-import com.addresslookup.service.impl.AddressServiceImpl;
+import com.addresslookup.dao.impl.AddressDAOImpl;
 
 @Provider
 @Component
@@ -16,8 +16,9 @@ public class ServiceConfig extends ResourceConfig{
 	
 	public ServiceConfig() {
 		register(CORSFilter.class);
-		register(AddressServiceImpl.class);
+		register(AddressDAOImpl.class);
 		register(AddressController.class);
+
 	}
 	
 	

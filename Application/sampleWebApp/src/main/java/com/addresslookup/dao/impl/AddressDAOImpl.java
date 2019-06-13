@@ -1,4 +1,4 @@
-package com.addresslookup.service.impl;
+package com.addresslookup.dao.impl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,37 +12,24 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.addresslookup.dao.AddressDao;
+import com.addresslookup.dao.AddressDAO;
 import com.addresslookup.entity.Address;
-import com.addresslookup.service.AddressService;
 
+@Component
 @Service	//tells spring that this is the implementation class
-public class AddressServiceImpl implements AddressService{
+public class AddressDAOImpl implements AddressDAO{
 	
 	Address address = new Address();
 	
 	private String ADDRESS_API_URL = "https://api.getAddress.io/find/";
 	
 	@Autowired
-	private AddressDao addressDao;
+	private AddressDAO addressDAO;
 	
 	@Override
-	public Address saveAddress(Address address) {
-		return addressDao.save(address);
-	}
-
-	@Override
-	public Address updateAddress(Address address) {
-		return addressDao.saveAndFlush(address);
-	}
-
-	@Override
-	public List<Address> getAllAddressList() {
-		return addressDao.findAll();
-	}
-
 	public String readAll(Reader rd) {
 	    StringBuilder sb = new StringBuilder();
 	    int cp;
@@ -85,9 +72,6 @@ public class AddressServiceImpl implements AddressService{
 	public Address postcodeAndHouseRequest(Address address) {
 		return null;
 	}
-
-
-
 
 	
 }
