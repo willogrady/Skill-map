@@ -11,7 +11,6 @@ import com.addresslookup.entity.Address;
 import com.addresslookup.service.AddressService;
 
 @Service	//tells spring that this is the implementation class
-@Transactional
 public class AddressServiceImpl implements AddressService{
 	
 	@Autowired

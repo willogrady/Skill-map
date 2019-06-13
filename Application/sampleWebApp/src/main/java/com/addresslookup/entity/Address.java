@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Getter;	//lombock provides the getter and setters for us
+import lombok.Getter;	//lombok provides the getter and setters for us
 import lombok.Setter;
 
 @Entity
