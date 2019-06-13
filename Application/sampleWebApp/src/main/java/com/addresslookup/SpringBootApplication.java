@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 
-@EnableJpaAuditing
+@EnableJpaAuditing	//tells spring boot to start adding beans based on class path
 @ComponentScan("com.addresslookup.dao")
 @org.springframework.boot.autoconfigure.SpringBootApplication
 public class SpringBootApplication extends SpringBootServletInitializer {
