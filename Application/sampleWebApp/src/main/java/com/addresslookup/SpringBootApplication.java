@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-@ComponentScan("com.addresslookup.dao")
+@ComponentScan("com.addresslookup")
 @org.springframework.boot.autoconfigure.SpringBootApplication
 public class SpringBootApplication extends SpringBootServletInitializer {
 	

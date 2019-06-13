@@ -18,7 +18,7 @@ public interface AddressService {
 
 	String readAll(Reader rd);
 	JSONObject readJsonFromUrl(String url) throws IOException, JSONException;
-	JSONObject postcodeRequest() throws JSONException, IOException;
+	JSONObject postcodeRequest() throws IOException, JSONException;
 	Address postcodeAndHouseRequest(Address address);
 	
 }
