@@ -18,7 +18,7 @@ import com.addresslookup.service.AddressService;
 import com.addresslookup.service.impl.AddressServiceImpl;
 
 //rest apis
-@RequestMapping("/address")
+@RequestMapping(path = "/address")
 @RestController	//handles incoming web requests
 public class AddressController {
 
@@ -40,7 +40,14 @@ public class AddressController {
 		return addressService.getAllAddressList();
 	}
 	
-	@PostMapping("/listpostcode")
+	@GetMapping("/test")
+	public String testing() {
+		return "testing get request";
+		
+	}
+	
+	
+	@PostMapping(path = "/listpostcode", consumes = "application/x-www-form-urlencoded", produces = "application/json")
 	public String returnPostcodeURL(@RequestBody AddressServiceImpl newAddress) throws Exception {
 		JSONObject js = new JSONObject();
 		js.put("addresses", newAddress.postcodeRequest());
