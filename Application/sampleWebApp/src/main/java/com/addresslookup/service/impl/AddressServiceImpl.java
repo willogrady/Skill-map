@@ -1,5 +1,6 @@
 package com.addresslookup.service.impl;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 
@@ -33,13 +34,19 @@ public class AddressServiceImpl implements AddressService{
 	public List<Address> getAllAddressList() {
 		return addressDao.findAll();
 	}
-
+	
 	@Override
-	public Address readAll(Reader rd) {
-		StringBuilder sb = new StringBuilder();
-		int cp;
-		while ((cp = rd.read())
-		return null;
+	public String readAll(Reader rd) {
+	    StringBuilder sb = new StringBuilder();
+	    int cp;
+	    try {
+			while ((cp = rd.read()) != -1) {
+			  sb.append((char) cp);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    return sb.toString();
 	}
 
 	@Override

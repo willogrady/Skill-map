@@ -11,7 +11,7 @@ public interface AddressService {
 	Address updateAddress(Address address);
 	List<Address> getAllAddressList();
 
-	Address readAll(Reader rd);
+	String readAll(Reader rd);
 	Address readJsonFromUrl(Address address);
 	Address postcodeRequest(Address address);
 	Address postcodeAndHouseRequest(Address address);
