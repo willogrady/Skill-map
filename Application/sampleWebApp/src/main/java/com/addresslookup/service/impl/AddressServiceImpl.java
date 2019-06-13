@@ -32,5 +32,25 @@ public class AddressServiceImpl implements AddressService{
 	public List<Address> getAllAddressList() {
 		return addressDao.findAll();
 	}
+
+	@Override
+	public Address readAll(Address address) {
+		return null;
+	}
+
+	@Override
+	public Address readJsonFromUrl(Address address) {
+		return null;
+	}
+
+	@Override
+	public Address postcodeRequest(Address address) {
+		return null;
+	}
+
+	@Override
+	public Address postcodeAndHouseRequest(Address address) {
+		return null;
+	}
 	
 }
