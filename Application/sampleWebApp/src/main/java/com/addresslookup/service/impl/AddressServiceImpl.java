@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
@@ -14,7 +13,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.addresslookup.dao.AddressDao;
 import com.addresslookup.entity.Address;
@@ -22,6 +20,8 @@ import com.addresslookup.service.AddressService;
 
 @Service	//tells spring that this is the implementation class
 public class AddressServiceImpl implements AddressService{
+	
+	Address address = new Address();
 	
 	private String ADDRESS_API_UR = "https://api.getAddress.io/find/";
 	
@@ -72,7 +72,7 @@ public class AddressServiceImpl implements AddressService{
 	}
 
 	@Override
-	public JSONObject postcodeRequest(Address address) throws JSONException, IOException {
+	public JSONObject postcodeRequest() throws JSONException, IOException {
 		String url = ADDRESS_API_UR+address.postcode+"?api-key="+address.apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.print(jsonResponse);
@@ -83,7 +83,6 @@ public class AddressServiceImpl implements AddressService{
 
 	@Override
 	public Address postcodeAndHouseRequest(Address address) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
