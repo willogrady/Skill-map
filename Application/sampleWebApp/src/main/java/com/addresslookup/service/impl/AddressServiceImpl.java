@@ -12,12 +12,14 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.addresslookup.dao.AddressDao;
 import com.addresslookup.entity.Address;
 import com.addresslookup.service.AddressService;
 
+@Component
 @Service	//tells spring that this is the implementation class
 public class AddressServiceImpl implements AddressService{
 	
@@ -85,9 +87,6 @@ public class AddressServiceImpl implements AddressService{
 	public Address postcodeAndHouseRequest(Address address) {
 		return null;
 	}
-
-
-
 
 	
 }
