@@ -10,4 +10,9 @@ public interface AddressService {
 	Address updateAddress(Address address);
 	List<Address> getAllAddressList();
 
+	Address readAll(Address address);
+	Address readJsonFromUrl(Address address);
+	Address postcodeRequest(Address address);
+	Address postcodeAndHouseRequest(Address address);
+	
 }
