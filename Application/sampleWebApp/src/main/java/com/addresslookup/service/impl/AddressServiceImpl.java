@@ -13,6 +13,8 @@ import com.addresslookup.service.AddressService;
 @Service	//tells spring that this is the implementation class
 public class AddressServiceImpl implements AddressService{
 	
+	private String ADDRESS_API_UR = "https://api.getAddress.io/find/";
+	
 	@Autowired
 	private AddressDao addressDao;
 	
@@ -30,6 +32,5 @@ public class AddressServiceImpl implements AddressService{
 	public List<Address> getAllAddressList() {
 		return addressDao.findAll();
 	}
-
-
+	
 }

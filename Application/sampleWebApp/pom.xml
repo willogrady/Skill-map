@@ -2,13 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
+    <!-- defines version for spring dependencies -->
     <parent>
-        <groupId>com.microsoft</groupId>
-        <artifactId>ROOT</artifactId>
-        <relativePath>..</relativePath>
-        <version>1.0</version>
-    </parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.5.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
     
     <groupId>com.microsoft.sampleWebApp</groupId>
     <artifactId>sampleWebApp</artifactId>
@@ -19,62 +20,37 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        	<version>1.5.16.RELEASE</version>
         </dependency>
-    <!-- global payments dependant -->
-        <dependency>
- 		 	<groupId>com.heartlandpaymentsystems</groupId>
- 		 	<artifactId>globalpayments-sdk</artifactId>
-  			<version>4.4</version>
-		</dependency>
-	<!-- Logging logj4 -->
-	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-		<dependency>
-	    	<groupId>org.apache.logging.log4j</groupId>
-	    	<artifactId>log4j-core</artifactId>
-	    	<version>2.11.1</version>
-		</dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
-		<dependency>
-	    	<groupId>org.apache.logging.log4j</groupId>
-	    	<artifactId>log4j-api</artifactId>
-	    	<version>2.11.1</version>
-		</dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <version>5.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>1.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>1.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>1.2.0</version>
             <scope>test</scope>
         </dependency>
         
+        <!-- sql server for azure if we need to use -->
         <dependency>
     		<groupId>com.microsoft.sqlserver</groupId>
     		<artifactId>mssql-jdbc</artifactId>
-    		<version>7.0.0.jre8</version>
 		</dependency>
 	<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/javax.persistence -->
 		<dependency>
@@ -82,7 +58,7 @@
     		<artifactId>javax.persistence</artifactId>
     		<version>2.2.1</version>
 		</dependency>
-	<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<!-- correct json dependency to return response -->
 		<dependency>
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
@@ -92,29 +68,61 @@
 		<dependency>
    			<groupId>org.projectlombok</groupId>
  			<artifactId>lombok</artifactId>
-    		<version>1.18.8</version>
     		<scope>provided</scope>
 		</dependency>
-	<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
 		<dependency>
-    		<groupId>org.springframework.data</groupId>
-    		<artifactId>spring-data-jpa</artifactId>
-    		<version>2.1.8.RELEASE</version>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
 		<dependency>
     		<groupId>org.springframework</groupId>
     		<artifactId>spring-aspects</artifactId>
-    		<version>5.1.7.RELEASE</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jersey -->
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jersey -->
+	<!-- Jersey, JPA, JDBC, spring boot starter dependencies -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-jersey</artifactId>
-		    <version>2.1.5.RELEASE</version>
 		</dependency>
-				
-		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jersey</artifactId>
+		</dependency>
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+	    	<groupId>org.apache.logging.log4j</groupId>
+	    	<artifactId>log4j-core</artifactId>
+	    	<version>2.11.1</version>
+		</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+	    	<groupId>org.apache.logging.log4j</groupId>
+	    	<artifactId>log4j-api</artifactId>
+	    	<version>2.11.1</version>
+		</dependency>
 		
 		
     </dependencies>

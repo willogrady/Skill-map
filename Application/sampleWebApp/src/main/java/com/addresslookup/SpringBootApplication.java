@@ -4,21 +4,22 @@ import java.util.Arrays;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
-//@EnableJpaAuditing	//tells spring boot to start adding beans based on class path
-@ComponentScan("com.addresslookup.dao")	//to automatically pick up spring components
+@ComponentScan("com.addresslookup.dao")
 @org.springframework.boot.autoconfigure.SpringBootApplication
 public class SpringBootApplication extends SpringBootServletInitializer {
-	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(SpringBootApplication.class);
+	
+	private static final Logger logger = 
+			LoggerFactory.getLogger(SpringBootApplication.class);	
 	
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(SpringBootApplication.class);
