@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 
 @org.springframework.boot.autoconfigure.SpringBootApplication
-public class SpringBootApplication extends SpringBootServletInitializer {
+public class SpringBootApplication {
 	
 	private static final Logger logger = 
 			LoggerFactory.getLogger(SpringBootApplication.class);	

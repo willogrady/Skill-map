@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -52,15 +54,16 @@ public class AddressController {
 	}
 	
 	
-	@PostMapping(path = "/listpostcode", consumes = "application/x-www-form-urlencoded", produces = "application/json")
+	//@PostMapping(path = "/listpostcode", consumes = "application/x-www-form-urlencoded", produces = "application/json")
+	@Path("/getAddressList")
+	@POST
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public String returnPostcodeURL(AddressDAO newAddress) throws Exception {
 		JSONObject js = new JSONObject();
 		js.put("addresses", newAddress.postcodeRequest());
 		System.out.println(newAddress.postcodeRequest());
 		return js.toString();
-		
-	
 	}
-	
-	
+
 }

@@ -63,7 +63,6 @@ public class AddressDAOImpl implements AddressDAO{
 		String url = ADDRESS_API_URL+address.postcode+"?api-key="+address.apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.print(jsonResponse);
-		
 		return jsonResponse;
 
 	}
