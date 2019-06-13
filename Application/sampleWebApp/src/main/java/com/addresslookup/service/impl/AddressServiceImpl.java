@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,8 +56,12 @@ public class AddressServiceImpl implements AddressService{
 	}
 
 	@Override
-	public Address postcodeRequest(Address address) {
-		return null;
+	public JSONObject postcodeRequest(Address address) {
+		String url = ADDRESS_API_UR+address.postcode+"?api-key="+address.apiKey;
+		JSONObject jsonResponse = readJsonFromUrl(url);
+		System.out.print(jsonResponse);
+		
+		return jsonResponse;
 	}
 
 	@Override

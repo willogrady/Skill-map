@@ -3,6 +3,8 @@ package com.addresslookup.service;
 import java.io.Reader;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import com.addresslookup.entity.Address;
 
 public interface AddressService {
@@ -13,7 +15,7 @@ public interface AddressService {
 
 	String readAll(Reader rd);
 	Address readJsonFromUrl(Address address);
-	Address postcodeRequest(Address address);
+	JSONObject postcodeRequest(Address address);
 	Address postcodeAndHouseRequest(Address address);
 	
 }

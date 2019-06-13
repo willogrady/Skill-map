@@ -21,18 +21,18 @@ public class Address {
 	@Column(name="address_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@FormParam("addressID")
-	private Long addressId;
+	public Long addressId;
 	
 	@Column(name="postcode")
 	@FormParam("postcode")
-	private String postcode;
+	public String postcode;
 	
 	@Column(name="house number or name")
 	@FormParam("house")
-	private String houseNameOrNumber;
+	public String houseNameOrNumber;
 	
 	@Column(name="api key")
 	@FormParam("api-key")
-	private String apiKey;
+	public String apiKey;
 
 }
