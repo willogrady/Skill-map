@@ -32,5 +32,29 @@ public class AddressServiceImpl implements AddressService{
 		return addressDao.findAll();
 	}
 
+	@Override
+	public Address readAll(Address address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Address readJsonFromUrl(Address address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Address postcodeRequest(Address address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Address postcodeAndHouseRequest(Address address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
