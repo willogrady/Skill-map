@@ -1,4 +1,4 @@
-package com.address.lookup.webservices;
+package com.addresslookup.webservices;
 
 import java.io.IOException;
 

@@ -21,24 +21,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        
-        <!-- global payments dependancy -->
-        <dependency>
- 		 	<groupId>com.heartlandpaymentsystems</groupId>
- 		 	<artifactId>globalpayments-sdk</artifactId>
-  			<version>4.4</version>
-		</dependency>
-		<!-- Logging logj4 -->
-		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-		<dependency>
-	    	<groupId>org.apache.logging.log4j</groupId>
-	    	<artifactId>log4j-core</artifactId>
-		</dependency>
-    	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
-		<dependency>
-	    	<groupId>org.apache.logging.log4j</groupId>
-	    	<artifactId>log4j-api</artifactId>
-		</dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -70,7 +52,7 @@
     		<groupId>com.microsoft.sqlserver</groupId>
     		<artifactId>mssql-jdbc</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/javax.persistence -->
+	<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/javax.persistence -->
 		<dependency>
     		<groupId>org.eclipse.persistence</groupId>
     		<artifactId>javax.persistence</artifactId>
@@ -82,26 +64,24 @@
 		    <artifactId>json</artifactId>
 		    <version>20180813</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
    			<groupId>org.projectlombok</groupId>
  			<artifactId>lombok</artifactId>
     		<scope>provided</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
 		<dependency>
     		<groupId>org.springframework</groupId>
     		<artifactId>spring-aspects</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jersey -->
-		
-		<!-- Jersey, JPA, JDBC, spring boot starter dependencies -->
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jersey -->
+	<!-- Jersey, JPA, JDBC, spring boot starter dependencies -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-jersey</artifactId>
@@ -132,7 +112,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-			
+		<dependency>
+	    	<groupId>org.apache.logging.log4j</groupId>
+	    	<artifactId>log4j-core</artifactId>
+	    	<version>2.11.1</version>
+		</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+	    	<groupId>org.apache.logging.log4j</groupId>
+	    	<artifactId>log4j-api</artifactId>
+	    	<version>2.11.1</version>
+		</dependency>
 		
 		
     </dependencies>

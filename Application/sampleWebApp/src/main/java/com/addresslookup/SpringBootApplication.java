@@ -10,13 +10,16 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @ComponentScan("com.addresslookup.dao")
 @org.springframework.boot.autoconfigure.SpringBootApplication
 public class SpringBootApplication extends SpringBootServletInitializer {
-	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(SpringBootApplication.class);
+	
+	private static final Logger logger = 
+			LoggerFactory.getLogger(SpringBootApplication.class);	
 	
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(SpringBootApplication.class);

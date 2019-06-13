@@ -6,8 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
 
-import lombok.Getter;	//lombock provides the getter and setters for us
+import lombok.Getter;	//lombok provides the getter and setters for us
 import lombok.Setter;
 
 @Entity
@@ -19,12 +20,19 @@ public class Address {
 	@Id
 	@Column(name="address_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@FormParam("addressID")
 	private Long addressId;
 	
 	@Column(name="postcode")
+	@FormParam("postcode")
 	private String postcode;
 	
 	@Column(name="house number or name")
+	@FormParam("house")
 	private String houseNameOrNumber;
+	
+	@Column(name="api key")
+	@FormParam("api-key")
+	private String apiKey;
 
 }

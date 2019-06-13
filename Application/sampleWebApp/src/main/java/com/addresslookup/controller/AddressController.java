@@ -3,6 +3,7 @@ package com.addresslookup.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,8 +14,8 @@ import com.addresslookup.entity.Address;
 import com.addresslookup.service.AddressService;
 
 //rest apis
-@RequestMapping("address")
-@RestController
+@RequestMapping("/address")
+@RestController	//handles incoming web requests
 public class AddressController {
 
 	@Autowired //autowiring AddressService.interface
