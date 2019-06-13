@@ -42,9 +42,9 @@ public class AddressController {
 	
 	@PostMapping("/listpostcode")
 	public String returnPostcodeURL(@BeanParam AddressServiceImpl newAddress) throws Exception {
-		
 		JSONObject js = new JSONObject();
 		//js.put("addresses", newAddress.postcodeRequeset());
+		js.put("addresses", newAddress.postcodeRequest());
 		return js.toString();
 	
 	}
