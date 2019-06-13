@@ -1823,3 +1823,61 @@ Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL synta
 [2019-06-13T14:25:14.014Z] [org.springframework.boot.StartupInfoLogger] [main] [59] [INFO ] Started SpringBootApplication in 5.947 seconds (JVM running for 6.645)
 [2019-06-13T14:25:14.014Z] [com.addresslookup.SpringBootApplication] [main] [31] [INFO ] This Spring Application is a go!!
 [2019-06-13T14:25:16.016Z] [org.glassfish.jersey.internal.inject.Providers] [http-nio-9900-exec-1] [514] [WARN ] A provider com.addresslookup.service.impl.AddressServiceImpl registered in SERVER runtime does not implement any provider interfaces applicable in the SERVER runtime. Due to constraint configuration problems the provider com.addresslookup.service.impl.AddressServiceImpl will be ignored. 
+[2019-06-13T14:33:13.013Z] [org.springframework.boot.StartupInfoLogger] [main] [50] [INFO ] Starting SpringBootApplication on GB-LD1LPW10G005 with PID 5600 (D:\Morses\USE_ME\AddressLookupV2\Application\sampleWebApp\target\classes started by Eleanor61082 in D:\Morses\USE_ME\AddressLookupV2\Application\sampleWebApp)
+[2019-06-13T14:33:13.013Z] [org.springframework.boot.SpringApplication] [main] [675] [INFO ] No active profile set, falling back to default profiles: default
+[2019-06-13T14:33:14.014Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [126] [INFO ] Bootstrapping Spring Data repositories in DEFAULT mode.
+[2019-06-13T14:33:14.014Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [182] [INFO ] Finished Spring Data repository scanning in 67ms. Found 1 repository interfaces.
+[2019-06-13T14:33:15.015Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [330] [INFO ] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$21858b99] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2019-06-13T14:33:15.015Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [90] [INFO ] Tomcat initialized with port(s): 9900 (http)
+[2019-06-13T14:33:15.015Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-9900"]
+[2019-06-13T14:33:15.015Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2019-06-13T14:33:15.015Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.19]
+[2019-06-13T14:33:16.016Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2019-06-13T14:33:16.016Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [296] [INFO ] Root WebApplicationContext: initialization completed in 2169 ms
+[2019-06-13T14:33:16.016Z] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[2019-06-13T14:33:16.016Z] [org.hibernate.Version] [main] [46] [INFO ] HHH000412: Hibernate Core {5.3.10.Final}
+[2019-06-13T14:33:16.016Z] [org.hibernate.cfg.Environment] [main] [213] [INFO ] HHH000206: hibernate.properties not found
+[2019-06-13T14:33:16.016Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [main] [49] [INFO ] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+[2019-06-13T14:33:16.016Z] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
+[2019-06-13T14:33:17.017Z] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
+[2019-06-13T14:33:17.017Z] [org.hibernate.dialect.Dialect] [main] [157] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+[2019-06-13T14:33:18.018Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [415] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2019-06-13T14:33:18.018Z] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport] [main] [171] [INFO ] Initializing ExecutorService 'applicationTaskExecutor'
+[2019-06-13T14:33:18.018Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration] [main] [237] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2019-06-13T14:33:19.019Z] [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] [main] [56] [INFO ] Adding welcome page: class path resource [static/index.html]
+[2019-06-13T14:33:19.019Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-9900"]
+[2019-06-13T14:33:19.019Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [204] [INFO ] Tomcat started on port(s): 9900 (http) with context path ''
+[2019-06-13T14:33:19.019Z] [org.springframework.boot.StartupInfoLogger] [main] [59] [INFO ] Started SpringBootApplication in 5.934 seconds (JVM running for 6.639)
+[2019-06-13T14:33:19.019Z] [com.addresslookup.SpringBootApplication] [main] [30] [INFO ] This Spring Application is a go!!
+[2019-06-13T14:33:25.025Z] [org.glassfish.jersey.internal.inject.Providers] [http-nio-9900-exec-2] [514] [WARN ] A provider com.addresslookup.service.impl.AddressServiceImpl registered in SERVER runtime does not implement any provider interfaces applicable in the SERVER runtime. Due to constraint configuration problems the provider com.addresslookup.service.impl.AddressServiceImpl will be ignored. 
+[2019-06-13T14:41:09.009Z] [org.springframework.boot.StartupInfoLogger] [main] [50] [INFO ] Starting SpringBootApplication on GB-LD1LPW10G005 with PID 15016 (D:\Morses\USE_ME\AddressLookupV2\Application\sampleWebApp\target\classes started by Eleanor61082 in D:\Morses\USE_ME\AddressLookupV2\Application\sampleWebApp)
+[2019-06-13T14:41:09.009Z] [org.springframework.boot.SpringApplication] [main] [675] [INFO ] No active profile set, falling back to default profiles: default
+[2019-06-13T14:41:09.009Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [126] [INFO ] Bootstrapping Spring Data repositories in DEFAULT mode.
+[2019-06-13T14:41:10.010Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [182] [INFO ] Finished Spring Data repository scanning in 67ms. Found 1 repository interfaces.
+[2019-06-13T14:41:10.010Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [330] [INFO ] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c9be40ba] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2019-06-13T14:41:11.011Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [90] [INFO ] Tomcat initialized with port(s): 9900 (http)
+[2019-06-13T14:41:11.011Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-9900"]
+[2019-06-13T14:41:11.011Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2019-06-13T14:41:11.011Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.19]
+[2019-06-13T14:41:11.011Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2019-06-13T14:41:11.011Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [296] [INFO ] Root WebApplicationContext: initialization completed in 2256 ms
+[2019-06-13T14:41:11.011Z] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+[2019-06-13T14:41:11.011Z] [org.hibernate.Version] [main] [46] [INFO ] HHH000412: Hibernate Core {5.3.10.Final}
+[2019-06-13T14:41:11.011Z] [org.hibernate.cfg.Environment] [main] [213] [INFO ] HHH000206: hibernate.properties not found
+[2019-06-13T14:41:12.012Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [main] [49] [INFO ] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+[2019-06-13T14:41:12.012Z] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
+[2019-06-13T14:41:13.013Z] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
+[2019-06-13T14:41:13.013Z] [org.hibernate.dialect.Dialect] [main] [157] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+[2019-06-13T14:41:13.013Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [415] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2019-06-13T14:41:14.014Z] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport] [main] [171] [INFO ] Initializing ExecutorService 'applicationTaskExecutor'
+[2019-06-13T14:41:14.014Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration] [main] [237] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2019-06-13T14:41:14.014Z] [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] [main] [56] [INFO ] Adding welcome page: class path resource [static/index.html]
+[2019-06-13T14:41:14.014Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-9900"]
+[2019-06-13T14:41:14.014Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [204] [INFO ] Tomcat started on port(s): 9900 (http) with context path ''
+[2019-06-13T14:41:14.014Z] [org.springframework.boot.StartupInfoLogger] [main] [59] [INFO ] Started SpringBootApplication in 6.24 seconds (JVM running for 6.901)
+[2019-06-13T14:41:14.014Z] [com.addresslookup.SpringBootApplication] [main] [30] [INFO ] This Spring Application is a go!!
+[2019-06-13T14:41:18.018Z] [org.glassfish.jersey.internal.inject.Providers] [http-nio-9900-exec-1] [514] [WARN ] A provider com.addresslookup.dao.impl.AddressDAOImpl registered in SERVER runtime does not implement any provider interfaces applicable in the SERVER runtime. Due to constraint configuration problems the provider com.addresslookup.dao.impl.AddressDAOImpl will be ignored. 

@@ -1,4 +1,4 @@
-package com.addresslookup.dao.impl;
+package com.addresslookup.dao;
 
 import java.io.BufferedReader;
 import java.io.IOException;
