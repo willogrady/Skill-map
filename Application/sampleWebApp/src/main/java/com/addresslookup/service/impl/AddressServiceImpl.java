@@ -43,9 +43,6 @@ public class AddressServiceImpl implements AddressService{
 		return addressDao.findAll();
 	}
 
-
-
-	
 	public String readAll(Reader rd) {
 	    StringBuilder sb = new StringBuilder();
 	    int cp;
@@ -75,9 +72,13 @@ public class AddressServiceImpl implements AddressService{
 	}
 
 	@Override
-	public Address postcodeRequest(Address address) {
-		// TODO Auto-generated method stub
-		return null;
+	public JSONObject postcodeRequest(Address address) throws JSONException, IOException {
+		String url = ADDRESS_API_UR+address.postcode+"?api-key="+address.apiKey;
+		JSONObject jsonResponse = readJsonFromUrl(url);
+		System.out.print(jsonResponse);
+		
+		return jsonResponse;
+
 	}
 
 	@Override

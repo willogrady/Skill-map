@@ -15,9 +15,10 @@ public interface AddressService {
 	Address updateAddress(Address address);
 	List<Address> getAllAddressList();
 
-	JSONObject readJsonFromUrl(String url) throws IOException, JSONException;
+
 	String readAll(Reader rd);
-	Address postcodeRequest(Address address);
+	JSONObject readJsonFromUrl(String url) throws IOException, JSONException;
+	JSONObject postcodeRequest(Address address) throws JSONException, IOException;
 	Address postcodeAndHouseRequest(Address address);
 	
 }
