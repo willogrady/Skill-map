@@ -23,7 +23,7 @@ public class AddressServiceImpl implements AddressService{
 	
 	Address address = new Address();
 	
-	private String ADDRESS_API_UR = "https://api.getAddress.io/find/";
+	private String ADDRESS_API_URL = "https://api.getAddress.io/find/";
 	
 	@Autowired
 	private AddressDao addressDao;
@@ -73,7 +73,7 @@ public class AddressServiceImpl implements AddressService{
 
 	@Override
 	public JSONObject postcodeRequest() throws JSONException, IOException {
-		String url = ADDRESS_API_UR+address.postcode+"?api-key="+address.apiKey;
+		String url = ADDRESS_API_URL+address.postcode+"?api-key="+address.apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.print(jsonResponse);
 		
