@@ -20,14 +20,14 @@ import com.addresslookup.entity.Address;
 
 @Component
 @Service	//tells spring that this is the implementation class
-public class AddressDAOImpl implements AddressDAO{
+public class AddressDAOImpl extends Address implements AddressDAO{
 	
-	Address address = new Address();
+	
 	
 	private String ADDRESS_API_URL = "https://api.getAddress.io/find/";
 	
 	@Autowired
-	private AddressDAO addressDAO;
+	public AddressDAO addressDAO;
 	
 	@Override
 	public String readAll(Reader rd) {
@@ -60,7 +60,7 @@ public class AddressDAOImpl implements AddressDAO{
 
 	@Override
 	public JSONObject postcodeRequest() throws JSONException, IOException {
-		String url = ADDRESS_API_URL+address.postcode+"?api-key="+address.apiKey;
+		String url = ADDRESS_API_URL+ postcode +"?api-key="+apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.print(jsonResponse);
 		return jsonResponse;
@@ -70,6 +70,14 @@ public class AddressDAOImpl implements AddressDAO{
 	@Override
 	public Address postcodeAndHouseRequest(Address address) {
 		return null;
+	}
+
+	public AddressDAO getAddressDAO() {
+		return addressDAO;
+	}
+
+	public void setAddressDAO(AddressDAO addressDAO) {
+		this.addressDAO = addressDAO;
 	}
 
 	

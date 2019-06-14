@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.addresslookup.dao.AddressDAO;
+import com.addresslookup.dao.AddressDAOImpl;
+import com.addresslookup.entity.Address;
 
 
 //rest apis
@@ -28,9 +31,9 @@ import com.addresslookup.dao.AddressDAO;
 @Path("/address")
 public class AddressController {
 	
-	@Autowired //to inject the implementation of the service into the controller
-	@Inject
-	private AddressDAO addressDAO;
+//	@Autowired //to inject the implementation of the service into the controller
+//	@Inject
+//	Address newAddress = new Address();
 	
 	
 		//simple get request testing (--Will Remove--)
@@ -52,18 +55,34 @@ public class AddressController {
 		String str = "testing get request";
 		return str;
 	}
-	
-	
-	//@PostMapping(path = "/listpostcode", consumes = "application/x-www-form-urlencoded", produces = "application/json")
-	@Path("/getAddressList")
+		
+	//List postcode using DAO interfaces
+	@Path("/listpostcodedao")
 	@POST
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
-	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public String returnPostcodeURL(AddressDAO newAddress) throws Exception {
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public String returnDao(@BeanParam AddressDAO newAddress) throws Exception {
+		
 		JSONObject js = new JSONObject();
 		js.put("addresses", newAddress.postcodeRequest());
-		System.out.println(newAddress.postcodeRequest());
 		return js.toString();
+		
 	}
-
+	
+	
+	
+//	//@PostMapping(path = "/listpostcode", consumes = "application/x-www-form-urlencoded", produces = "application/json")
+//	@Path("/getAddressList")
+//	@POST
+//	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+//	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+//	public String returnPostcodeURL(@BeanParam Address newAddress) throws Exception {
+//		JSONObject js = new JSONObject();
+//		js.put("addresses", newAddress.postcodeRequest());
+//		return js.toString();
+//	}
+	
+	
+	
+	
 }

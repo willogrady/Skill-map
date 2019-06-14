@@ -9,11 +9,13 @@ import org.json.JSONObject;
 
 import com.addresslookup.entity.Address;
 
-public interface AddressDAO {
+public interface AddressDAO{
 
 	String readAll(Reader rd);
 	JSONObject readJsonFromUrl(String url) throws IOException, JSONException;
 	JSONObject postcodeRequest() throws IOException, JSONException;
 	Address postcodeAndHouseRequest(Address address);
+	
+	
 	
 }
