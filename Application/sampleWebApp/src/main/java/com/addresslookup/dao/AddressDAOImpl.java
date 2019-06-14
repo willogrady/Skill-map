@@ -18,9 +18,10 @@ import org.springframework.stereotype.Service;
 import com.addresslookup.dao.AddressDAO;
 import com.addresslookup.entity.AddressBean;
 
+
 @Component
 @Service	//tells spring that this is the implementation class
-public class AddressDAOImpl extends AddressBean implements AddressDAO{
+public class AddressDAOImpl implements AddressDAO{
 	
 	
 	
@@ -60,16 +61,15 @@ public class AddressDAOImpl extends AddressBean implements AddressDAO{
 
 	@Override
 	public JSONObject postcodeRequest(AddressBean addressBean) throws JSONException, IOException {
-		String url = ADDRESS_API_URL+ postcode +"?api-key="+apiKey;
+		String url = ADDRESS_API_URL+ addressBean.postcode +"?api-key="+addressBean.apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
-		System.out.print(jsonResponse);
 		return jsonResponse;
 
 	}
 
 	@Override
-	public JSONObject postcodeAndHouseRequest() throws Exception {
-		String url = ADDRESS_API_URL+postcode+"/"+houseNameOrNumber+"?api-key="+apiKey; 
+	public JSONObject postcodeAndHouseRequest(AddressBean addressBean) throws Exception {
+		String url = ADDRESS_API_URL+addressBean.postcode+"/"+addressBean.houseNameOrNumber+"?api-key="+addressBean.apiKey; 
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.print(jsonResponse);
 		return jsonResponse;

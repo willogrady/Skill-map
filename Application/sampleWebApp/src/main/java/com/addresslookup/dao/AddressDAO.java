@@ -11,10 +11,10 @@ import com.addresslookup.entity.AddressBean;
 
 public interface AddressDAO{
 
-	String readAll(Reader rd);
-	JSONObject readJsonFromUrl(String url) throws IOException, JSONException;
-	JSONObject postcodeRequest(AddressBean addressBean) throws IOException, JSONException;
-	JSONObject postcodeAndHouseRequest() throws Exception;
+	public String readAll(Reader rd);
+	public JSONObject readJsonFromUrl(String url) throws IOException, JSONException;
+	public JSONObject postcodeRequest(AddressBean addressBean) throws IOException, JSONException;
+	public JSONObject postcodeAndHouseRequest(AddressBean addressBean) throws Exception;
 	
 	
 	

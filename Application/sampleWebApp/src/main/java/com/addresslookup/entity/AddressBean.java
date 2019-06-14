@@ -19,6 +19,7 @@ import javax.ws.rs.FormParam;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.addresslookup.dao.AddressDAO;
 
