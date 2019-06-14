@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.addresslookup.dao.AddressDAO;
 import com.addresslookup.dao.AddressDAOImpl;
-import com.addresslookup.entity.Address;
+import com.addresslookup.entity.AddressBean;
 
 
 //rest apis
@@ -31,23 +31,23 @@ import com.addresslookup.entity.Address;
 @Path("/address")
 public class AddressController {
 	
-//	@Autowired //to inject the implementation of the service into the controller
-//	@Inject
-//	Address newAddress = new Address();
+	@Autowired //to inject the implementation of the service into the controller
+	AddressDAO newAddress;
 	
 	
-		//simple get request testing (--Will Remove--)
-		@Path("/testing")
-		@GET
-		@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-		public Map<String,String> testingLocalApi() {
+	//simple get request testing (--Will Remove--)
+	@Path("/testing")
+	@GET
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public Map<String,String> testingLocalApi() {
 			
-			HashMap<String, String> map = new HashMap<>();
+		HashMap<String, String> map = new HashMap<>();
 			
-			map.put("address_url", "https://api.getaddress.io/find/%20yo179aq?api-key=LFG96MdGnUu6ZU9Y9_ZPQQ19108%20");
-			return map;
-		}
-		
+		map.put("address_url", "https://api.getaddress.io/find/%20yo179aq?api-key=LFG96MdGnUu6ZU9Y9_ZPQQ19108%20");
+		return map;
+	}
+	
+	
 	@Path("/test")
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -61,10 +61,10 @@ public class AddressController {
 	@POST
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public String returnDao(@BeanParam AddressDAO newAddress) throws Exception {
+	public String returnDao(@BeanParam AddressBean addressBean) throws Exception {
 		
 		JSONObject js = new JSONObject();
-		js.put("addresses", newAddress.postcodeRequest());
+		js.put("addresses", newAddress.postcodeRequest(addressBean));
 		return js.toString();
 		
 	}

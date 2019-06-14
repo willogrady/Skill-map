@@ -27,7 +27,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name="address")
-public class Address {
+public class AddressBean {
 	
 	@FormParam("addressID")
 	public Long addressId;

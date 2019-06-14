@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.addresslookup.dao.AddressDAO;
-import com.addresslookup.entity.Address;
+import com.addresslookup.entity.AddressBean;
 
 @Component
 @Service	//tells spring that this is the implementation class
-public class AddressDAOImpl extends Address implements AddressDAO{
+public class AddressDAOImpl extends AddressBean implements AddressDAO{
 	
 	
 	
@@ -59,7 +59,7 @@ public class AddressDAOImpl extends Address implements AddressDAO{
 	}
 
 	@Override
-	public JSONObject postcodeRequest() throws JSONException, IOException {
+	public JSONObject postcodeRequest(AddressBean addressBean) throws JSONException, IOException {
 		String url = ADDRESS_API_URL+ postcode +"?api-key="+apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.print(jsonResponse);
@@ -68,8 +68,11 @@ public class AddressDAOImpl extends Address implements AddressDAO{
 	}
 
 	@Override
-	public Address postcodeAndHouseRequest(Address address) {
-		return null;
+	public JSONObject postcodeAndHouseRequest() throws Exception {
+		String url = ADDRESS_API_URL+postcode+"/"+houseNameOrNumber+"?api-key="+apiKey; 
+		JSONObject jsonResponse = readJsonFromUrl(url);
+		System.out.print(jsonResponse);
+		return jsonResponse;
 	}
 
 	public AddressDAO getAddressDAO() {
