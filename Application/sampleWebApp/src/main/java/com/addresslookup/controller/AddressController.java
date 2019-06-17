@@ -40,6 +40,7 @@ public class AddressController {
 	
 	 @Path("/")
 	 @GET
+	 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	    public String index() {
 	        return "index.html";
 	    }
