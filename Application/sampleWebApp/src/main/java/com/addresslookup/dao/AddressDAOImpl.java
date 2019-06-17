@@ -24,7 +24,6 @@ import com.addresslookup.entity.AddressBean;
 public class AddressDAOImpl implements AddressDAO{
 	
 	
-	
 	private String ADDRESS_API_URL = "https://api.getAddress.io/find/";
 	
 	@Autowired
