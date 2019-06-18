@@ -89,19 +89,23 @@ public class AddressDAOImpl implements AddressDAO{
 	
 	@Override
 	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException {
-		String url = LOQATE_API_URL+
-		return null;
+		String url = LOQATE_API_URL+"/Find/v1.1/json3.ws?Key="+loqateBean.key+"/"+loqateBean.text+"/"+loqateBean.countries;
+		JSONObject jsonResponse = readJsonFromUrl(url);
+		System.out.print(jsonResponse);
+		return jsonResponse;
 	}
 
 	@Override
 	public JSONObject findSecond(LoqateBean loqateBean) throws IOException, JSONException {
-		// TODO Auto-generated method stub
-		return null;
+		String url = LOQATE_API_URL+"/Find/v1.1/json3.ws?Key="+loqateBean.key+"/"+loqateBean.text+"/"+loqateBean.countries+"/"+loqateBean.container;
+		JSONObject jsonResponse = readJsonFromUrl(url);
+		System.out.print(jsonResponse);
+		return jsonResponse;
 	}
 
 	@Override
 	public JSONObject retrieve(LoqateBean loqateBean) throws IOException, JSONException {
-		// TODO Auto-generated method stub
+		String url = LOQATE_API_URL+"
 		return null;
 	}
 

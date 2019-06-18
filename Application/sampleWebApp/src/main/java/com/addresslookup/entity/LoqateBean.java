@@ -1,6 +1,8 @@
 package com.addresslookup.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 
@@ -8,54 +10,82 @@ import javax.ws.rs.FormParam;
 @Table(name="loqate")
 public class LoqateBean {
 	
+	@FormParam("loqateID")
+	public Long loqateID;
+	
 	@FormParam("Key")
-	public String Key;
+	public String key;
 	
 	@FormParam("Text")
-	public String Text;
+	public String text;
 	
 	@FormParam("Countries")
-	public String Countries;
+	public String countries;
 	
 	@FormParam("IsMiddleware")
-	public boolean IsMiddleware = true;
+	public boolean isMiddleware = true;
 	
 	@FormParam("Container")
-	public String Container;
-
+	public String container;
 	
+	@FormParam("RetrieveId")
+	public String retrieveId;
+
+	@Id
+	@GeneratedValue
+	public Long getLoqateID() {
+		return loqateID;
+	}
+
+	public void setLoqateID(Long loqateID) {
+		this.loqateID = loqateID;
+	}
 
 	public String getKey() {
-		return Key;
+		return key;
 	}
 
 	public void setKey(String key) {
-		Key = key;
+		this.key = key;
 	}
 
 	public String getText() {
-		return Text;
+		return text;
 	}
 
 	public void setText(String text) {
-		Text = text;
+		this.text = text;
 	}
 
 	public String getCountries() {
-		return Countries;
+		return countries;
 	}
 
 	public void setCountries(String countries) {
-		Countries = countries;
+		this.countries = countries;
 	}
-	
+
 	public String getContainer() {
-		return Container;
+		return container;
 	}
 
 	public void setContainer(String container) {
-		Container = container;
+		this.container = container;
 	}
+
+	public String getRetrieveId() {
+		return retrieveId;
+	}
+
+	public void setRetrieveId(String retrieveId) {
+		this.retrieveId = retrieveId;
+	}
+
+	
+
+	
+
+	
 	
 	
 
