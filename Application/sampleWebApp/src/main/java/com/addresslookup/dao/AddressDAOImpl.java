@@ -105,8 +105,10 @@ public class AddressDAOImpl implements AddressDAO{
 
 	@Override
 	public JSONObject retrieve(LoqateBean loqateBean) throws IOException, JSONException {
-		String url = LOQATE_API_URL+"
-		return null;
+		String url = LOQATE_API_URL+"/Retrieve/v1.00/json3.ws?Key="+loqateBean.key+"/"+loqateBean.retrieveId;
+		JSONObject jsonResponse = readJsonFromUrl(url);
+		System.out.print(jsonResponse);
+		return jsonResponse;
 	}
 
 	
