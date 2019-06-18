@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.addresslookup.dao.AddressDAO;
 import com.addresslookup.dao.AddressDAOImpl;
 import com.addresslookup.entity.AddressBean;
+import com.addresslookup.entity.LoqateBean;
 
 
 //rest apis
@@ -79,14 +80,27 @@ public class AddressController {
 		
 	}
 	
-	
 
-	
 	@GetMapping("/get")
 	public @ResponseBody ResponseEntity<String> get() {
 	    return new ResponseEntity<String>("GET Response", HttpStatus.OK);
 	}
 	
+	
+	@Path("/firstFind")
+	@POST
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public String returnDao(@BeanParam LoqateBean loqateBean) throws Exception {
+		
+		JSONObject js = new JSONObject();
+		js.put("Items", newAddress.findFirst(loqateBean));
+		return js.toString();
+		
+	}
+	
+	
+
 	
 	
 	
