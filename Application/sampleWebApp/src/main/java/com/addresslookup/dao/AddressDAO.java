@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.addresslookup.entity.AddressBean;
+import com.addresslookup.entity.LoqateBean;
 
 public interface AddressDAO{
 
@@ -17,5 +18,9 @@ public interface AddressDAO{
 	public JSONObject postcodeAndHouseRequest(AddressBean addressBean) throws Exception;
 	
 	
+	//LOQATE SECTION
+	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException;
+	public JSONObject findSecond(LoqateBean loqateBean) throws IOException, JSONException;
+	public JSONObject retrieve(LoqateBean loqateBean) throws IOException, JSONException;
 	
 }

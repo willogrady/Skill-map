@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.addresslookup.dao.AddressDAO;
 import com.addresslookup.entity.AddressBean;
+import com.addresslookup.entity.LoqateBean;
 
 
 @Component
@@ -25,6 +26,7 @@ public class AddressDAOImpl implements AddressDAO{
 	
 	
 	private String ADDRESS_API_URL = "https://api.getAddress.io/find/";
+	private String LOQATE_API_URL = "https://api.addressy.com/Capture/Interactive/";
 	
 	@Autowired
 	public AddressDAO addressDAO;
@@ -80,6 +82,27 @@ public class AddressDAOImpl implements AddressDAO{
 
 	public void setAddressDAO(AddressDAO addressDAO) {
 		this.addressDAO = addressDAO;
+	}
+
+	
+	//LOQATE SECTION
+	
+	@Override
+	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException {
+		String url = LOQATE_API_URL+
+		return null;
+	}
+
+	@Override
+	public JSONObject findSecond(LoqateBean loqateBean) throws IOException, JSONException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JSONObject retrieve(LoqateBean loqateBean) throws IOException, JSONException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
