@@ -21,6 +21,6 @@ public interface AddressDAO{
 	//LOQATE SECTION
 	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException;
 	public JSONObject findSecond(LoqateBean loqateBean) throws IOException, JSONException;
-	public JSONObject retrieve(LoqateBean loqateBean) throws IOException, JSONException;
+	public JSONObject retrieve(LoqateBean loqateBean) throws Exception;
 	
 }
