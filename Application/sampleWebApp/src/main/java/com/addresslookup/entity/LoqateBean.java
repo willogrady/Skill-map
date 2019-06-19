@@ -28,8 +28,8 @@ public class LoqateBean {
 	@FormParam("Container")
 	public String container;
 	
-	@FormParam("RetrieveId")
-	public String retrieveId;
+	@FormParam("Id")
+	public String Id;
 
 	@Id
 	@GeneratedValue
@@ -73,12 +73,12 @@ public class LoqateBean {
 		this.container = container;
 	}
 
-	public String getRetrieveId() {
-		return retrieveId;
+	public String getId() {
+		return Id;
 	}
 
-	public void setRetrieveId(String retrieveId) {
-		this.retrieveId = retrieveId;
+	public void setId(String Id) {
+		this.Id = Id;
 	}
 
 	
