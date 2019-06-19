@@ -86,7 +86,6 @@ public class AddressController {
 	    return new ResponseEntity<String>("GET Response", HttpStatus.OK);
 	}
 	
-	
 	@Path("/firstFind")
 	@POST
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
@@ -96,9 +95,31 @@ public class AddressController {
 		JSONObject js = new JSONObject();
 		js.put("Items", newAddress.findFirst(loqateBean));
 		return js.toString();
+	}
+	
+	@Path("/secondFind")
+	@POST
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public String returnDao2(@BeanParam LoqateBean loqateBean) throws Exception {
+		
+		JSONObject js = new JSONObject();
+		js.put("Items", newAddress.findSecond(loqateBean));
+		return js.toString();
 		
 	}
 	
+	@Path("/retrieve")
+	@POST
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public String retrieve(@BeanParam LoqateBean loqateBean) throws Exception {
+		
+		JSONObject js = new JSONObject();
+		js.put("Items", newAddress.retrieve(loqateBean));
+		return js.toString();
+		
+	}
 	
 
 	
