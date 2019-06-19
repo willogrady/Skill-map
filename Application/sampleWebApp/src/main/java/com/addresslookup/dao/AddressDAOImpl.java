@@ -9,6 +9,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +92,18 @@ public class AddressDAOImpl implements AddressDAO{
 	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException {
 		String url = LOQATE_API_URL+"Find/v1.1/json3.ws?Key="+loqateBean.key+"&text="+loqateBean.text+"&isMiddleware="+loqateBean.isMiddleware+"&countries="+loqateBean.countries;
 		JSONObject jsonResponse = readJsonFromUrl(url);
-		System.out.print(jsonResponse);
+		System.out.println("This is the response:" + jsonResponse);
+		System.out.println("This is the json array:" + jsonResponse.get("Items"));
+		System.out.println((jsonResponse.get("Items")).getClass());
+		JSONArray arr = (JSONArray) jsonResponse.get("Items");
+		JSONObject object = arr.getJSONObject(0);
+		System.out.println(object);
+		String findId = object.getString("Id");
+		System.out.println("I really hope this is the Id!: " + findId);
+		//JSONObject items = (JSONObject) jsonResponse.get("Items");
+		//JSONObject responseID = items.("Id");
+		//JSONArray arr = new JSONArray();
+		//arr.put(items);
 		return jsonResponse;
 	}
 
