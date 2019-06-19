@@ -89,7 +89,8 @@ public class AddressDAOImpl implements AddressDAO{
 	
 	@Override
 	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException {
-		String url = LOQATE_API_URL+"/Find/v1.1/json3.ws?Key="+loqateBean.key+"/"+loqateBean.text+"/"+loqateBean.countries;
+		String url = LOQATE_API_URL+ "/Find/v1.1/json3.ws?Key=" +loqateBean.key+"&text="+loqateBean.text+"&isMiddleware=" + loqateBean.isMiddleware + "&counties=" +loqateBean.countries;
+		System.out.println(url);
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.print(jsonResponse);
 		return jsonResponse;
@@ -98,6 +99,7 @@ public class AddressDAOImpl implements AddressDAO{
 	@Override
 	public JSONObject findSecond(LoqateBean loqateBean) throws IOException, JSONException {
 		String url = LOQATE_API_URL+"/Find/v1.1/json3.ws?Key="+loqateBean.key+"/"+loqateBean.text+"/"+loqateBean.countries+"/"+loqateBean.container;
+		System.out.println(url);
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.print(jsonResponse);
 		return jsonResponse;

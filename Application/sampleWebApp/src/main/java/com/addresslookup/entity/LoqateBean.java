@@ -23,7 +23,7 @@ public class LoqateBean {
 	public String countries;
 	
 	@FormParam("IsMiddleware")
-	public boolean isMiddleware = true;
+	public String isMiddleware;
 	
 	@FormParam("Container")
 	public String container;

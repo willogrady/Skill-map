@@ -13,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -80,21 +81,17 @@ public class AddressController {
 		
 	}
 	
-
-	@GetMapping("/get")
-	public @ResponseBody ResponseEntity<String> get() {
-	    return new ResponseEntity<String>("GET Response", HttpStatus.OK);
-	}
-	
 	
 	@Path("/firstFind")
 	@POST
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public String returnDao(@BeanParam LoqateBean loqateBean) throws Exception {
+	public String firstFind(@BeanParam LoqateBean loqateBean) throws Exception {
 		
 		JSONObject js = new JSONObject();
 		js.put("Items", newAddress.findFirst(loqateBean));
+		System.out.println(js.toString());
+		
 		return js.toString();
 		
 	}
