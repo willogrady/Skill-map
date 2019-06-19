@@ -117,7 +117,7 @@ public class AddressDAOImpl implements AddressDAO{
 
 	@Override
 	public JSONObject retrieve(LoqateBean loqateBean) throws IOException, JSONException {
-		String url = LOQATE_API_URL+"/Retrieve/v1.00/json3.ws?Key="+loqateBean.key+"&retrieveId="+loqateBean.retrieveId;
+		String url = LOQATE_API_URL+"/Retrieve/v1.00/json3.ws?Key="+loqateBean.key+"&Id="+loqateBean.Id;
 		System.out.println("Retrieve URL: "+ url);
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.println(jsonResponse);
