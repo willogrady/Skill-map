@@ -97,17 +97,6 @@ public class AddressController {
 		return js.toString();
 	}
 	
-	@Path("/secondFind")
-	@POST
-	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public String returnDao2(@BeanParam LoqateBean loqateBean) throws Exception {
-		
-		JSONObject js = new JSONObject();
-		js.put("Items", newAddress.findSecond(loqateBean));
-		return js.toString();
-		
-	}
 	
 	@Path("/retrieve")
 	@POST
