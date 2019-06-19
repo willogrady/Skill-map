@@ -104,7 +104,12 @@ public class AddressDAOImpl implements AddressDAO{
 		//JSONObject responseID = items.("Id");
 		//JSONArray arr = new JSONArray();
 		//arr.put(items);
-		return jsonResponse;
+		String url2 = LOQATE_API_URL+"/Find/v1.1/json3.ws?Key="+loqateBean.key+"&text="+loqateBean.text +
+				"&countries="+loqateBean.countries+"&isMiddleware="+loqateBean.isMiddleware+"&container="+ findId;
+		JSONObject step2response = readJsonFromUrl(url2);
+		System.out.println(step2response);
+		return step2response;
+		//return jsonResponse;
 	}
 
 	@Override
