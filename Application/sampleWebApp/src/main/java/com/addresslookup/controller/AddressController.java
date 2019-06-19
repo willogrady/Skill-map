@@ -81,6 +81,14 @@ public class AddressController {
 		
 	}
 	
+<<<<<<< HEAD
+=======
+
+	@GetMapping("/get")
+	public @ResponseBody ResponseEntity<String> get() {
+	    return new ResponseEntity<String>("GET Response", HttpStatus.OK);
+	}
+>>>>>>> branch 'LoqateBranch' of https://mastekcto.visualstudio.com/AddressLookupV2/_git/AddressLookupV2
 	
 	@Path("/firstFind")
 	@POST
@@ -93,9 +101,31 @@ public class AddressController {
 		System.out.println(js.toString());
 		
 		return js.toString();
+	}
+	
+	@Path("/secondFind")
+	@POST
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public String returnDao2(@BeanParam LoqateBean loqateBean) throws Exception {
+		
+		JSONObject js = new JSONObject();
+		js.put("Items", newAddress.findSecond(loqateBean));
+		return js.toString();
 		
 	}
 	
+	@Path("/retrieve")
+	@POST
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public String retrieve(@BeanParam LoqateBean loqateBean) throws Exception {
+		
+		JSONObject js = new JSONObject();
+		js.put("Items", newAddress.retrieve(loqateBean));
+		return js.toString();
+		
+	}
 	
 
 	
