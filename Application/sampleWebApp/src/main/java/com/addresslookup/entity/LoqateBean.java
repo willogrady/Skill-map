@@ -81,12 +81,4 @@ public class LoqateBean {
 		this.Id = Id;
 	}
 
-	
-
-	
-
-	
-	
-	
-
 }
