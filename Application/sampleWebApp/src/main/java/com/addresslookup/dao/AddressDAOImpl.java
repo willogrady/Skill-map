@@ -91,10 +91,9 @@ public class AddressDAOImpl implements AddressDAO{
 	@Override
 	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException {
 
-		String url = LOQATE_API_URL+ "/Find/v1.1/json3.ws?Key=" +loqateBean.key+"&text="+loqateBean.text+"&isMiddleware=" + loqateBean.isMiddleware + "&counties=" +loqateBean.countries;
+		String url = LOQATE_API_URL+ "/Find/v1.1/json3.ws?Key=" +loqateBean.key+"&text="+loqateBean.text+"&isMiddleware=" + loqateBean.isMiddleware + "&countries=" +loqateBean.countries;
 		System.out.println(url);
 
-		String url = LOQATE_API_URL+"Find/v1.1/json3.ws?Key="+loqateBean.key+"&text="+loqateBean.text+"&isMiddleware="+loqateBean.isMiddleware+"&countries="+loqateBean.countries;
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		System.out.println("This is the response:" + jsonResponse);
 		System.out.println("This is the json array:" + jsonResponse.get("Items"));
@@ -104,15 +103,13 @@ public class AddressDAOImpl implements AddressDAO{
 		System.out.println(object);
 		String findId = object.getString("Id");
 		System.out.println("I really hope this is the Id!: " + findId);
-		//JSONObject items = (JSONObject) jsonResponse.get("Items");
-		//JSONObject responseID = items.("Id");
-		//JSONArray arr = new JSONArray();
-		//arr.put(items);
+	
 		String url2 = LOQATE_API_URL+"/Find/v1.1/json3.ws?Key="+loqateBean.key+"&text="+loqateBean.text +
 				"&countries="+loqateBean.countries+"&isMiddleware="+loqateBean.isMiddleware+"&container="+ findId;
 		JSONObject step2response = readJsonFromUrl(url2);
-		System.out.println(step2response);
-		return step2response;
+		System.out.println("this is the response:" + step2response);
+		
+		return step2response; 
 		//return jsonResponse;
 	}
 

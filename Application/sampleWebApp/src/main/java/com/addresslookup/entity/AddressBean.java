@@ -40,7 +40,7 @@ public class AddressBean {
 	public String houseNameOrNumber;
 	
 	@FormParam("api-key")
-	public String apiKey;
+	public String apiKey; //hardcode later
 	
 	
 	@Id

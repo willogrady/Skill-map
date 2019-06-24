@@ -74,33 +74,28 @@ public class AddressController {
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String returnDao(@BeanParam AddressBean addressBean) throws Exception {
-		
-		JSONObject js = new JSONObject();
-		js.put("addresses", newAddress.postcodeRequest(addressBean));
-		return js.toString();
+		try {	
+		return newAddress.postcodeRequest(addressBean).toString();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return "Incorrect postcode request, check api-key validation";
+		}
 		
 	}
-	
-<<<<<<< HEAD
-=======
-
+		
 	@GetMapping("/get")
 	public @ResponseBody ResponseEntity<String> get() {
 	    return new ResponseEntity<String>("GET Response", HttpStatus.OK);
 	}
->>>>>>> branch 'LoqateBranch' of https://mastekcto.visualstudio.com/AddressLookupV2/_git/AddressLookupV2
-	
+
 	@Path("/firstFind")
 	@POST
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String firstFind(@BeanParam LoqateBean loqateBean) throws Exception {
 		
-		JSONObject js = new JSONObject();
-		js.put("Items", newAddress.findFirst(loqateBean));
-		System.out.println(js.toString());
+		return newAddress.findFirst(loqateBean).toString();
 		
-		return js.toString();
 	}
 	
 	@Path("/secondFind")
