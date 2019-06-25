@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -89,7 +92,7 @@ public class AddressDAOImpl implements AddressDAO{
 	//LOQATE SECTION
 
   @Override
-	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException {
+	public String findFirst(LoqateBean loqateBean) throws IOException, JSONException {
 	    String url = LOQATE_API_URL+"Find/v1.1/json3.ws?Key="+loqateBean.key+"&text="+loqateBean.text+"&isMiddleware="+loqateBean.isMiddleware+"&countries="+loqateBean.countries;
 	    JSONObject jsonResponse = readJsonFromUrl(url);
 	    System.out.println("This is the response:" + jsonResponse);
@@ -100,11 +103,37 @@ public class AddressDAOImpl implements AddressDAO{
 	    System.out.println(object);
 	    String findId = object.getString("Id");
 	    System.out.println("I really hope this is the Id!: " + findId);
-	    String url2electricBoogaloo = LOQATE_API_URL+"/Find/v1.1/json3.ws?Key="+loqateBean.key+"&text="+loqateBean.text +
+	    
+	    
+	    String url2 = LOQATE_API_URL+"/Find/v1.1/json3.ws?Key="+loqateBean.key+"&text="+loqateBean.text +
 	            "&countries="+loqateBean.countries+"&isMiddleware="+loqateBean.isMiddleware+"&container="+ findId;
-	    JSONObject step2response = readJsonFromUrl(url2electricBoogaloo);
-	    System.out.println(step2response);
-	    return step2response;
+	    
+	    JSONObject step2response = readJsonFromUrl(url2);
+	    
+	    
+	    //trying to get the text and desc
+	    JSONArray arr2 = (JSONArray) step2response.get("Items");
+	    
+	    JSONArray storeText = new JSONArray();
+	    
+	    String list = "";
+	       
+        for (int i = 0; i < arr2.length(); i++) {
+            JSONObject object2 = arr2.getJSONObject(i);
+            System.out.println(object2.getString("Text") + 
+            		 	       	object2.getString("Description"));
+
+            String textAndDesc = object2.getString("Text") + object2.getString("Description");
+            list = textAndDesc;
+         
+            
+        }
+        
+        System.out.println("the full objects: " + list);
+        
+      
+	     
+	    return list;
 	}
 
 
