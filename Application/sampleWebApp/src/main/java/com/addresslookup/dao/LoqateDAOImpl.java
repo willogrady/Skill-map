@@ -58,7 +58,7 @@ public class LoqateDAOImpl extends AddressDAOImpl implements LoqateDAO {
             
             
         }
-        addresses.append("addresses", results);
+        addresses.put("addresses", results);
         
         System.out.println("the full objects: " + results);        
         
