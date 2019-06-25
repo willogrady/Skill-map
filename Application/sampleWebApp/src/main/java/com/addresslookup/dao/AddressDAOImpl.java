@@ -8,7 +8,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
 
-
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,9 +63,12 @@ public class AddressDAOImpl implements AddressDAO{
 
 	@Override
 	public JSONObject postcodeRequest(AddressBean addressBean) throws JSONException, IOException {
-		addressBean.apiKey = "vQUS2aNf-0mnqj5YcrfivQ19427";
+		addressBean.apiKey = "R36w2IAKrkKXW_-LLx0Amg19851";
 		String url = ADDRESS_API_URL+ addressBean.postcode +"?api-key="+addressBean.apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
+		
+		
+		
 		return jsonResponse;
 
 	}
@@ -84,5 +87,6 @@ public class AddressDAOImpl implements AddressDAO{
 	public void setAddressDAO(AddressDAO addressDAO) {
 		this.addressDAO = addressDAO;
 	}
+
 
 }
