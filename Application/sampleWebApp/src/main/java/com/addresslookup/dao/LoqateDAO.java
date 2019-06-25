@@ -10,7 +10,7 @@ import com.addresslookup.entity.LoqateBean;
 
 public interface LoqateDAO {
 	
-	public String findFirst(LoqateBean loqateBean) throws IOException, JSONException;
+	public List<String> findFirst(LoqateBean loqateBean) throws IOException, JSONException;
 	public JSONObject retrieve(LoqateBean loqateBean) throws Exception;
 
 }
