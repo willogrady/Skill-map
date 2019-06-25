@@ -1,6 +1,7 @@
 package com.addresslookup.dao;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -17,8 +18,6 @@ import org.springframework.stereotype.Service;
 
 import com.addresslookup.entity.LoqateBean;
 
-import ch.qos.logback.classic.spi.STEUtil;
-
 @Component
 @Service
 public class LoqateDAOImpl extends AddressDAOImpl implements LoqateDAO {
@@ -29,7 +28,7 @@ public class LoqateDAOImpl extends AddressDAOImpl implements LoqateDAO {
 	public LoqateDAO loqateDAO;
 	
 	@Override
-	public String findFirst(LoqateBean loqateBean) throws IOException, JSONException {
+	public List<String> findFirst(LoqateBean loqateBean) throws IOException, JSONException {
 		loqateBean.key = "AN81-BY77-CX62-KE28";
 		loqateBean.countries = "GB";
 		loqateBean.isMiddleware = "True";
@@ -44,29 +43,25 @@ public class LoqateDAOImpl extends AddressDAOImpl implements LoqateDAO {
 	            "&countries="+loqateBean.countries+"&isMiddleware="+loqateBean.isMiddleware+"&container="+ findId;
 	    JSONObject step2response = readJsonFromUrl(url2electricBoogaloo);	    
 	    
-	    //trying to get the text and desc
+	    //trying to get the text and desc	    
+	    List<String> results = new ArrayList<>();
 	    JSONArray arr2 = (JSONArray) step2response.get("Items");
-	    
-	    JSONArray storeText = new JSONArray();
-	    
-	    String list = "";
 	       
         for (int i = 0; i < arr2.length(); i++) {
             JSONObject object2 = arr2.getJSONObject(i);
             System.out.println(object2.getString("Text") + 
             		 	       	object2.getString("Description"));
 
-            String textAndDesc = object2.getString("Text") + object2.getString("Description");
-            list = textAndDesc;
-         
+            String textAndDesc = ("\"" + object2.getString("Text") + object2.getString("Description")+ "\"");
+            results.add(textAndDesc);
             
         }
         
-        System.out.println("the full objects: " + list);
+        System.out.println("the full objects: " + results);
         
       
 	     
-	    return list;
+	    return results;
 	}
 	
 	
