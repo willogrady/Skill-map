@@ -16,11 +16,9 @@ import javax.net.ssl.X509ExtendedTrustManager;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,8 +37,6 @@ public class SpringBootApplication {
 		ConfigurableApplicationContext ctx = SpringApplication.run(SpringBootApplication.class, args);
         
 		logger.info("This Spring Application is a go!!");
-		
-//		ctx.close();
 		
 		// interface responsible for managing the trust material/validate the SSL Layer
 				// Gives access cert to the getAddress.io api
