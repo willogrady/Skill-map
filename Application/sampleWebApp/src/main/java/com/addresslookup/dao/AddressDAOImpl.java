@@ -65,22 +65,16 @@ public class AddressDAOImpl implements AddressDAO{
 
 	@Override
 	public JSONObject postcodeRequest(AddressBean addressBean) throws JSONException, IOException {
-		addressBean.apiKey = "vQUS2aNf-0mnqj5YcrfivQ19427";
+		addressBean.apiKey = "R36w2IAKrkKXW_-LLx0Amg19851";
 		String url = ADDRESS_API_URL+ addressBean.postcode +"?api-key="+addressBean.apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		
-	    //trying to get the text and desc	    
-	    
-		JSONArray arr = (JSONArray) jsonResponse.get("addresses");
-		JSONObject object = new JSONObject();
-		
-		for (int i = 0; i < arr.length(); i++) {
-		object = arr.getJSONObject(i);
-		
-		}
+	    JSONArray arr = (JSONArray) jsonResponse.get("addresses");
 
-
-		return object;
+	    JSONObject addresses = new JSONObject();
+	    addresses.append("addresses", arr);
+		
+		return addresses;
 	}
 
 	@Override

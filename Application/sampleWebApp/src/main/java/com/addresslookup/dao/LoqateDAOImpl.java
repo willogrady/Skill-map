@@ -61,7 +61,6 @@ public class LoqateDAOImpl extends AddressDAOImpl implements LoqateDAO {
         }
         
         System.out.println("the full objects: " + results);        
-//        System.out.println("the json object of results: " + addresses);
         
 	    return addresses;
 	}
