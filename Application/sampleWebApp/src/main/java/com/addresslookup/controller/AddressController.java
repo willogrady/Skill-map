@@ -42,12 +42,9 @@ public class AddressController {
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String returnDao(@BeanParam AddressBean addressBean) throws Exception {
-		try {	
-		return newAddress.postcodeRequest(addressBean).toString();
-		} catch(Exception e) {
-			e.printStackTrace();
-			return "Incorrect postcode request, check api-key validation";
-		}
+	
+		return (newAddress.postcodeRequest(addressBean)).toString();
+
 		
 	}
 
