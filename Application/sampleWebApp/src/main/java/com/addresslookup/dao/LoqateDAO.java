@@ -1,6 +1,7 @@
 package com.addresslookup.dao;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.JSONException;
@@ -10,7 +11,7 @@ import com.addresslookup.entity.LoqateBean;
 
 public interface LoqateDAO {
 	
-	public List<String> findFirst(LoqateBean loqateBean) throws IOException, JSONException;
+	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException;
 	public JSONObject retrieve(LoqateBean loqateBean) throws Exception;
 
 }
