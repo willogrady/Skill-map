@@ -28,7 +28,7 @@ public class LoqateDAOImpl extends AddressDAOImpl implements LoqateDAO {
 	public LoqateDAO loqateDAO;
 	
 	@Override
-	public List<String> findFirst(LoqateBean loqateBean) throws IOException, JSONException {
+	public JSONObject findFirst(LoqateBean loqateBean) throws IOException, JSONException {
 		loqateBean.key = "AN81-BY77-CX62-KE28";
 		loqateBean.countries = "GB";
 		loqateBean.isMiddleware = "True";
@@ -46,22 +46,24 @@ public class LoqateDAOImpl extends AddressDAOImpl implements LoqateDAO {
 	    //trying to get the text and desc	    
 	    List<String> results = new ArrayList<>();
 	    JSONArray arr2 = (JSONArray) step2response.get("Items");
+	    JSONObject addresses = new JSONObject();
 	       
         for (int i = 0; i < arr2.length(); i++) {
             JSONObject object2 = arr2.getJSONObject(i);
             System.out.println(object2.getString("Text") + 
             		 	       	object2.getString("Description"));
 
-            String textAndDesc = ("\"" + object2.getString("Text") + object2.getString("Description")+ "\"");
+            String textAndDesc = (object2.getString("Text") + " " + object2.getString("Description"));
             results.add(textAndDesc);
+            
+            addresses.append("addresses", results);
             
         }
         
-        System.out.println("the full objects: " + results);
+        System.out.println("the full objects: " + results);        
+//        System.out.println("the json object of results: " + addresses);
         
-      
-	     
-	    return results;
+	    return addresses;
 	}
 	
 	
