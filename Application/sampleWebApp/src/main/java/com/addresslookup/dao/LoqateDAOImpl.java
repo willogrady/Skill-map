@@ -56,9 +56,9 @@ public class LoqateDAOImpl extends AddressDAOImpl implements LoqateDAO {
             String textAndDesc = (object2.getString("Text") + " " + object2.getString("Description"));
             results.add(textAndDesc);
             
-            addresses.append("addresses", results);
             
         }
+        addresses.append("addresses", results);
         
         System.out.println("the full objects: " + results);        
 //        System.out.println("the json object of results: " + addresses);
