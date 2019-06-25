@@ -7,8 +7,10 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
-
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,14 +68,26 @@ public class AddressDAOImpl implements AddressDAO{
 		addressBean.apiKey = "vQUS2aNf-0mnqj5YcrfivQ19427";
 		String url = ADDRESS_API_URL+ addressBean.postcode +"?api-key="+addressBean.apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
-		return jsonResponse;
+		
+	    //trying to get the text and desc	    
+	    
+		JSONArray arr = (JSONArray) jsonResponse.get("addresses");
+		JSONObject object = new JSONObject();
+		
+		for (int i = 0; i < arr.length(); i++) {
+		object = arr.getJSONObject(i);
+		
+		}
 
+
+		return object;
 	}
 
 	@Override
 	public JSONObject postcodeAndHouseRequest(AddressBean addressBean) throws Exception {
 		String url = ADDRESS_API_URL+addressBean.postcode+"/"+addressBean.houseNameOrNumber+"?api-key="+addressBean.apiKey; 
 		JSONObject jsonResponse = readJsonFromUrl(url);
+		
 		return jsonResponse;
 	}
 
