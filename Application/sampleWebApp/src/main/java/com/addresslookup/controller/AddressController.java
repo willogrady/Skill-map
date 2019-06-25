@@ -26,7 +26,7 @@ import com.addresslookup.entity.AddressBean;
 
 
 //rest apis
-@RestController	//handles incoming web requests
+@RestController
 @Component
 @Path("/address")
 public class AddressController {
@@ -34,15 +34,14 @@ public class AddressController {
 	@Autowired //to inject the implementation of the service into the controller
 	AddressDAO newAddress;
 	
-	 @Path("/")
-	 @GET
-	 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	    public String index() {
-	        return "index.html";
-	    }
+//	 @Path("/")
+//	 @GET
+//	 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+//	    public String index() {
+//	        return "index.html";
+//	    }
 			
-	//List postcode using DAO interfaces
-	@Path("/listpostcodedao")
+	@Path("/getAddress")
 	@POST
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -55,7 +54,21 @@ public class AddressController {
 		}
 		
 	}
+
+	@Path("/onehouse")
+	@POST
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public String returnOneHouse(@BeanParam AddressBean addressBean) throws Exception {
+		try {	
+		return newAddress.postcodeAndHouseRequest(addressBean).toString();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return "Incorrect postcode or house number/name request, check api-key validation";
+		}
 		
+	}
+	
 	@GetMapping("/get")
 	public @ResponseBody ResponseEntity<String> get() {
 	    return new ResponseEntity<String>("GET Response", HttpStatus.OK);

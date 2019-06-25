@@ -23,7 +23,7 @@ import com.addresslookup.entity.LoqateBean;
 
 
 @Component
-@Service	//tells spring that this is the implementation class
+@Service
 @Primary
 public class AddressDAOImpl implements AddressDAO{
 	
@@ -64,6 +64,7 @@ public class AddressDAOImpl implements AddressDAO{
 
 	@Override
 	public JSONObject postcodeRequest(AddressBean addressBean) throws JSONException, IOException {
+		addressBean.apiKey = "vQUS2aNf-0mnqj5YcrfivQ19427";
 		String url = ADDRESS_API_URL+ addressBean.postcode +"?api-key="+addressBean.apiKey;
 		JSONObject jsonResponse = readJsonFromUrl(url);
 		return jsonResponse;
@@ -74,7 +75,6 @@ public class AddressDAOImpl implements AddressDAO{
 	public JSONObject postcodeAndHouseRequest(AddressBean addressBean) throws Exception {
 		String url = ADDRESS_API_URL+addressBean.postcode+"/"+addressBean.houseNameOrNumber+"?api-key="+addressBean.apiKey; 
 		JSONObject jsonResponse = readJsonFromUrl(url);
-		System.out.print(jsonResponse);
 		return jsonResponse;
 	}
 

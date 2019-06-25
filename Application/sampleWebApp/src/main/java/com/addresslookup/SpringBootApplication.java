@@ -40,8 +40,6 @@ public class SpringBootApplication {
         
 		logger.info("This Spring Application is a go!!");
 		
-//		ctx.close();
-		
 		// interface responsible for managing the trust material/validate the SSL Layer
 				// Gives access cert to the getAddress.io api
 				TrustManager[] trustAllCerts = new TrustManager[] {

@@ -1,5 +1,7 @@
 package com.addresslookup.controller;
 
+import java.util.List;
+
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -15,25 +17,25 @@ import org.springframework.web.bind.annotation.RestController;
 import com.addresslookup.dao.LoqateDAO;
 import com.addresslookup.entity.LoqateBean;
 
-@RestController	//handles incoming web requests
+@RestController	
 @Component
-@Path("/loqate")
+@Path("/address")
 public class LoqateController {
 	
 	@Autowired
 	LoqateDAO newLoqate;
 	
 	// to return the list
-	@Path("/firstFind")
+	@Path("/getAddress")
 	@POST
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public String firstFind(@BeanParam LoqateBean loqateBean) throws Exception {
 		
-		return newLoqate.findFirst(loqateBean).toString();
+		return (newLoqate.findFirst(loqateBean)).toString();
 		
 	}
-	
+		
 	// to find specific address
 	@Path("/retrieve")
 	@POST

@@ -19,13 +19,9 @@ public class ServiceConfig extends ResourceConfig{
 		register(CORSFilter.class);
 		register(AddressDAOImpl.class);
 		register(AddressController.class);
-		register(LoqateDAOImpl.class);
-		register(LoqateController.class);
+//		register(LoqateDAOImpl.class);
+//		register(LoqateController.class);
 
 	}
-	
-	
-	
-	
 
 }

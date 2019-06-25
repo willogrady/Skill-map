@@ -16,8 +16,8 @@ public class LoqateBean {
 	@FormParam("Key")
 	public String key;
 	
-	@FormParam("Text")
-	public String text;
+	@FormParam("Postcode")
+	public String postcode;
 	
 	@FormParam("Countries")
 	public String countries;
@@ -49,12 +49,12 @@ public class LoqateBean {
 		this.key = key;
 	}
 
-	public String getText() {
-		return text;
+	public String getPostcode() {
+		return postcode;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
 	}
 
 	public String getCountries() {
@@ -80,5 +80,15 @@ public class LoqateBean {
 	public void setId(String Id) {
 		this.Id = Id;
 	}
+
+	public String getIsMiddleware() {
+		return isMiddleware;
+	}
+
+	public void setIsMiddleware(String isMiddleware) {
+		this.isMiddleware = isMiddleware;
+	}
+	
+	
 
 }

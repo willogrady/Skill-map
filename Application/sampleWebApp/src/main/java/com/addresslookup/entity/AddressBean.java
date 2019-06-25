@@ -33,14 +33,14 @@ public class AddressBean {
 	@FormParam("addressID")
 	public Long addressId;
 	
-	@FormParam("postcode")
+	@FormParam("Postcode")
 	public String postcode;
 	
 	@FormParam("house")
 	public String houseNameOrNumber;
 	
 	@FormParam("api-key")
-	public String apiKey; //hardcode later
+	public String apiKey;
 	
 	
 	@Id
