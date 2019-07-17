@@ -14,7 +14,6 @@ public class RoleApplication {
 		return application.sources(RoleApplication.class);
 	}
 	
-
 	public static void main(String[] args) throws Exception {
 		ConfigurableApplicationContext ctx = 
 		SpringApplication.run(RoleApplication.class, args);
