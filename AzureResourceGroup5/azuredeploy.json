@@ -92,7 +92,7 @@
                 "description": "MySQL version"
             }
         },
-        "location": {
+        "location": { 
             "type": "string",
             "defaultValue": "[resourceGroup().location]",
             "metadata": {
