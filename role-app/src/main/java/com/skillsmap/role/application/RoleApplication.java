@@ -13,6 +13,7 @@ public class RoleApplication {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(RoleApplication.class);
 	}
+	
 
 	public static void main(String[] args) throws Exception {
 		ConfigurableApplicationContext ctx = 
