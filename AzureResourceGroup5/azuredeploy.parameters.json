@@ -10,6 +10,9 @@
     },
     "administratorLoginPassword": {
       "value": "Mastek2019#"
+    },
+    "roledbName": {
+      "value": "roledb"
     }
   }
 }
