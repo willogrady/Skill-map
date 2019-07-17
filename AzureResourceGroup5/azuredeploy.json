@@ -64,7 +64,7 @@
               102400,
               51200,
                 5120            ],
-            "defaultValue": 5120,
+            "defaultValue": 5120, 
             "metadata": {
                 "description": "Azure database for PostgreSQL Sku Size "
             }
