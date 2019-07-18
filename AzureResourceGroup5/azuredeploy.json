@@ -8,6 +8,12 @@
                 "description": "Name of azure web app"
             }
         },
+        "resourceGroupName": {
+            "type": "string",
+            "metadata": {
+              "description": "Name of resource group to be used for mysql server"
+            }
+        },
         "administratorLogin": { 
             "type": "string",
             "minLength": 1,
