@@ -109,11 +109,7 @@
     },
     "variables": {
         "databaseName": "[concat(parameters('siteName'), 'database')]",
-<<<<<<< HEAD
-        "serverName": "[concat(parameters('resourceGroup()', 'pgserver')]",
-=======
-        "serverName": "[concat(parameters('resourceGroup()'), 'pgserver')]",
->>>>>>> ac0bbc830bc61fa8c0f755587ec244bf1d4e989c
+        "serverName": "[concat(parameters('resourceGroupName'), 'pgserver')]",
         "hostingPlanName": "[concat(parameters('siteName'), 'serviceplan')]"
     },
   "resources": [
