@@ -19,7 +19,7 @@
             "minLength": 1,
             "metadata": {
                 "description": "Database administrator login name"
-            }
+            } 
         },
         "administratorLoginPassword": {
             "type": "securestring",
@@ -132,8 +132,8 @@
         "hostingEnvironment": ""
       },
       "sku": {
-        "Tier": "Standard",
-        "Name": "S1"
+        "Tier": "Free",
+        "Name": "F1"
       }
     },
     {
