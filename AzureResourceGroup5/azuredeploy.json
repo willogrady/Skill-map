@@ -109,7 +109,7 @@
     },
     "variables": {
         "databaseName": "[concat(parameters('siteName'), 'database')]",
-        "serverName": "[concat(parameters('siteName'), 'pgserver')]",
+        "serverName": "[concat(parameters('resourceGroup()', 'pgserver')]",
         "hostingPlanName": "[concat(parameters('siteName'), 'serviceplan')]"
     },
   "resources": [
