@@ -8,8 +8,10 @@
 		<version>2.1.6.RELEASE</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.skillsmap.mastekeer-app</groupId>
+	
+	<groupId>com.skillsmap.role-app</groupId>
 	<artifactId>role-app</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Spring Boot Application for Mastekeer Service</description>
 
