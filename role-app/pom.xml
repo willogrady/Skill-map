@@ -77,6 +77,21 @@
  				<groupId>com.microsoft.azure</groupId>
  				<artifactId>azure-webapp-maven-plugin</artifactId>
  				<version>1.6.0</version>
+				<configuration>
+      				<schemaVersion>V2</schemaVersion>
+      				<resourceGroup>rgMastekSkillsMap</resourceGroup>
+      				<appName>RoleSite</appName>
+      				<region>northeurope</region>
+      				<pricingTier>S1V1</pricingTier>
+					<!-- Begin of App Settings  -->
+      				<appSettings>
+        				<property>
+               				<name>JAVA_OPTS</name>
+               				<value>-Dserver.port=80</value>
+         				</property>
+      				</appSettings>
+      				<!-- End of App Settings  -->
+     		</configuration>
 			</plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
