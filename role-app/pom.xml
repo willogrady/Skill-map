@@ -12,8 +12,7 @@
 	<groupId>com.skillsmap.role-app</groupId>
 	<artifactId>role-app</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<description>Spring Boot Application for Mastekeer Service</description>
+	<description>Spring Boot Application for Role Service</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -74,7 +73,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            
+            <plugin>
+ 				<groupId>com.microsoft.azure</groupId>
+ 				<artifactId>azure-webapp-maven-plugin</artifactId>
+ 				<version>1.6.0</version>
+			</plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <executions>
