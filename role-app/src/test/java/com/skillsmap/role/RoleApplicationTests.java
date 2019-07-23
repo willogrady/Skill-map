@@ -1,4 +1,4 @@
-package com.skillsmap.mastekeer;
+package com.skillsmap.role;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
-public class MastekeerApplicationTests {
+public class RoleApplicationTests {
 
     @Test
     public void testSample() {
