@@ -15,10 +15,10 @@
         "value": "svcRole"
     },
       "resourceGroupName": {
-        "value": "SkillMap"
+        "value": "rgMastekSkillsMap"
     },
       "administratorLogin": {
-        "value": "skillsAdmin"
+        "value": "msmadmin"
     },
       "administratorLoginPassword": {
         "value": "Mastek2019#"
