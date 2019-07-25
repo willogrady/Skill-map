@@ -9,6 +9,13 @@
         "description": "API Managment Service Name"
     }
     },
+    "publisherName": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "The email address of the owner of the service"
+      }
+    },
     "publisherEmail": {
       "type": "string",
       "minLength": 1,
