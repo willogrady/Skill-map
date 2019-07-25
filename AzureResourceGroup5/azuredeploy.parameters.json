@@ -12,7 +12,7 @@
         "value": "spMSM"
     },
       "siteName": {
-        "value": "RoleSite"
+        "value": "svcRole"
     },
       "resourceGroupName": {
         "value": "SkillMap"
