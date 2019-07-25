@@ -1,30 +1,27 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "apiManagementServiceName": {
-        "value": "APIM-MSM"
-      },
-      "publisherEmail": {
-        "value": "Mark.Oates@mastek.com"
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "apiManagementServiceName": {
+      "value": "APIM-MSM"
     },
-      "publisherName": {
-        "value": "GEN-UNIQUE"
-    },
-      "hostingPlanName": {
-        "value": "spMSM"
-    },
-      "siteName": {
-        "value": "svcRole"
-    },
-      "resourceGroupName": {
-        "value": "rgMastekSkillsMap"
-    },
-      "administratorLogin": {
-        "value": "msmadmin"
-    },
-      "administratorLoginPassword": {
-        "value": "Mastek2019#"
-      }
+    "publisherEmail": {
+      "value": "mark.oates@mastek.com"
+  },
+    "hostingPlanName": {
+      "value": "spMSM"
+  },
+    "siteName": {
+      "value": "svcRole"
+  },
+    "resourceGroupName": {
+      "value": "rgMastekSkillsMap"
+  },
+    "administratorLogin": {
+      "value": "msmadmin"
+  },
+    "administratorLoginPassword": {
+      "value": "Mastek2019#"
     }
   }
+}
