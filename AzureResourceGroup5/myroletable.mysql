@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS  `svcRoleHellodb`.`role`;
-FLUSH TABLES  `svcRoleHellodb`.`role` ; 
-CREATE TABLE `svcRoleHellodb`.`role` (
+DROP TABLE IF EXISTS  `svcrolesdb`.`role`;
+FLUSH TABLES  `svcrolesdb`.`role` ; 
+CREATE TABLE `svcrolesdb`.`role` (
   `RoleID` INT NOT NULL,
   `RoleTitle` VARCHAR(45) NOT NULL,
   `RoleGroupID` INT NOT NULL,
@@ -9,17 +9,17 @@ CREATE TABLE `svcRoleHellodb`.`role` (
   `VersionID` INT NOT NULL,
   PRIMARY KEY (`RoleID`),
   UNIQUE INDEX `RoleID_UNIQUE` (`RoleID` ASC));
-DROP TABLE IF EXISTS  `svcRoleHellodb`.`role_group`;
-FLUSH TABLES  `svcRoleHellodb`.`role_group` ; 
-CREATE TABLE `svcRoleHellodb`.`role_group` (
+DROP TABLE IF EXISTS  `svcrolesdb`.`role_group`;
+FLUSH TABLES  `svcrolesdb`.`role_group` ; 
+CREATE TABLE `svcrolesdb`.`role_group` (
   `RoleGroupID` INT NOT NULL,
   `RoleGroup` VARCHAR(45) NOT NULL,
   `VersionID` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`RoleGroupID`),
   UNIQUE INDEX `RoleGroupID_UNIQUE` (`RoleGroupID` ASC));
 DROP TABLE IF EXISTS  `svcRoleHello`.`role_skill_map`;
-FLUSH TABLES  `svcRoleHellodb`.`role_skill_map` ; 
-CREATE TABLE `svcRoleHellodb`.`role_skill_map` (
+FLUSH TABLES  `svcrolesdb`.`role_skill_map` ; 
+CREATE TABLE `svcrolesdb`.`role_skill_map` (
   `RoleSkillMapID` INT NOT NULL,
   `RoleID` INT NOT NULL,
   `SkillID` INT NOT NULL,
