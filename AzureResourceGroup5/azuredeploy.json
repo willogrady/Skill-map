@@ -9,13 +9,6 @@
         "description": "API Managment Service Name"
     }
     },
-    "publisherName": {
-      "type": "string",
-      "minLength": 1,
-      "metadata": {
-        "description": "The publisher Name"
-      }
-    },
     "publisherEmail": {
       "type": "string",
       "minLength": 1,
