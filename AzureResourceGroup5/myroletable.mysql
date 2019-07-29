@@ -17,7 +17,7 @@ CREATE TABLE `svcrolesdb`.`role_group` (
   `VersionID` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`RoleGroupID`),
   UNIQUE INDEX `RoleGroupID_UNIQUE` (`RoleGroupID` ASC));
-DROP TABLE IF EXISTS  `svcRoleHello`.`role_skill_map`;
+DROP TABLE IF EXISTS  `svcrolesdb`.`role_skill_map`;
 FLUSH TABLES  `svcrolesdb`.`role_skill_map` ; 
 CREATE TABLE `svcrolesdb`.`role_skill_map` (
   `RoleSkillMapID` INT NOT NULL,
