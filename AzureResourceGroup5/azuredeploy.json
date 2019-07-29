@@ -102,7 +102,7 @@
 			"metadata": {
 				"description": "The email address of the owner of the service"
 			}
-		},
+    },
 		"sku": {
 			"type": "string",
 			"allowedValues": [
