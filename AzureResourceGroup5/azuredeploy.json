@@ -261,7 +261,7 @@
         "backupRetentionDays": "7",
         "geoRedundantBackup": "Disabled"
       },
-      "sslEnforcement": "Disabled"
+      "sslEnforcement": "Enabled"
     },
     "resources": [
       {
