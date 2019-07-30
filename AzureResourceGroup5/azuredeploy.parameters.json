@@ -21,28 +21,7 @@
       "value": "msmadmin"
   },
     "administratorLoginPassword": {
-      "reference": {
-        "keyVault": {
-          "id": "/subscriptions/911cc3b3-99f2-4ccc-88d1-b580cb4dcace/resourceGroups/rgMastekSkillsMap/providers/Microsoft.KeyVault/vaults/kvMSM"
-        },
-        "secretName": "kvMSMsecret"
-      }
-    },
-    "keyVaultName": {
-      "value": "kvMSM"
-    },
-    "objectId": {
-      "value": "5b1a5aea-3845-4808-a9af-863e13c090d7"
-    },
-    "secretsObject": {
-      "value": {
-        "secrets": [
-          {
-            "secretName": "kvMSMsecret",
-            "secretValue": "Mastek2019#"
-          }
-        ]
-      }
+      "value": "Mastek2019#"
     }
   }
 }
