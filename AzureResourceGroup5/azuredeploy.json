@@ -250,7 +250,43 @@
       "hostingPlanName": "[concat(parameters('hostingPlanName'))]",
       "apiManagementServiceName": "[concat('apiservice', uniqueString(resourceGroup().id))]"
   },
-"resources": [
+"resources":  [{
+			"name": "[parameters('apiManagementServiceName')]",
+			"type": "Microsoft.ApiManagement/service",
+			"apiVersion": "2019-01-01",
+			"tags": {},
+			"properties": {
+				"notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
+				"hostnameConfigurations": [{
+					"type": "Proxy",
+					"hostName": "[concat(parameters('apiManagementServiceName'), '.azure-api.net')]",
+					"defaultSslBinding": "true",
+					"negotiateClientCertificate": "false"
+				}],
+				"customProperties": {
+					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
+					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
+					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
+					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
+					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
+					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
+					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
+					"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "False"
+				},
+				"enableClientCertificate": "boolean",
+				"virtualNetworkType": "None",
+				"publisherEmail": "[parameters('publisherEmail')]",
+				"publisherName": "[parameters('apiManagementServiceName')]"
+			},
+			"sku": {
+				"name": "Developer",
+				"capacity": "1"
+			},
+			"identity": {
+				"type": "SystemAssigned"
+			},
+			"location": "[parameters('location')]"
+		},
   {
     "apiVersion": "2016-09-01",
     "name": "[parameters('hostingPlanName')]",
@@ -281,22 +317,7 @@
       "serverFarmId": "[variables('hostingPlanName')]",
       "hostingEnvironment": ""
     },
-    "resources": [
-      {
-        "apiVersion": "2017-03-01",
-        "name": "[variables('apiManagementServiceName')]",
-        "type": "Microsoft.ApiManagement/service",
-        "location": "[parameters('location')]",
-        "tags": {},
-        "sku": {
-          "name": "[parameters('sku')]",
-          "capacity": "[parameters('skuCount')]"
-        },
-        "properties": {
-          "publisherEmail": "[parameters('publisherEmail')]",
-          "publisherName": "[parameters('apiManagementServiceName')]"
-        }
-      }],
+    
     "resources": [
       {
         "apiVersion": "2016-08-01",
