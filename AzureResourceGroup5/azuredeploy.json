@@ -250,7 +250,7 @@
       "hostingPlanName": "[concat(parameters('hostingPlanName'))]",
       "apiManagementServiceName": "[concat('apiservice', uniqueString(resourceGroup().id))]"
   },
-"resources":  [{
+"resources": [{
 			"name": "[parameters('apiManagementServiceName')]",
 			"type": "Microsoft.ApiManagement/service",
 			"apiVersion": "2019-01-01",
@@ -287,153 +287,149 @@
 			},
 			"location": "[parameters('location')]"
 		},
-  {
-    "apiVersion": "2016-09-01",
-    "name": "[parameters('hostingPlanName')]",
-    "type": "Microsoft.Web/serverfarms",
-    "location": "[parameters('location')]",
-    "properties": {
-      "name": "[variables('hostingPlanName')]",
-      "workerSizeId": "1",
-      "reserved": true,
-      "numberOfWorkers": 0,
-      "hostingEnvironment": ""
-    },
-    "sku": {
-      "Tier": "Standard",
-      "Name": "S1"
-    }
-  },
-  {
-    "apiVersion": "2016-08-01",
-    "name": "[parameters('siteName')]",
-    "type": "Microsoft.Web/sites",
-    "location": "[parameters('location')]",
-    "dependsOn": [
-      "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
-    ],
-    "properties": {
-      "name": "[parameters('siteName')]",
-      "serverFarmId": "[variables('hostingPlanName')]",
-      "hostingEnvironment": ""
-    },
-    
-    "resources": [
-      {
-        "apiVersion": "2016-08-01",
-        "name": "connectionstrings",
-        "type": "config",
-        "dependsOn": [
-          "[concat('Microsoft.Web/sites/', parameters('siteName'))]"
-        ],
-        "properties": {
-          "defaultConnection": {
-            "value": "[concat('Database=', variables('databaseName'), ';Data Source=', reference(resourceId('Microsoft.DBforMySQL/servers',variables('serverName'))).fullyQualifiedDomainName, ';User Id=', parameters('administratorLogin'),'@', variables('serverName'),';Password=', parameters('administratorLoginPassword'))]",
-            "type": "MySql"
-          }
-        }
-      }
-    ]
-  },
-  {
-    "type": "Microsoft.KeyVault/vaults",
-    "name": "[parameters('keyVaultName')]",
-    "location": "[parameters('location')]",
-    "apiVersion": "2018-02-14",
-    "tags": {
-      "displayName": "KeyVault"
-    },
-    "properties": {
-      "enabledForDeployment": "[parameters('enabledForDeployment')]",
-      "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
-      "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
-      "tenantId": "[parameters('tenantId')]",
-      "accessPolicies": [{
-        "objectId": "[parameters('objectId')]",
-        "tenantId": "[parameters('tenantId')]",
-        "permissions": {
-          "keys": "[parameters('keysPermissions')]",
-          "secrets": "[parameters('secretsPermissions')]"
-        }
-      }],
-      "sku": {
-        "name": "[parameters('skuName')]",
-        "family": "A"
-      },
-      "networkAcls": {
-        "value": {
-          "defaultAction": "Allow",
-          "bypass": "AzureServices"
-        }
-      }
-    }
-  },
-  {
-    "type": "Microsoft.KeyVault/vaults/secrets",
-    "name": "[concat(parameters('keyVaultName'), '/', parameters('secretsObject').secrets[copyIndex()].secretName)]",
-    "apiVersion": "2018-02-14",
-    "dependsOn": [
-      "[concat('Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]"
-    ],
-    "copy": {
-      "name": "secretsCopy",
-      "count": "[length(parameters('secretsObject').secrets)]"
-    },
-    "properties": {
-      "value": "[parameters('secretsObject').secrets[copyIndex()].secretValue]"
-    }
-  },
-  {
-    "apiVersion": "2017-12-01",
-    "location": "[parameters('location')]",
-    "name": "[variables('serverName')]",
-    "type": "Microsoft.DBforMySQL/servers",
-    "sku": {
-      "name": "[parameters('databaseSkuName')]",
-      "tier": "[parameters('databaseSkuTier')]",
-      "capacity": "[parameters('databaseSkucapacity')]",
-      "size": "[parameters('databaseSkuSizeMB')]",
-      "family": "[parameters('databaseSkuFamily')]"
-    },
-    "properties": {
-      "version": "[parameters('mysqlVersion')]",
-      "administratorLogin": "[parameters('administratorLogin')]",
-      "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
-      "storageProfile": {
-        "storageMB": "[parameters('databaseSkuSizeMB')]",
-        "backupRetentionDays": "7",
-        "geoRedundantBackup": "Disabled"
-      },
-      "sslEnforcement": "Enabled"
-    },
-    "resources": [
-      {
-        "type": "firewallrules",
-        "apiVersion": "2017-12-01",
-        "dependsOn": [
-          "[concat('Microsoft.DBforMySQL/servers/', variables('serverName'),'/databases/' , variables('databaseName'))]",
-          "[concat('Microsoft.DBforMySQL/servers/', variables('serverName'))]"
-        ],
-        "location": "[parameters('location')]",
-        "name": "AllowAzureIPs",
-        "properties": {
-          "startIpAddress": "0.0.0.0",
-          "endIpAddress": "0.0.0.0"
-        }
-      },
-      {
-        "name": "[variables('databaseName')]",
-        "type": "databases",
-        "apiVersion": "2017-12-01",
-        "properties": {
-          "charset": "utf8",
-          "collation": "utf8_general_ci"
-        },
-        "dependsOn": [
-          "[concat('Microsoft.DBforMySQL/servers/', variables('serverName'))]"
-        ]
-      }
-    ]
-  }
-]
+		{
+			"apiVersion": "2016-09-01",
+			"name": "[parameters('hostingPlanName')]",
+			"type": "Microsoft.Web/serverfarms",
+			"location": "[parameters('location')]",
+			"properties": {
+				"name": "[variables('hostingPlanName')]",
+				"workerSizeId": "1",
+				"reserved": true,
+				"numberOfWorkers": 0,
+				"hostingEnvironment": ""
+			},
+			"sku": {
+				"Tier": "Standard",
+				"Name": "S1"
+			}
+		},
+		{
+			"apiVersion": "2016-08-01",
+			"name": "[parameters('siteName')]",
+			"type": "Microsoft.Web/sites",
+			"location": "[parameters('location')]",
+			"dependsOn": [
+				"[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+			],
+			"properties": {
+				"name": "[parameters('siteName')]",
+				"serverFarmId": "[variables('hostingPlanName')]",
+				"hostingEnvironment": ""
+			},
+			"resources": [{
+				"apiVersion": "2016-08-01",
+				"name": "connectionstrings",
+				"type": "config",
+				"dependsOn": [
+					"[concat('Microsoft.Web/sites/', parameters('siteName'))]"
+				],
+				"properties": {
+					"defaultConnection": {
+						"value": "[concat('Database=', variables('databaseName'), ';Data Source=', reference(resourceId('Microsoft.DBforMySQL/servers',variables('serverName'))).fullyQualifiedDomainName, ';User Id=', parameters('administratorLogin'),'@', variables('serverName'),';Password=', parameters('administratorLoginPassword'))]",
+						"type": "MySql"
+					}
+				}
+			}]
+		},
+		{
+			"type": "Microsoft.KeyVault/vaults",
+			"name": "[parameters('keyVaultName')]",
+			"location": "[parameters('location')]",
+			"apiVersion": "2018-02-14",
+			"tags": {
+				"displayName": "KeyVault"
+			},
+			"properties": {
+				"enabledForDeployment": "[parameters('enabledForDeployment')]",
+				"enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+				"enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+				"tenantId": "[parameters('tenantId')]",
+				"accessPolicies": [{
+					"objectId": "[parameters('objectId')]",
+					"tenantId": "[parameters('tenantId')]",
+					"permissions": {
+						"keys": "[parameters('keysPermissions')]",
+						"secrets": "[parameters('secretsPermissions')]"
+					}
+				}],
+				"sku": {
+					"name": "[parameters('skuName')]",
+					"family": "A"
+				},
+				"networkAcls": {
+					"value": {
+						"defaultAction": "Allow",
+						"bypass": "AzureServices"
+					}
+				}
+			}
+		},
+		{
+			"type": "Microsoft.KeyVault/vaults/secrets",
+			"name": "[concat(parameters('keyVaultName'), '/', parameters('secretsObject').secrets[copyIndex()].secretName)]",
+			"apiVersion": "2018-02-14",
+			"dependsOn": [
+				"[concat('Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]"
+      ],
+			"copy": {
+				"name": "secretsCopy",
+				"count": "[length(parameters('secretsObject').secrets)]"
+			},
+			"properties": {
+				"value": "[parameters('secretsObject').secrets[copyIndex()].secretValue]"
+			}
+		},
+		{
+			"apiVersion": "2017-12-01",
+			"location": "[parameters('location')]",
+			"name": "[variables('serverName')]",
+			"type": "Microsoft.DBforMySQL/servers",
+			"sku": {
+				"name": "[parameters('databaseSkuName')]",
+				"tier": "[parameters('databaseSkuTier')]",
+				"capacity": "[parameters('databaseSkucapacity')]",
+				"size": "[parameters('databaseSkuSizeMB')]",
+				"family": "[parameters('databaseSkuFamily')]"
+			},
+			"properties": {
+				"version": "[parameters('mysqlVersion')]",
+				"administratorLogin": "[parameters('administratorLogin')]",
+				"administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+				"storageProfile": {
+					"storageMB": "[parameters('databaseSkuSizeMB')]",
+					"backupRetentionDays": "7",
+					"geoRedundantBackup": "Disabled"
+				},
+				"sslEnforcement": "Enabled"
+			},
+			"resources": [{
+					"type": "firewallrules",
+					"apiVersion": "2017-12-01",
+					"dependsOn": [
+						"[concat('Microsoft.DBforMySQL/servers/', variables('serverName'),'/databases/' , variables('databaseName'))]",
+						"[concat('Microsoft.DBforMySQL/servers/', variables('serverName'))]"
+					],
+					"location": "[parameters('location')]",
+					"name": "AllowAzureIPs",
+					"properties": {
+						"startIpAddress": "0.0.0.0",
+						"endIpAddress": "0.0.0.0"
+					}
+				},
+				{
+					"name": "[variables('databaseName')]",
+					"type": "databases",
+					"apiVersion": "2017-12-01",
+					"properties": {
+						"charset": "utf8",
+						"collation": "utf8_general_ci"
+					},
+					"dependsOn": [
+						"[concat('Microsoft.DBforMySQL/servers/', variables('serverName'))]"
+					]
+				}
+			]
+		}
+	]
 }
