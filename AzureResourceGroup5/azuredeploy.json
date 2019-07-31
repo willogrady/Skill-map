@@ -254,7 +254,8 @@
     "MSMVnetSubnet1Prefix": "10.1.0.0/28"
   },
   "resources": [
-    {"name": "[parameters('apiManagementServiceName')]",
+    {
+      "name": "[parameters('apiManagementServiceName')]",
       "type": "Microsoft.ApiManagement/service",
       "apiVersion": "2019-01-01",
       "tags": {},
@@ -281,7 +282,10 @@
         "enableClientCertificate": "boolean",
         "virtualNetworkType": "None",
         "publisherEmail": "[parameters('publisherEmail')]",
-        "publisherName": "[parameters('apiManagementServiceName')]"
+        "publisherName": "[parameters('apiManagementServiceName')]",
+        "path": "MastekSkillsMap",
+    		"contentValue": "[parameters('openapi_json')]",
+    		"contentFormat": "openapi-json"
       },
       "sku": {
         "name": "Developer",
@@ -339,7 +343,56 @@
         }
       ]
     },
-    
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "name": "[parameters('keyVaultName')]",
+      "location": "[parameters('location')]",
+      "apiVersion": "2018-02-14",
+      "tags": {
+        "displayName": "KeyVault"
+      },
+      "properties": {
+        "enabledForDeployment": "[parameters('enabledForDeployment')]",
+        "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+        "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+        "tenantId": "[parameters('tenantId')]",
+        "accessPolicies": [
+          {
+            "objectId": "[parameters('objectId')]",
+            "tenantId": "[parameters('tenantId')]",
+            "permissions": {
+              "keys": "[parameters('keysPermissions')]",
+              "secrets": "[parameters('secretsPermissions')]"
+            }
+          }
+        ],
+        "sku": {
+          "name": "[parameters('skuName')]",
+          "family": "A"
+        },
+        "networkAcls": {
+          "value": {
+            "defaultAction": "Allow",
+            "bypass": "AzureServices"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "name": "[concat(parameters('keyVaultName'), '/', parameters('secretsObject').secrets[copyIndex()].secretName)]",
+      "apiVersion": "2018-02-14",
+      "dependsOn": [
+        "[concat('Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]"
+      ],
+      "copy": {
+        "name": "secretsCopy",
+        "count": "[length(parameters('secretsObject').secrets)]"
+      },
+      "properties": {
+        "value": "[parameters('secretsObject').secrets[copyIndex()].secretValue]"
+      }
+    },
     {
       "apiVersion": "2017-12-01",
       "location": "[parameters('location')]",
