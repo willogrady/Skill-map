@@ -22,7 +22,7 @@
   },
     "administratorLoginPassword": {
       "value": "Mastek2019#"
-      }
+      
     },
     "keyVaultName": {
       "value": "kvMSM"
