@@ -282,10 +282,7 @@
         "enableClientCertificate": "boolean",
         "virtualNetworkType": "None",
         "publisherEmail": "[parameters('publisherEmail')]",
-        "publisherName": "[parameters('apiManagementServiceName')]",
-        "path": "MastekSkillsMap",
-    		"contentValue": "[parameters('openapi_json')]",
-    		"contentFormat": "openapi-json"
+        "publisherName": "[parameters('apiManagementServiceName')]"
       },
       "sku": {
         "name": "Developer",
@@ -484,3 +481,4 @@
     }
   ]
 }
+  
