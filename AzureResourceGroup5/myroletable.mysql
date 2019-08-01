@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS  `svcrolesdb`.`role`;
-FLUSH TABLES  `svcrolesdb`.`role` ; 
-CREATE TABLE `svcrolesdb`.`role` (
-  `RoleID` INT NOT NULL,
+DROP TABLE IF EXISTS  `svcrolesdb`.`roles`;
+FLUSH TABLES  `svcrolesdb`.`roles` ; 
+CREATE TABLE `svcrolesdb`.`roles` (
+  `RoleID` INT NOT NULL AUTO_INCREMENT,
   `RoleTitle` VARCHAR(45) NOT NULL,
   `RoleGroupID` INT NOT NULL,
   `RoleGrade` VARCHAR(30) NOT NULL,
@@ -28,3 +28,31 @@ CREATE TABLE `svcrolesdb`.`role_skill_map` (
   `VersionID` INT NOT NULL,
   PRIMARY KEY (`RoleSkillMapID`),
   UNIQUE INDEX `RoleSkillMapID_UNIQUE` (`RoleSkillMapID` ASC));
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Technical Architect');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Solution Architect');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Data Architect');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Cheif Architect');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Chief Architect');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Senior Technical Architect');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Senior Solution Architect');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Senior Business Analyst');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Junior Business Analyst');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Principal Business Analyst');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Business Analyst');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Project Manager');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Software Engineer');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Human Resources Business Partner');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Test Architect - Non-Functional');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Associate Test Architect- Non-Functional');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Senior Test Architect - Functional');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Associate Test Architect - Functional');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Senior Test Engineer');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Test Engineer');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Senior Test Architect - Non-functional');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Senior Test Manager');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Test Lead');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Test Architect - Functional');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Test Analyst');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Graduate/Trainee Test Engineer');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Test Manager');
+INSERT INTO `svcrolesdb`.`roles` (`RoleTitle`) VALUES ('Group Manager/Geographical Head of Testing');
