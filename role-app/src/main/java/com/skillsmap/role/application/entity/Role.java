@@ -3,6 +3,7 @@ package com.skillsmap.role.application.entity;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,16 +21,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Role {
 	
 	@FormParam("RoleID")
+	@Column(name = "RoleID")
 	public int role_id;
 	
 	@FormParam("RoleTitle")
+	@Column(name = "RoleTitle")
 	public String role_title;
 	
 	@FormParam("RoleGrad")
+	@Column(name = "RoleGrad")
 	public String role_grade;
 	
 
 	@FormParam("RoleSummary")
+	@Column(name = "RoleSummary")
 	public String role_summary;
 	
 	RoleGroup roleGroup;
