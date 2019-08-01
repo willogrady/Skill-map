@@ -39,7 +39,6 @@ INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Test Ana
 INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Graduate/Trainee Test Engineer',9);
 INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Test Manager',9);
 INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Group Manager/Geographical Head of Testing',9);
-
 DROP TABLE IF EXISTS  `svcrolesdb`.`role_group`;
 FLUSH TABLES  `svcrolesdb`.`role_group` ; 
 CREATE TABLE `svcrolesdb`.`role_group` (
@@ -57,7 +56,6 @@ CREATE TABLE `svcrolesdb`.`role_group` (
   INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Human Resources');
   INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Support & Operations');
   INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Testing');
-
 DROP TABLE IF EXISTS  `svcrolesdb`.`role_skill_map`;
 FLUSH TABLES  `svcrolesdb`.`role_skill_map` ; 
 CREATE TABLE `svcrolesdb`.`role_skill_map` (
