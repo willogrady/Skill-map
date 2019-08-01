@@ -43,14 +43,6 @@ public class RoleApplication extends SpringBootServletInitializer {
 	
     }
     
-	@Controller
-	class WebController {
-		
-		@RequestMapping("/")
-		@ResponseBody
-		public String home(){
-			return "hello world";
-		}
-	}
+
 
 }
