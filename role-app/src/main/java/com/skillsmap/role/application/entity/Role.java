@@ -20,21 +20,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Role {
 	
-	@FormParam("RoleID")
-	@Column(name = "RoleID")
+	@FormParam("role_id")
+	@Column(name = "role_id")
 	public int role_id;
 	
-	@FormParam("RoleTitle")
-	@Column(name = "RoleTitle")
+	@FormParam("role_title")
+	@Column(name = "role_title")
 	public String role_title;
 	
-	@FormParam("RoleGrad")
-	@Column(name = "RoleGrad")
+	@FormParam("role_grade")
+	@Column(name = "role_grade")
 	public String role_grade;
 	
 
-	@FormParam("RoleSummary")
-	@Column(name = "RoleSummary")
+	@FormParam("role_summary")
+	@Column(name = "role_summary")
 	public String role_summary;
 	
 	RoleGroup roleGroup;

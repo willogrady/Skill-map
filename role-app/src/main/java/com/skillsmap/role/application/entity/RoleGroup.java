@@ -1,9 +1,15 @@
 package com.skillsmap.role.application.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class RoleGroup {
@@ -14,6 +20,17 @@ public class RoleGroup {
 	
 	public String role_group;
 	
+	Set<Role> roles = new HashSet<>();
+	
+	@OneToMany(mappedBy="role_group", cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
 	@Override
 	public String toString() {
 		return "RoleGroup [role_group_id=" + role_group_id + ", role_group=" + role_group + "]";
