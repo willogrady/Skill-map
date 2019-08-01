@@ -28,6 +28,7 @@ public class Role {
 	@FormParam("RoleGrad")
 	public String role_grade;
 	
+
 	@FormParam("RoleSummary")
 	public String role_summary;
 	
