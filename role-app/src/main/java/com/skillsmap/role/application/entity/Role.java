@@ -29,6 +29,9 @@ public class Role {
 	@FormParam("role_grade")
 	public String role_grade;
 	
+	@FormParam("version_id")
+	public String version_id;
+	
 
 	@FormParam("role_summary")
 	public String role_summary;
@@ -48,7 +51,7 @@ public class Role {
 	@Override
 	public String toString() {
 		return "Role [role_id=" + role_id + ", role_title=" + role_title + ", role_grade=" + role_grade
-				+ ", role_summary=" + role_summary + "]";
+				+ ", version_id=" + version_id + ", role_summary=" + role_summary + ", roleGroup=" + roleGroup + "]";
 	}
 
 	@Id
@@ -84,11 +87,14 @@ public class Role {
 	public void setRole_summary(String role_summary) {
 		this.role_summary = role_summary;
 	}
-	
-	
-	
-	
-	
-	
+
+	public String getVersion_id() {
+		return version_id;
+	}
+
+	public void setVersion_id(String version_id) {
+		this.version_id = version_id;
+	}
+
 
 }

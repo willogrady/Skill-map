@@ -12,9 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="role_group")
+@XmlRootElement
 public class RoleGroup {
 
 	@Id
@@ -25,7 +27,7 @@ public class RoleGroup {
 	@FormParam("role_group")
 	public String role_group;
 	
-	@OneToMany(mappedBy="roleGroup")
+	@OneToMany(mappedBy="roleGroup",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<Role> roles;
 
 	public int getRole_group_id() {
