@@ -24,18 +24,6 @@ public class RoleController {
 	@Autowired
 	private RoleRepository repo;
 	
-	@Autowired
-	private RoleGroupRepository rgRepo;
-	
-	public RoleGroupRepository getRgRepo() {
-		return rgRepo;
-	}
-
-	@Autowired
-	public void setRgRepo(RoleGroupRepository rgRepo) {
-		this.rgRepo = rgRepo;
-	}
-
 	public RoleRepository getRepo() {
 		return repo;
 	}
@@ -60,16 +48,11 @@ public class RoleController {
 			@RequestParam int role_id) {
 		return getRepo().findById(role_id).get();		
 	}
-	
-//	@GetMapping("/rolegroup/{roleGroup}")
-//	public Role getRoleByGroup(@PathVariable String roleGroup) {
-//		return getRepo().findByRoleGroup(roleGroup);
-//	}
 
 	@GetMapping("/rolegroup")
 	public @ResponseBody List<Role> getRoleGroupId(
 			@RequestParam int role_group_id) {
-		return getRepo().getRoleGroupId(role_group_id);
+		return getRepo().findRoleGroupId(role_group_id);
 
 	}
 	
@@ -83,7 +66,6 @@ public class RoleController {
 
 		
 		Role r = new Role();
-		RoleGroup rg = new RoleGroup();
 		r.setRole_title(role_title);
 		r.setRole_grade(role_grade);
 		r.setVersion_id(version_id);
