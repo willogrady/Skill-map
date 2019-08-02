@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name="role_group")
 @XmlRootElement
 public class RoleGroup {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @FormParam("role_group_id")
@@ -41,3 +42,5 @@ public class RoleGroup {
     }
     
 }
+
+

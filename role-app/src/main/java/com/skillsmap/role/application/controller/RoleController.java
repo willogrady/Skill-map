@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.skillsmap.role.application.entity.Role;
 import com.skillsmap.role.application.entity.RoleGroup;
 import com.skillsmap.role.application.repository.RoleRepository;
@@ -19,7 +18,8 @@ import com.skillsmap.role.application.repository.RoleRepository;
 @RequestMapping("/role")
 public class RoleController {
 	
-	RoleRepository repo;
+	@Autowired
+	private RoleRepository repo;
 
 	public RoleRepository getRepo() {
 		return repo;
@@ -75,4 +75,13 @@ public class RoleController {
 	}
 	
 
+	
+	@PutMapping("/edit/role_group_id")
+	public @ResponseBody String updateRoleGroupId(
+			@RequestParam int role_group_id,
+			@RequestParam int role_id) {
+		getRepo().updateRoleGroupId(role_group_id,role_id);
+		return "updated role_group_id";
+	}
+	
 }
