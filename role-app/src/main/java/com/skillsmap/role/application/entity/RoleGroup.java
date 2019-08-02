@@ -27,9 +27,6 @@ public class RoleGroup {
 	@FormParam("role_group")
 	public String role_group;
 	
-	@OneToMany(mappedBy="roleGroup",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	private Set<Role> roles;
-
 	public int getRole_group_id() {
 		return role_group_id;
 	}
@@ -46,17 +43,9 @@ public class RoleGroup {
 		this.role_group = role_group;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-
 	@Override
 	public String toString() {
-		return "RoleGroup [role_group_id=" + role_group_id + ", role_group=" + role_group + ", roles=" + roles + "]";
+		return "RoleGroup [role_group_id=" + role_group_id + ", role_group=" + role_group + "]";
 	}
 	
 }
