@@ -38,12 +38,6 @@ public class RoleController {
 		return getRepo().findAll();
 	}
 	
-	@GetMapping("/role_group_id/{role_group_id}")
-	public Role getRoleGroup(@PathVariable int role_group_id) {
-		return getRepo().findByrole_group_id(role_group_id);
-	}
-	
-	
 	@PutMapping("/edit/role_group_id")
 	public @ResponseBody String updateRoleGroupId(
 			@RequestParam int role_group_id,

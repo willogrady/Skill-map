@@ -16,9 +16,6 @@ import com.skillsmap.role.application.entity.Role;
 @Component
 public interface RoleRepository extends JpaRepository<Role, Integer> {
 	
-	@Query(value="SELECT * FROM Role WHERE roleGroup = ?1", nativeQuery = true)
-	public Role findByrole_group_id(@Param("roleGroup") int role_group_id);
-	
 	@Modifying
 	@Transactional
 	@Query(value="UPDATE Role SET role_group_id = ?1 WHERE role_id = ?2")
