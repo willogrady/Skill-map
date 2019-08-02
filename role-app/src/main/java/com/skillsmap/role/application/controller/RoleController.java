@@ -89,7 +89,6 @@ public class RoleController {
 	public String deleteRole(@PathVariable int role_id) {
 		getRepo().deleteById(role_id);
 		return "role deleted";
-		
 	}
 	
 }
