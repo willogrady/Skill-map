@@ -2,7 +2,10 @@ package com.skillsmap.role.application.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillsmap.role.application.entity.Role;
@@ -28,8 +31,10 @@ public class RoleController {
 		return "heyo captain jack";
 	}
 	
+
 	@GetMapping("list")
 	public Iterable<Role> getRoles() {
 		return getRepo().findAll();
 	}
+
 }
