@@ -1,3 +1,20 @@
+DROP TABLE IF EXISTS  `svcrolesdb`.`role_group`;
+FLUSH TABLES  `svcrolesdb`.`role_group` ; 
+CREATE TABLE `svcrolesdb`.`role_group` (
+  `role_group_id` INT NOT NULL AUTO_INCREMENT,
+  `role_group` VARCHAR(45) NOT NULL,
+  `version_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`role_group_id`),
+  UNIQUE INDEX `role_group_idUNIQUE` (`role_group_id` ASC));
+INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Architecture');
+INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Business Analysis');
+INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Consulting');
+INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Delivery Management');
+INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Engineering');
+INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Finance');
+INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Human Resources');
+INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Support & Operations');
+INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Testing');
 DROP TABLE IF EXISTS  `svcrolesdb`.`role`;
 FLUSH TABLES  `svcrolesdb`.`role` ; 
 CREATE TABLE `svcrolesdb`.`role` (
@@ -39,23 +56,6 @@ INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Test Ana
 INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Graduate/Trainee Test Engineer',9);
 INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Test Manager',9);
 INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Group Manager/Geographical Head of Testing',9);
-DROP TABLE IF EXISTS  `svcrolesdb`.`role_group`;
-FLUSH TABLES  `svcrolesdb`.`role_group` ; 
-CREATE TABLE `svcrolesdb`.`role_group` (
-  `role_group_id` INT NOT NULL AUTO_INCREMENT,
-  `role_group` VARCHAR(45) NOT NULL,
-  `version_id` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`role_group_id`),
-  UNIQUE INDEX `role_group_idUNIQUE` (`role_group_id` ASC));
-  INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Architecture');
-  INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Business Analysis');
-  INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Consulting');
-  INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Delivery Management');
-  INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Engineering');
-  INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Finance');
-  INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Human Resources');
-  INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Support & Operations');
-  INSERT INTO `svcrolesdb`.`role_group` (`role_group`) VALUES ('Testing');
 DROP TABLE IF EXISTS  `svcrolesdb`.`role_skill_map`;
 FLUSH TABLES  `svcrolesdb`.`role_skill_map` ; 
 CREATE TABLE `svcrolesdb`.`role_skill_map` (
