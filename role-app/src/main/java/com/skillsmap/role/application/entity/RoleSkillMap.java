@@ -39,6 +39,7 @@ public class RoleSkillMap {
 				+ skill_id + ", level=" + level + ", version_id=" + version_id + "]";
 	}
 	
+	
 	public int getRole_skill_map_id() {
 		return role_skill_map_id;
 	}
