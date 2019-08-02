@@ -30,6 +30,6 @@ public interface RoleRepository extends JpaRepository<Role, Integer> {
 	public void updateRoleGroupId(@Param("role_group_id")int role_group_id, @Param("role_id") int role_id);
 	
 	@Query(value="SELECT * FROM role WHERE role_group = ?1", nativeQuery = true)
-	public List<Role> findByRoleGroup(@Param("role_group") RoleGroup roleGroup);
+	public Role findByRoleGroup(@Param("role_group") String roleGroup);
 	
 }
