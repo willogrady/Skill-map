@@ -16,31 +16,27 @@ import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="roles")
+@Table(name="role")
 @XmlRootElement
 public class Role {
 	
 	@FormParam("role_id")
-	@Column(name = "role_id")
 	public int role_id;
 	
 	@FormParam("role_title")
-	@Column(name = "role_title")
 	public String role_title;
 	
 	@FormParam("role_grade")
-	@Column(name = "role_grade")
 	public String role_grade;
 	
 
 	@FormParam("role_summary")
-	@Column(name = "role_summary")
 	public String role_summary;
 	
 	RoleGroup roleGroup;
 	
 	@ManyToOne
-	@JoinColumn(name="FK_role_group_id")
+	@JoinColumn(name="role_group_id")
 	public RoleGroup getRoleGroup() {
 		return roleGroup;
 	}

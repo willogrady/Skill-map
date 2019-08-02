@@ -32,7 +32,7 @@ public class RoleController {
 	}
 	
 
-	@GetMapping("list")
+	@GetMapping("/list")
 	public Iterable<Role> getRoles() {
 		return getRepo().findAll();
 	}
