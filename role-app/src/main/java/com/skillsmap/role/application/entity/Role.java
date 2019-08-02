@@ -30,15 +30,18 @@ public class Role {
 	public String role_grade;
 	
 	@FormParam("version_id")
-	public String version_id;
+	public int version_id;
 	
 	@FormParam("role_summary")
 	public String role_summary;
 	
+	@FormParam("role_group_id")
+	public int role_group_id;
+	
 	RoleGroup roleGroup;
 	
 	@ManyToOne
-	@JoinColumn(name="role_group_id")
+	@JoinColumn(name="role_group_id", insertable=false, updatable=false)
 	public RoleGroup getRoleGroup() {
 		return roleGroup;
 	}
@@ -87,13 +90,22 @@ public class Role {
 		this.role_summary = role_summary;
 	}
 
-	public String getVersion_id() {
+	public int getVersion_id() {
 		return version_id;
 	}
 
-	public void setVersion_id(String version_id) {
+	public void setVersion_id(int version_id) {
 		this.version_id = version_id;
 	}
+
+	public int getRole_group_id() {
+		return role_group_id;
+	}
+
+	public void setRole_group_id(int role_group_id) {
+		this.role_group_id = role_group_id;
+	}
+	
 
 
 }

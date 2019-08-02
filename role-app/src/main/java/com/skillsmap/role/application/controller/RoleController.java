@@ -7,6 +7,7 @@ import javax.ws.rs.FormParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,20 +48,21 @@ public class RoleController {
 		return getRepo().findById(role_id).get();		
 	}
 	
+	@PostMapping("/create")
 	public @ResponseBody String createRole(
-			@RequestParam int role_id,
 			@RequestParam String role_title,
 			@RequestParam String role_grade,
-			@RequestParam String version_id,
-			@RequestParam String role_summary) {
+			@RequestParam int version_id,
+			@RequestParam String role_summary,
+			@RequestParam int role_group_id) {
 		
 		Role r = new Role();
 		RoleGroup rg = new RoleGroup();
-		r.setRole_id(role_id);
 		r.setRole_title(role_title);
 		r.setRole_grade(role_grade);
 		r.setVersion_id(version_id);
-		r.setRole_summary(role_summary);	
+		r.setRole_summary(role_summary);
+		r.setRole_group_id(role_group_id);
 		
 		repo.save(r);
 		
@@ -72,8 +74,6 @@ public class RoleController {
 			@RequestParam int role_group_id) {
 		return getRepo().getRoleGroupId(role_group_id);
 	}
-	
-
 	
 	@PutMapping("/edit/role_group_id")
 	public @ResponseBody String updateRoleGroupId(
