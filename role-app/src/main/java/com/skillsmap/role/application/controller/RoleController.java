@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.skillsmap.role.application.entity.Role;
 import com.skillsmap.role.application.entity.RoleGroup;
+import com.skillsmap.role.application.repository.RoleGroupRepository;
 import com.skillsmap.role.application.repository.RoleRepository;
 
 @RestController
@@ -20,6 +21,18 @@ public class RoleController {
 	
 	@Autowired
 	private RoleRepository repo;
+	
+	@Autowired
+	private RoleGroupRepository rgRepo;
+	
+	public RoleGroupRepository getRgRepo() {
+		return rgRepo;
+	}
+
+	@Autowired
+	public void setRgRepo(RoleGroupRepository rgRepo) {
+		this.rgRepo = rgRepo;
+	}
 
 	public RoleRepository getRepo() {
 		return repo;
@@ -34,12 +47,22 @@ public class RoleController {
 	public String test() {
 		return "heyo captain jack";
 	}
+
+	@GetMapping("/list")
+	public Iterable<Role> getRoles() {
+		return getRepo().findAll();
+	}
 	
 	@GetMapping("/id")
 	public @ResponseBody Role getRoleById(
 			@RequestParam int role_id) {
 		return getRepo().findById(role_id).get();		
 	}
+	
+//	@GetMapping("/rolegroup/{roleGroup}")
+//	public Role getRoleByGroup(@PathVariable String roleGroup) {
+//		return getRepo().findByRoleGroup(roleGroup);
+//	}
 
 	@GetMapping("/rolegroup")
 	public @ResponseBody List<Role> getRoleGroupId(
