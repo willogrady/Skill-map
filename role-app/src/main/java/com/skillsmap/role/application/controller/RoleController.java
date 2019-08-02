@@ -1,5 +1,7 @@
 package com.skillsmap.role.application.controller;
 
+import java.util.List;
+
 import javax.ws.rs.FormParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +49,6 @@ public class RoleController {
 	public String test() {
 		return "heyo captain jack";
 	}
-	
 
 	@GetMapping("/list")
 	public Iterable<Role> getRoles() {
@@ -65,8 +66,10 @@ public class RoleController {
 			@RequestParam String role_title,
 			@RequestParam String role_grade,
 			@RequestParam String version_id,
+
 			@RequestParam String role_summary,
 			@RequestParam int role_group_id) {
+
 		
 		Role r = new Role();
 		RoleGroup rg = new RoleGroup();
@@ -78,17 +81,26 @@ public class RoleController {
 		rg.setRole_group_id(role_group_id);
 		
 	
+
+		r.setRole_summary(role_summary);	
 		
 		repo.save(r);
 		rgRepo.save(rg);
 		
-		
 		return "Created and saved";
 	}
 	
+
 	@GetMapping("/rolegroup/{roleGroup}")
 	public Role getRoleByGroup(@PathVariable String roleGroup) {
 		return getRepo().findByRoleGroup(roleGroup);
+	}
+
+	@GetMapping("/rolegroup")
+	public @ResponseBody List<Role> getRoleGroupId(
+			@RequestParam int role_group_id) {
+		return getRepo().getRoleGroupId(role_group_id);
+
 	}
 	
 
