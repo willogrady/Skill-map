@@ -3,7 +3,9 @@ package com.skillsmap.role.application.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +43,7 @@ public class RoleController {
 		return getRepo().findAll();
 	}
 	
-	@GetMapping("/id")
+	@GetMapping("/id/{role_id}")
 	public @ResponseBody Role getRoleById(
 			@RequestParam int role_id) {
 		return getRepo().findById(role_id).get();		
@@ -81,6 +83,12 @@ public class RoleController {
 			@RequestParam int role_id) {
 		getRepo().updateRoleGroupId(role_group_id,role_id);
 		return "updated role_group_id";
+	}
+	
+	@DeleteMapping("/delete/{role_id}")
+	public String deleteRole(@PathVariable int role_id) {
+		getRepo().deleteById(role_id);
+		return "role deleted";
 	}
 	
 }
