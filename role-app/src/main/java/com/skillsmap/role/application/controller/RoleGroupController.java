@@ -1,7 +1,9 @@
 package com.skillsmap.role.application.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,6 +59,12 @@ public class RoleGroupController {
 		rgRepo.save(rg);
 		
 		return "Created and saved";
+	}
+	
+	@DeleteMapping("/delete/{role_group_id}")
+	public String deleteRole(@PathVariable int role_group_id) {
+		getRgRepo().deleteById(role_group_id);
+		return "role group deleted ";
 	}
 	
 	@PutMapping("/edit")
