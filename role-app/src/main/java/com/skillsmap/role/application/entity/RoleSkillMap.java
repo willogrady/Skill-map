@@ -5,6 +5,8 @@ import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.skillsmap.sfia.application.entity.SfiaSkillBean;
 
 @Entity
@@ -16,22 +18,12 @@ public class RoleSkillMap {
 	@FormParam("role_id")
 	int role_id;
 	@FormParam("skill_id")
-	int skill_id;
+	SfiaSkillBean skill_id;
 	@FormParam("level")
 	int level;
 	@FormParam("version_id")
 	int version_id;
-	
-	
-	SfiaSkillBean skill;
-	
-	public SfiaSkillBean getSkill() {
-		return skill;
-	}
 
-	public void setSkill(SfiaSkillBean skill) {
-		this.skill = skill;
-	}
 
 	@Override
 	public String toString() {
@@ -52,12 +44,17 @@ public class RoleSkillMap {
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
-	public int getSkill_id() {
+
+	public SfiaSkillBean getSkill_id() {
 		return skill_id;
 	}
-	public void setSkill_id(int skill_id) {
+	
+	@Autowired
+	public void setSkill_id(SfiaSkillBean skill_id) {
 		this.skill_id = skill_id;
 	}
+
+
 	public int getLevel() {
 		return level;
 	}
