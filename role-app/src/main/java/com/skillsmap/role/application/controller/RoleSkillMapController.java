@@ -2,6 +2,7 @@ package com.skillsmap.role.application.controller;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
@@ -10,6 +11,8 @@ import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillsmap.role.application.dao.RoleSkillMapDAO;
@@ -42,6 +45,12 @@ public class RoleSkillMapController {
 	@GetMapping("/list")
 	public Iterable<RoleSkillMap> getRoleSkillMap() {
 		return getRsmRepo().findAll();
+	}
+	
+	@GetMapping("/skill_id")
+	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaSkill(
+			@RequestParam int skill_id){
+		return getRsmRepo().findBySkillId(skill_id);
 	}
 	
 	@GetMapping(path = "/sfia", produces = MediaType.APPLICATION_JSON)
