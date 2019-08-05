@@ -25,8 +25,8 @@ public class RoleSkillMapController {
 		this.rsmRepo = rsmRepo;
 	}
 	
-	@Autowired
-	RoleSkillMapDAO newRoleSkillMap;
+//	@Autowired
+//	RoleSkillMapDAO newRoleSkillMap;
 	
 	@GetMapping("/test")
 	public String test() {
@@ -38,10 +38,10 @@ public class RoleSkillMapController {
 		return getRsmRepo().findAll();
 	}
 	
-	@GetMapping("/getSkill")
-	public String returnSkillInfo(@BeanParam RoleSkillMap roleSMBean) throws Exception {
-		return (newRoleSkillMap.skillRequest(roleSMBean)).toString();
-	}
+//	@GetMapping("/getSkill")
+//	public String returnSkillInfo(@BeanParam RoleSkillMap roleSMBean) throws Exception {
+//		return (newRoleSkillMap.skillRequest(roleSMBean)).toString();
+//	}
 	
 	
 
