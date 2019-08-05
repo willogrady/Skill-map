@@ -1,12 +1,18 @@
 package com.skillsmap.role.application.controller;
 
-import javax.ws.rs.BeanParam;
+
+import java.io.IOException;
+
+import javax.ws.rs.core.MediaType;
+
+import org.json.JSONException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skillsmap.role.application.dao.RoleSkillMapDAO;
 import com.skillsmap.role.application.entity.RoleSkillMap;
 import com.skillsmap.role.application.repository.RoleSkillMapRepository;
 
@@ -16,7 +22,10 @@ public class RoleSkillMapController {
 	
 	@Autowired
 	private RoleSkillMapRepository rsmRepo;
-
+	
+	@Autowired
+	private RoleSkillMapDAO dao;
+	
 	public RoleSkillMapRepository getRsmRepo() {
 		return rsmRepo;
 	}
@@ -24,9 +33,6 @@ public class RoleSkillMapController {
 	public void setRsmRepo(RoleSkillMapRepository rsmRepo) {
 		this.rsmRepo = rsmRepo;
 	}
-	
-//	@Autowired
-//	RoleSkillMapDAO newRoleSkillMap;
 	
 	@GetMapping("/test")
 	public String test() {
@@ -38,11 +44,11 @@ public class RoleSkillMapController {
 		return getRsmRepo().findAll();
 	}
 	
-//	@GetMapping("/getSkill")
-//	public String returnSkillInfo(@BeanParam RoleSkillMap roleSMBean) throws Exception {
-//		return (newRoleSkillMap.skillRequest(roleSMBean)).toString();
-//	}
-	
+	@GetMapping(path = "/sfia", produces = MediaType.APPLICATION_JSON)
+	public String getSfiaSkill() throws JSONException, IOException {
+		return dao.getSfiaRequest();
+
+	}	
 	
 
 }
