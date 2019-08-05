@@ -1,5 +1,7 @@
 package com.skillsmap.role.application.controller;
 
+import javax.ws.rs.BeanParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,9 @@ public class RoleSkillMapController {
 		this.rsmRepo = rsmRepo;
 	}
 	
+	@Autowired
+	RoleSkillMapDAO newRoleSkillMap;
+	
 	@GetMapping("/test")
 	public String test() {
 		return "testing testing 456";
@@ -31,6 +36,11 @@ public class RoleSkillMapController {
 	@GetMapping("/list")
 	public Iterable<RoleSkillMap> getRoleSkillMap() {
 		return getRsmRepo().findAll();
+	}
+	
+	@GetMapping("/getSkill")
+	public String returnSkillInfo(@BeanParam RoleSkillMap roleSMBean) throws Exception {
+		return (newRoleSkillMap.skillRequest(roleSMBean)).toString();
 	}
 	
 	
