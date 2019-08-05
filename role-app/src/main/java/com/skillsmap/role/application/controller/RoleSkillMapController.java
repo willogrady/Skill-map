@@ -4,6 +4,7 @@ package com.skillsmap.role.application.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
 
 import org.json.JSONException;
@@ -53,9 +54,21 @@ public class RoleSkillMapController {
 		return getRsmRepo().findBySkillId(skill_id);
 	}
 	
+	@GetMapping("/role_id")
+	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaRole(
+			@RequestParam int role_id){
+		return getRsmRepo().findByRoleId(role_id);
+	}
+	
 	@GetMapping(path = "/sfia", produces = MediaType.APPLICATION_JSON)
 	public String getSfiaSkill() throws JSONException, IOException {
 		return dao.getSfiaRequest();
+
+	}	
+	
+	@GetMapping(path = "/sfia_skill", produces = MediaType.APPLICATION_JSON)
+	public String getSfiaSkillviaID(@BeanParam RoleSkillMap roleSkillMap) throws JSONException, IOException {
+		return (dao.skillIdRequest(roleSkillMap)).toString();
 
 	}	
 	

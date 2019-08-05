@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.skillsmap.role.application.entity.RoleSkillMap;
+
 
 @Component
 @Service
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	
 	private String sfia_url = "http://localhost:9900/sfia/list";
+	private String sfia_skill_id_url = "http://localhost:9900/sfia/id/";
 
 	@Override
 	public String readAll(Reader rd) {
@@ -52,6 +55,13 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	@Override
 	public String getSfiaRequest() throws IOException, JSONException {
 		String strResponse = readJsonFromUrl(sfia_url);
+		return strResponse;
+	}
+
+	@Override
+	public String skillIdRequest(RoleSkillMap roleSkillMap) throws JSONException, IOException {
+		String url = sfia_skill_id_url+roleSkillMap.skill_id;
+		String strResponse = readJsonFromUrl(url);
 		return strResponse;
 	}
 	

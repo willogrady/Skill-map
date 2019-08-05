@@ -19,7 +19,7 @@ public class RoleSkillMap {
     @FormParam("role_id")
     int role_id;
     @FormParam("skill_id")
-    int skill_id;
+    public int skill_id;
     @FormParam("level")
     int level;
     @FormParam("version_id")
