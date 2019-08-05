@@ -8,10 +8,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+
 @Entity
 @Table(name="role_skill_map")
 @XmlRootElement
 public class RoleSkillMap {
+	
     @FormParam("role_skill_map_id")
     int role_skill_map_id;
     @FormParam("role_id")
@@ -22,13 +24,18 @@ public class RoleSkillMap {
     int level;
     @FormParam("version_id")
     int version_id;
-    @Override
-    public String toString() {
-        return "RoleSkillMap [role_skill_map_id=" + role_skill_map_id + ", role_id=" + role_id + ", skill_id="
-                + skill_id + ", level=" + level + ", version_id=" + version_id + "]";
-    }
     
-    @Id
+    Role role;
+
+    @ManyToOne
+    @JoinColumn(name="role_id", insertable=false, updatable=false)
+    public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getRole_skill_map_id() {
         return role_skill_map_id;

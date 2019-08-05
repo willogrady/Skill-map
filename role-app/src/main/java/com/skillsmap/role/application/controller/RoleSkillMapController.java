@@ -2,6 +2,7 @@ package com.skillsmap.role.application.controller;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
@@ -52,9 +53,17 @@ public class RoleSkillMapController {
 		return getRsmRepo().findAll();
 	}
 	
+
 	@GetMapping("/id/{role_skill_map_id}")
 	public RoleSkillMap getRoleMapById(@PathVariable int role_skill_map_id){
 		return getRsmRepo().findById(role_skill_map_id).get();
+	}
+
+	@GetMapping("/skill_id")
+	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaSkill(
+			@RequestParam int skill_id){
+		return getRsmRepo().findBySkillId(skill_id);
+
 	}
 	
 	@GetMapping(path = "/sfia", produces = MediaType.APPLICATION_JSON)
