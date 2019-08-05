@@ -10,7 +10,10 @@ import org.json.JSONObject;
 
 public interface RoleSkillMapDAO {
 	public String readAll(Reader rd);
-	public JSONObject readJsonFromUrl(String url) throws IOException, JSONException;
-	public String getSfiaRequest() throws IOException, JSONException;;
+
+	
+	public String readJsonFromUrl(String url) throws IOException, JSONException;
+	public String getSfiaRequest() throws IOException, JSONException;
+
 
 }

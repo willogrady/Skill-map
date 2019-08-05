@@ -49,12 +49,7 @@ public class RoleController {
 		return getRepo().findById(role_id).get();		
 	}
 
-	@GetMapping("/rolegroup")
-	public @ResponseBody List<Role> getRoleGroupId(
-			@RequestParam int role_group_id) {
-		return getRepo().findRoleGroupId(role_group_id);
-
-	}
+	
 	
 	@PostMapping("/create")
 	public @ResponseBody String createRole(

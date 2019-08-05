@@ -8,6 +8,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.context.annotation.Primary;
@@ -37,15 +38,12 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	}
 
 	@Override
-	public JSONObject readJsonFromUrl(String url) throws IOException, JSONException  {
+	public String readJsonFromUrl(String url) throws IOException, JSONException  {
 		InputStream is = new URL(url).openStream();
 		try {
-		   	//BufferReader reading the text from the InputStream (is)
-		   	//InputStreamReader decoding bytes into characters using the specified charset
 		   	BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 		   	String jsonText = readAll(rd);
-	    	JSONObject json = new JSONObject(jsonText);
-		      return json;
+		      return jsonText;
 		    } finally {
 		      is.close();
 		    }
@@ -53,9 +51,9 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 
 	@Override
 	public String getSfiaRequest() throws IOException, JSONException {
-		JSONObject jsonResponse = readJsonFromUrl(sfia_url);
-		System.out.println(jsonResponse.toString());
-		return jsonResponse.toString();
-	}
+		String strResponse = readJsonFromUrl(sfia_url);
+		return strResponse;
 
+	}
+	
 }
