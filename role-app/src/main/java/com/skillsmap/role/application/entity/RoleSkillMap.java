@@ -1,11 +1,14 @@
 package com.skillsmap.role.application.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import com.skillsmap.sfia.application.entity.SfiaSkillBean;
 
 @Entity
 @Table(name="role_skill_map")
@@ -21,17 +24,6 @@ public class RoleSkillMap {
 	int level;
 	@FormParam("version_id")
 	int version_id;
-	
-	
-	SfiaSkillBean skill;
-	
-	public SfiaSkillBean getSkill() {
-		return skill;
-	}
-
-	public void setSkill(SfiaSkillBean skill) {
-		this.skill = skill;
-	}
 
 	@Override
 	public String toString() {
@@ -39,7 +31,8 @@ public class RoleSkillMap {
 				+ skill_id + ", level=" + level + ", version_id=" + version_id + "]";
 	}
 	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getRole_skill_map_id() {
 		return role_skill_map_id;
 	}
