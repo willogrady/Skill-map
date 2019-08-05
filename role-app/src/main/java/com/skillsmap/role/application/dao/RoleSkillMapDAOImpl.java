@@ -52,10 +52,10 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	}
 
 	@Override
-	public JSONObject getSfiaRequest() throws IOException, JSONException {
+	public String getSfiaRequest() throws IOException, JSONException {
 		JSONObject jsonResponse = readJsonFromUrl(sfia_url);
-		
-		return jsonResponse;
+		System.out.println(jsonResponse.toString());
+		return jsonResponse.toString();
 	}
 
 }
