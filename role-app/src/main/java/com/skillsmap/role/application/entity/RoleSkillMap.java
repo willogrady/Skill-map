@@ -17,7 +17,7 @@ public class RoleSkillMap {
     @FormParam("role_skill_map_id")
     int role_skill_map_id;
     @FormParam("role_id")
-    int role_id;
+	public int role_id;
     @FormParam("skill_id")
     public int skill_id;
     @FormParam("level")
@@ -53,7 +53,7 @@ public class RoleSkillMap {
         return skill_id;
     }
     public void setSkill_id(int skill_id) {
-        this.skill_id = skill_id;
+    		this.skill_id = skill_id;
     }
     public int getLevel() {
         return level;

@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,14 +109,27 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	}
 
 	// ---methods for skill_by_role---
+	
+//	@Override
+//	public String getRoleViaRoleID(RoleSkillMap roleSkillMap) throws IOException {
+//		String url =  find_role_url+"?role_id="+roleSkillMap.;
+//		String strResponse = readStringFromUrl(url);
+//		return strResponse;
+//	}
+	
 	@Override
-    public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException {
-        RoleSkillMap newRoleSkillMap = (RoleSkillMap) getRsmRepo().findByRoleId(role_id);
-        String roles = newRoleSkillMap.toString();
-        String url = sfia_skill_id_url+newRoleSkillMap.getSkill_id();
-        String strResponse = readStringFromUrl(url);
-        return roles+strResponse;
-    }
+	public String mapSkillWithRoleInfo(RoleSkillMap newRoleSkillMap, int role_id) throws IOException {
+		newRoleSkillMap = getRsmRepo().findByRoleId(role_id);
+		String roleURL = find_role_url+"?role_id="+newRoleSkillMap.getRole_id();
+		String roleResponse = readStringFromUrl(roleURL);
+		
+		String url = sfia_skill_id_url+newRoleSkillMap.getSkill_id();
+		String skillResponse = readStringFromUrl(url);
+	
+		return roleResponse+skillResponse;
+	}
+	
+
 	
 	
 

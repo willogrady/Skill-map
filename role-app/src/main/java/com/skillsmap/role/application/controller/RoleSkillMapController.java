@@ -8,6 +8,7 @@ import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -62,12 +63,12 @@ public class RoleSkillMapController {
 	@GetMapping("/skill_id")
 	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaSkill(
 			@RequestParam int skill_id){
-		return getRsmRepo().findBySkillId(skill_id);
+		return (List<RoleSkillMap>) getRsmRepo().findBySkillId(skill_id);
 
 	}
 	
 	@GetMapping("/role_id")
-	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaRole(
+	public @ResponseBody RoleSkillMap getRoleSkillMapViaRole(
 			@RequestParam int role_id){
 		return getRsmRepo().findByRoleId(role_id);
 	}
@@ -116,7 +117,7 @@ public class RoleSkillMapController {
 	@GetMapping(path = "/skill_by_role", produces = MediaType.APPLICATION_JSON)
 	public String getSkillviaRole(@BeanParam RoleSkillMap roleSkillMap,
 			@RequestParam int role_id) throws IOException {
-		return dao.mapSkillWithRoleInfo(roleSkillMap, role_id);
+		return (String) dao.mapSkillWithRoleInfo(roleSkillMap, role_id);
 	}
 
 }
