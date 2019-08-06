@@ -4,8 +4,6 @@ package com.skillsmap.role.application.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
 
@@ -22,10 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillsmap.role.application.dao.RoleSkillMapDAO;
-import com.skillsmap.role.application.entity.Role;
 import com.skillsmap.role.application.entity.RoleSkillMap;
 import com.skillsmap.role.application.repository.RoleSkillMapRepository;
-import com.skillsmap.sfia.application.entity.SfiaSkillBean;
 
 @RestController
 @Component
@@ -81,8 +77,6 @@ public class RoleSkillMapController {
 		return dao.getSfiaRequest();
 
 	}
-	
-	
 	
 	@PostMapping("/create")
 	public @ResponseBody String createRoleSkillMap(
