@@ -311,35 +311,33 @@
       }
     },
     {
-      "apiVersion": "2016-08-01",
-      "name": "[parameters('siteName')]",
-      "type": "Microsoft.Web/sites",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
-      ],
-      "properties": {
-        "name": "[parameters('siteName')]",
-        "serverFarmId": "[variables('hostingPlanName')]",
-        "hostingEnvironment": ""
-      },
-      "resources": [
-        {
-          "apiVersion": "2016-08-01",
-          "name": "connectionstrings",
-          "type": "config",
-          "dependsOn": [
-            "[concat('Microsoft.Web/sites/', parameters('siteName'))]"
-          ],
-          "properties": {
-            "defaultConnection": {
-              "value": "[concat('Database=', variables('databaseName'), ';Data Source=', reference(resourceId('Microsoft.DBforMySQL/servers',variables('serverName'))).fullyQualifiedDomainName, ';User Id=', parameters('administratorLogin'),'@', variables('serverName'),';Password=', parameters('administratorLoginPassword'))]",
-              "type": "MySql"
-            }
-          }
-        }
-      ]
-    },
+			"apiVersion": "2016-08-01",
+			"name": "[parameters('siteName')]",
+			"type": "Microsoft.Web/sites",
+			"location": "[parameters('location')]",
+			"dependsOn": [
+				"[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+			],
+			"properties": {
+				"name": "[parameters('siteName')]",
+				"serverFarmId": "[variables('hostingPlanName')]",
+				"hostingEnvironment": ""
+			},
+			"resources": [{
+				"apiVersion": "2016-08-01",
+				"name": "connectionstrings",
+				"type": "config",
+				"dependsOn": [
+					"[concat('Microsoft.Web/sites/', parameters('siteName'))]"
+				],
+				"properties": {
+					"defaultConnection": {
+						"value": "[concat('Database=', variables('databaseName'), ';Data Source=', reference(resourceId('Microsoft.DBforMySQL/servers',variables('serverName'))).fullyQualifiedDomainName, ';User Id=', parameters('administratorLogin'),'@', variables('serverName'),';Password=', parameters('administratorLoginPassword'))]",
+						"type": "MySql"
+					}
+				}
+			}]
+		},
     {
       "type": "Microsoft.KeyVault/vaults",
       "name": "[parameters('keyVaultName')]",

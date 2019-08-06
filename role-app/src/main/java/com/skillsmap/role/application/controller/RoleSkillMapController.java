@@ -55,7 +55,7 @@ public class RoleSkillMapController {
 	public Iterable<RoleSkillMap> getRoleSkillMap() {
 		return getRsmRepo().findAll();
 	}
-	
+
 
 	@GetMapping("/id/{role_skill_map_id}")
 	public RoleSkillMap getRoleMapById(@PathVariable int role_skill_map_id){
@@ -104,26 +104,28 @@ public class RoleSkillMapController {
 		return "Created and saved";
 	}
 	
-	
+	//---SFIA Related requests ---
+
 	@GetMapping(path = "/sfia_skill", produces = MediaType.APPLICATION_JSON)
 	public String getSfiaSkillviaID(@BeanParam RoleSkillMap roleSkillMap) throws JSONException, IOException {
-		return (dao.skillIdRequest(roleSkillMap)).toString();
+		return dao.skillIdRequest(roleSkillMap);
 
-	}	
+	}
 	
 	@GetMapping(path = "/role_by_skill", produces = MediaType.APPLICATION_JSON) 
-    public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap,
-            @RequestParam int skill_id) throws JSONException, IOException {
-        
-        String roleSkill = (getRsmRepo().findBySkillId(skill_id).toString());
-        String sfiaSkill = (dao.skillIdRequest(roleSkillMap)).toString();
-        
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("role", roleSkill);
-        map.put("skill", sfiaSkill);
-        
-        return map.toString();
-    }
+		public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap, 
+			@RequestParam int skill_id) throws JSONException, IOException {
+		
+		String roleList = dao.getRoleViaSkill(roleSkillMap);
+		String skillList = dao.skillIdRequest(roleSkillMap);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("Skills", skillList);
+		map.put("Roles", roleList);
 	
+		
+		
+		return map.toString();
+	}
+
 
 }
