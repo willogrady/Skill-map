@@ -77,8 +77,7 @@ public class RoleSkillMapController {
 	@GetMapping(path = "/role_by_skill", produces = MediaType.APPLICATION_JSON) 
 	public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap, 
 			@RequestParam int skill_id) throws JSONException, IOException {
-		String roleList = dao.mapRoleWithSkillInfo(roleSkillMap);
-		return roleList;
+		return dao.mapRoleWithSkillInfo(roleSkillMap);
 	}
 
 }
