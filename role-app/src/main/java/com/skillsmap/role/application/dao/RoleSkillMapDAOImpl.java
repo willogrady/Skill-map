@@ -65,5 +65,11 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 		String strResponse = readJsonFromUrl(url);
 		return strResponse;
 	}
+
+	@Override
+	public String sfiaSkillIdRequest() throws IOException, JSONException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

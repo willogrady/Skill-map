@@ -2,14 +2,17 @@ package com.skillsmap.role.application.controller;
 
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
 
 import org.json.JSONException;
-
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -107,6 +110,20 @@ public class RoleSkillMapController {
 		return (dao.skillIdRequest(roleSkillMap)).toString();
 
 	}	
+	
+	@GetMapping(path = "/role_by_skill", produces = MediaType.APPLICATION_JSON) 
+    public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap,
+            @RequestParam int skill_id) throws JSONException, IOException {
+        
+        String roleSkill = (getRsmRepo().findBySkillId(skill_id).toString());
+        String sfiaSkill = (dao.skillIdRequest(roleSkillMap)).toString();
+        
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("role", roleSkill);
+        map.put("skill", sfiaSkill);
+        
+        return map.toString();
+    }
 	
 
 }

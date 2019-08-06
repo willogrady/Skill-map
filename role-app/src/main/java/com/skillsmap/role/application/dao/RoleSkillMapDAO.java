@@ -17,6 +17,7 @@ public interface RoleSkillMapDAO {
 	public String readJsonFromUrl(String url) throws IOException, JSONException;
 	public String getSfiaRequest() throws IOException, JSONException;
 	public String skillIdRequest(RoleSkillMap roleSkillMap) throws IOException, JSONException;
+	public String sfiaSkillIdRequest() throws IOException, JSONException;
 
 
 }
