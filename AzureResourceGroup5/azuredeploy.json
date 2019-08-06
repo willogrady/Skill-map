@@ -336,7 +336,19 @@
 						"type": "MySql"
 					}
 				}
-			}]
+			},
+      {
+          "apiVersion": "2015-08-01",
+          "name": "[parameters('MSMVnet')]",
+          "type": "virtualNetworkConnections",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[concat('Microsoft.Web/sites/', variables('siteName'))]"
+          ],
+          "properties": {
+            "vnetResourceId": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworks/', variables('MSMVnet'))]"
+          }
+      }]
 		},
     {
       "type": "Microsoft.KeyVault/vaults",

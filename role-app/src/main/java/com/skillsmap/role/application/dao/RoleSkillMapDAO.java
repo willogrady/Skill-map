@@ -14,11 +14,15 @@ public interface RoleSkillMapDAO {
 	public String readAll(Reader rd);
 	public String readStringFromUrl(String url) throws IOException;
 	public JSONObject readJsonFromUrl(String url) throws IOException, JSONException;
+
 	public String getSfiaRequest() throws IOException, JSONException;
 	public String getRoleViaSkill(RoleSkillMap roleSkillMap) throws IOException;
+
+	public String skillIdRequest(RoleSkillMap roleSkillMap) throws IOException, JSONException;
 	public String getSkillviaSkillId(RoleSkillMap roleSkillMap) throws IOException, JSONException;
 	public String mapRoleWithSkillInfo(RoleSkillMap roleSkillMap) throws IOException;
 	public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException;
+
 
 
 
