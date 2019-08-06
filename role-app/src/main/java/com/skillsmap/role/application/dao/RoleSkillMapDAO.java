@@ -18,6 +18,8 @@ public interface RoleSkillMapDAO {
 	public String getRoleViaSkill(RoleSkillMap roleSkillMap) throws IOException;
 	public String getSkillviaSkillId(RoleSkillMap roleSkillMap) throws IOException, JSONException;
 	public String mapRoleWithSkillInfo(RoleSkillMap roleSkillMap) throws IOException;
+	public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException;
+
 
 
 }

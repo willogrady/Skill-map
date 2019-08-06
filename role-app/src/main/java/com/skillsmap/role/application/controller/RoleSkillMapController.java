@@ -2,15 +2,12 @@ package com.skillsmap.role.application.controller;
 
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,6 +75,12 @@ public class RoleSkillMapController {
 	public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap, 
 			@RequestParam int skill_id) throws JSONException, IOException {
 		return dao.mapRoleWithSkillInfo(roleSkillMap);
+	}
+	
+	@GetMapping(path = "/skill_by_role", produces = MediaType.APPLICATION_JSON)
+	public String getSkillviaRole(@BeanParam RoleSkillMap roleSkillMap,
+			@RequestParam int role_id) throws IOException {
+		return dao.mapSkillWithRoleInfo(roleSkillMap, role_id);
 	}
 
 }

@@ -11,11 +11,13 @@ import java.nio.charset.Charset;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.skillsmap.role.application.entity.RoleSkillMap;
+import com.skillsmap.role.application.repository.RoleSkillMapRepository;
 
 @Component
 @Service
@@ -24,7 +26,19 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	
 	private String sfia_url = "http://localhost:9900/sfia/list";
 	private String sfia_skill_id_url = "http://localhost:9900/sfia/id/";
-	private String role_skill_url = "http://localhost:9901/role_skill_map/skill_id";
+	private String find_role_from_skill_url = "http://localhost:9901/role_skill_map/skill_id";
+	private String find_role_url = "http://localhost:9901/role_skill_map/role_id";
+	
+	@Autowired
+	private RoleSkillMapRepository rsmRepo;
+	
+	public RoleSkillMapRepository getRsmRepo() {
+		return rsmRepo;
+	}
+
+	public void setRsmRepo(RoleSkillMapRepository rsmRepo) {
+		this.rsmRepo = rsmRepo;
+	}
 
 	@Override
 	public String readAll(Reader rd) {
@@ -80,7 +94,7 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	
 	@Override
 	public String getRoleViaSkill(RoleSkillMap roleSkillMap) throws IOException {
-		String url =  role_skill_url+"?skill_id="+roleSkillMap.skill_id;
+		String url =  find_role_from_skill_url+"?skill_id="+roleSkillMap.skill_id;
 		String strResponse = readStringFromUrl(url);
 		return strResponse;
 	}
@@ -90,6 +104,14 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 		String strResponse = getRoleViaSkill(roleSkillMap)+getSkillviaSkillId(roleSkillMap);
 		return strResponse;
 	}
+	
+	@Override
+	public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException {
+		String strResponse = (getRsmRepo().findByRoleId(role_id)).toString();
+		String skillResponse = getSkillviaSkillId(roleSkillMap);
+		return strResponse+skillResponse;
+	}
+	
 	
 
 	
