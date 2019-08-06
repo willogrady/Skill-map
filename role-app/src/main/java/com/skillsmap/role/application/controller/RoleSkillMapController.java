@@ -14,6 +14,8 @@ import javax.ws.rs.core.MediaType;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +31,8 @@ import com.skillsmap.role.application.repository.RoleSkillMapRepository;
 import com.skillsmap.sfia.application.entity.SfiaSkillBean;
 
 @RestController
+@Component
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/role_skill_map")
 public class RoleSkillMapController {
 	
@@ -85,21 +89,21 @@ public class RoleSkillMapController {
 	
 	@PostMapping("/create")
 	public @ResponseBody String createRoleSkillMap(
-			@RequestParam String role_title,
-			@RequestParam String role_grade,
-			@RequestParam int version_id,
-			@RequestParam String role_summary,
-			@RequestParam int role_group_id) {
+			@RequestParam int role_skill_map_id,
+			@RequestParam int role_id,
+			@RequestParam int skill_id,
+			@RequestParam int level,
+			@RequestParam int version_id) {
 
 		
-		Role r = new Role();
-		r.setRole_title(role_title);
-		r.setRole_grade(role_grade);
-		r.setVersion_id(version_id);
-		r.setRole_summary(role_summary);
-		r.setRole_group_id(role_group_id);
+		RoleSkillMap rsm = new RoleSkillMap();
+		rsm.setRole_skill_map_id(role_skill_map_id);
+		rsm.setRole_id(role_id);
+		rsm.setSkill_id(skill_id);
+		rsm.setLevel(level);
+		rsm.setVersion_id(version_id);
 		
-		
+		rsmRepo.save(rsm);
 		
 		return "Created and saved";
 	}
@@ -108,24 +112,15 @@ public class RoleSkillMapController {
 
 	@GetMapping(path = "/sfia_skill", produces = MediaType.APPLICATION_JSON)
 	public String getSfiaSkillviaID(@BeanParam RoleSkillMap roleSkillMap) throws JSONException, IOException {
-		return dao.skillIdRequest(roleSkillMap);
+		return dao.getSkillviaSkillId(roleSkillMap);
 
 	}
 	
 	@GetMapping(path = "/role_by_skill", produces = MediaType.APPLICATION_JSON) 
-		public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap, 
-			@RequestParam int skill_id) throws JSONException, IOException {
-		
-		String roleList = dao.getRoleViaSkill(roleSkillMap);
-		String skillList = dao.skillIdRequest(roleSkillMap);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("Skills", skillList);
-		map.put("Roles", roleList);
-	
-		
-		
-		return map.toString();
-	}
+    public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap, 
+            @RequestParam int skill_id) throws JSONException, IOException {
+        return dao.mapRoleWithSkillInfo(roleSkillMap);
+    }
 
 
 }
