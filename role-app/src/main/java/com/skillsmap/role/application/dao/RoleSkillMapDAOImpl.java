@@ -117,11 +117,13 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	
 	
 	@Override
-	public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException {
-		String strResponse = (getRsmRepo().findByRoleId(role_id)).toString();
-		String skillResponse = getSkillviaSkillId(roleSkillMap);
-		return strResponse+skillResponse;
-	}
+    public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException {
+        RoleSkillMap newRoleSkillMap = (RoleSkillMap) getRsmRepo().findByRoleId(role_id);
+        String roles = newRoleSkillMap.toString();
+        String url = sfia_skill_id_url+newRoleSkillMap.getSkill_id();
+        String strResponse = readStringFromUrl(url);
+        return roles+strResponse;
+    }
 	
 	
 
