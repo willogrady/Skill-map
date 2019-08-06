@@ -18,6 +18,6 @@ public interface RoleSkillMapRepository extends JpaRepository<RoleSkillMap, Inte
 	public List<RoleSkillMap> findBySkillId(@Param("skill_id") int skill_id);
 	
 	@Query(value="SELECT *FROM role_skill_map WHERE role_id = ?1", nativeQuery = true)
-	public List<RoleSkillMap> findByRoleId(@Param("role_id") int role_id);
+	public RoleSkillMap findByRoleId(@Param("role_id") int role_id);
 
 }

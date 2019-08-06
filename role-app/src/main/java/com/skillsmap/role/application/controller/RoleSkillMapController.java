@@ -8,6 +8,7 @@ import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -67,7 +68,7 @@ public class RoleSkillMapController {
 	}
 	
 	@GetMapping("/role_id")
-	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaRole(
+	public @ResponseBody RoleSkillMap getRoleSkillMapViaRole(
 			@RequestParam int role_id){
 		return getRsmRepo().findByRoleId(role_id);
 	}
