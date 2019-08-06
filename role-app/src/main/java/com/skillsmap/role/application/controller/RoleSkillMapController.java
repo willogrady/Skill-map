@@ -70,18 +70,15 @@ public class RoleSkillMapController {
 	
 	@GetMapping(path = "/sfia_skill", produces = MediaType.APPLICATION_JSON)
 	public String getSfiaSkillviaID(@BeanParam RoleSkillMap roleSkillMap) throws JSONException, IOException {
-		return dao.skillIdRequest(roleSkillMap);
+		return dao.getSkillviaSkillId(roleSkillMap);
 
 	}
 	
 	@GetMapping(path = "/role_by_skill", produces = MediaType.APPLICATION_JSON) 
 	public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap, 
 			@RequestParam int skill_id) throws JSONException, IOException {
-		
-		String roleList = dao.getRoleViaSkill(roleSkillMap);
-		String skillList = dao.skillIdRequest(roleSkillMap);
-		
-		return roleList+skillList;
+		String roleList = dao.mapRoleWithSkillInfo(roleSkillMap);
+		return roleList;
 	}
 
 }

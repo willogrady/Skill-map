@@ -72,7 +72,7 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	}
 
 	@Override
-	public String skillIdRequest(RoleSkillMap roleSkillMap) throws IOException {
+	public String getSkillviaSkillId(RoleSkillMap roleSkillMap) throws IOException {
 		String url = sfia_skill_id_url+roleSkillMap.skill_id;
 		String strResponse = readStringFromUrl(url);
 		return strResponse; 
@@ -82,6 +82,12 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	public String getRoleViaSkill(RoleSkillMap roleSkillMap) throws IOException {
 		String url =  role_skill_url+"?skill_id="+roleSkillMap.skill_id;
 		String strResponse = readStringFromUrl(url);
+		return strResponse;
+	}
+	
+	@Override
+	public String mapRoleWithSkillInfo(RoleSkillMap roleSkillMap) throws IOException {
+		String strResponse = getRoleViaSkill(roleSkillMap)+getSkillviaSkillId(roleSkillMap);
 		return strResponse;
 	}
 	
