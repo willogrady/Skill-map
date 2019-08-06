@@ -25,6 +25,7 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	
 	private String sfia_url = "http://localhost:9900/sfia/list";
 	private String sfia_skill_id_url = "http://localhost:9900/sfia/id/";
+	private String role_skill_url = "http://localhost:9901/role_skill_map/skill_id";
 
 	@Override
 	public String readAll(Reader rd) {
@@ -41,7 +42,7 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	}
 
 	@Override
-	public String readJsonFromUrl(String url) throws IOException, JSONException  {
+	public String readStringFromUrl(String url) throws IOException {
 		InputStream is = new URL(url).openStream();
 		try {
 		   	BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
@@ -51,18 +52,40 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 		      is.close();
 		    }
 	}
+	
+	@Override
+	public JSONObject readJsonFromUrl(String url) throws IOException, JSONException  {
+		InputStream is = new URL(url).openStream();
+		try {
+		   	BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+		   	String jsonText = readAll(rd);
+	    	JSONObject json = new JSONObject(jsonText);
+		      return json;
+		    } finally {
+		      is.close();
+		    }
+	}
 
 	@Override
 	public String getSfiaRequest() throws IOException, JSONException {
-		String strResponse = readJsonFromUrl(sfia_url);
+		String strResponse = readStringFromUrl(sfia_url);
 		return strResponse;
 	}
 
 	@Override
-	public String skillIdRequest(RoleSkillMap roleSkillMap) throws JSONException, IOException {
+	public String skillIdRequest(RoleSkillMap roleSkillMap) throws IOException {
 		String url = sfia_skill_id_url+roleSkillMap.skill_id;
-		String strResponse = readJsonFromUrl(url);
+		String strResponse = readStringFromUrl(url);
+		return strResponse; 
+		}
+	
+	@Override
+	public String getRoleViaSkill(RoleSkillMap roleSkillMap) throws IOException {
+		String url =  role_skill_url+"?skill_id="+roleSkillMap.skill_id;
+		String strResponse = readStringFromUrl(url);
 		return strResponse;
 	}
+	
+
 	
 }
