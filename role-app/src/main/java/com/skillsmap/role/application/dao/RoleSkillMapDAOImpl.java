@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import com.skillsmap.role.application.entity.RoleSkillMap;
 
-
 @Component
 @Service
 @Primary
