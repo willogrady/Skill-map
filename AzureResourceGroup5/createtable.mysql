@@ -1,0 +1,56 @@
+DROP TABLE IF EXISTS  `svcrolesdb`.`role_skill_map`;
+FLUSH TABLES  `svcrolesdb`.`role_skill_map` ; 
+CREATE TABLE `svcrolesdb`.`role_skill_map` (
+  `role_skill_map_id` INT NOT NULL AUTO_INCREMENT,
+  `role_id` INT NOT NULL,
+  `skill_id` INT NOT NULL,
+  `level` INT NOT NULL,
+  `required` TINYINT NOT NULL DEFAULT 1,
+  `version_id` INT NOT NULL,
+  PRIMARY KEY (`role_skill_map_id`),
+  UNIQUE INDEX `role_skill_map_id_UNIQUE` (`role_skill_map_id` ASC));
+DROP TABLE IF EXISTS  `svcrolesdb`.`role_group`;
+FLUSH TABLES  `svcrolesdb`.`role_group` ; 
+CREATE TABLE `svcrolesdb`.`role_group` (
+  `role_group_id` INT NOT NULL AUTO_INCREMENT,
+  `role_group` VARCHAR(45) NOT NULL,
+  `version_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`role_group_id`),
+  UNIQUE INDEX `role_group_idUNIQUE` (`role_group_id` ASC));
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Technical Architect',1);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Solution Architect',1);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Data Architect',1);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Cheif Architect',1);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Chief Architect',1);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Senior Technical Architect',1);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Senior Solution Architect',1);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`,`role_grade`) VALUES ('Senior Business Analyst',2,'G6');
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`,`role_grade`) VALUES ('Junior Business Analyst',2,'G4');
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`,`role_grade`) VALUES ('Principal Business Analyst',2,'G5');
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`,`role_grade`) VALUES ('Business Analyst',2,'G5');
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Project Manager',4);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Software Engineer',5);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Human Resources Business Partner',7);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Test Architect - Non-Functional',9);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Associate Test Architect- Non-Functional',9);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Senior Test Architect - Functional',9);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Associate Test Architect - Functional',9);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Senior Test Engineer',9);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Test Engineer',9);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Senior Test Architect - Non-functional',9);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`,`role_grade`) VALUES ('Senior Test Manager',9,'G12');
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`,`role_grade`) VALUES ('Test Lead',9,'G8');
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Test Architect - Functional',9);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`,`role_grade`) VALUES ('Test Analyst',9,'G5');
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`,`role_grade`) VALUES ('Graduate/Trainee Test Engineer',9,'T2');
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`) VALUES ('Test Manager',9);
+INSERT INTO `svcrolesdb`.`role` (`role_title`,`role_group_id`,`role_grade`) VALUES ('Group Manager/Geographical Head of Testing',9,'G14');
+ALTER TABLE `svcrolesdb`.`role_skill_map` ADD CONSTRAINT `fkroleid`
+FOREIGN KEY (`role_id`)
+REFERENCES `svcrolesdb`.`role` (`role_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+ALTER TABLE `svcrolesdb`.`role_skill_map` ADD CONSTRAINT `fksfiaskillid`
+FOREIGN KEY (`skill_id`)
+REFERENCES `svcsfiadb`.`sfia_skill` (`skill_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+ALTER TABLE `svcrolesdb`.`role` ADD CONSTRAINT `rolesibfk_1` 
+FOREIGN KEY (`role_group_id`) 
+REFERENCES `role_group` (`role_group_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;

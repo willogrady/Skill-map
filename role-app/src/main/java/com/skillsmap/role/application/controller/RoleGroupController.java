@@ -1,6 +1,7 @@
 package com.skillsmap.role.application.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,13 +46,13 @@ public class RoleGroupController {
 		return getRgRepo().findAll();
 	}
 	
-	@GetMapping("/id")
-	public @ResponseBody RoleGroup getRoleGroupById(
-			@RequestParam int role_group_id) {
+	@GetMapping("/id/{role_group_id}")
+	public @ResponseBody RoleGroup getRoleGroupById
+			(@PathVariable int role_group_id) {
 		return getRgRepo().findById(role_group_id).get();		
 	}
 	
-	@PostMapping("/create")
+	@PostMapping(path="/create")
 	public @ResponseBody String createRoleGroup(
 			@RequestParam String role_group,
 			@RequestParam int version_id) {
