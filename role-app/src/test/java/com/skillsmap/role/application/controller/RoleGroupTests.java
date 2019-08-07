@@ -52,17 +52,17 @@ public class RoleGroupTests {
 	}
 	
 //	@Test
-	public void testPost() throws Exception {
-		String json = "{\n" +
-				" \"role_group\": \"Testing\",\n"+
-				" \"version_id\": \"1\"n" +
-				"}";
-		mockMvc.perform(MockMvcRequestBuilders.post("/role_group/create?role_group=Testing?version_id=1")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(json)
-		)
-			.andExpect(MockMvcResultMatchers.status().isOk());
-	}
+//	public void testPost() throws Exception {
+//		String json = "{\n" +
+//				" \"role_group\": \"Testing\",\n"+
+//				" \"version_id\": \"1\"n" +
+//				"}";
+//		mockMvc.perform(MockMvcRequestBuilders.post("/role_group/create?role_group=Testing?version_id=1")
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.content(json)
+//		)
+//			.andExpect(MockMvcResultMatchers.status().isOk());
+//	}
 	
 
 }
