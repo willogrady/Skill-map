@@ -9,6 +9,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
 
+import javax.persistence.NonUniqueResultException;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +19,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.skillsmap.role.application.entity.Role;
 import com.skillsmap.role.application.entity.RoleSkillMap;
 import com.skillsmap.role.application.repository.RoleSkillMapRepository;
 
@@ -109,24 +112,30 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	}
 
 	// ---methods for skill_by_role---
-	
-//	@Override
-//	public String getRoleViaRoleID(RoleSkillMap roleSkillMap) throws IOException {
-//		String url =  find_role_url+"?role_id="+roleSkillMap.;
-//		String strResponse = readStringFromUrl(url);
-//		return strResponse;
-//	}
+	@Override
+	public String getSkillviaRoleId(int role_id) throws IOException {	
+		RoleSkillMap roleSkillMap = new RoleSkillMap();
+		String url = sfia_skill_id_url+roleSkillMap.getSkill_id();
+		String strResponse = readStringFromUrl(url);
+		return strResponse;
+		}
 	
 	@Override
-	public String mapSkillWithRoleInfo(RoleSkillMap newRoleSkillMap, int role_id) throws IOException {
-		newRoleSkillMap = getRsmRepo().findByRoleId(role_id);
-		String roleURL = find_role_url+"?role_id="+newRoleSkillMap.getRole_id();
-		String roleResponse = readStringFromUrl(roleURL);
+	public List<RoleSkillMap> getRoleinDao(RoleSkillMap roleSkillMap, int role_id) throws IOException {
+		List<RoleSkillMap> roleResponse =getRsmRepo().findByRoleId(role_id);	
+		return roleResponse;
+
+	}
 		
-		String url = sfia_skill_id_url+newRoleSkillMap.getSkill_id();
-		String skillResponse = readStringFromUrl(url);
+	public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException {
+//		List<RoleSkillMap> roleResponse = getRsmRepo().findByRoleId(role_id);
+		String roleResponse = (String) getRoleinDao(roleSkillMap, role_id);
 		
-		return roleResponse+skillResponse;
+//		int skill_id = 0;
+//		String url = sfia_skill_id_url+roleResponse.get(skill_id);
+//		String skillResponse = readStringFromUrl(url);
+		
+		return roleResponse;
 	}
 	
 	
