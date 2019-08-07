@@ -32,10 +32,7 @@ public class RoleSkillMapController {
 	
 	@Autowired
 	private RoleSkillMapRepository rsmRepo;
-	
-	@Autowired
-	private RoleSkillMapDAO dao;
-	
+		
 	public RoleSkillMapRepository getRsmRepo() {
 		return rsmRepo;
 	}
@@ -43,6 +40,9 @@ public class RoleSkillMapController {
 	public void setRsmRepo(RoleSkillMapRepository rsmRepo) {
 		this.rsmRepo = rsmRepo;
 	}
+	
+	@Autowired
+	private RoleSkillMapDAO dao;
 	
 	@GetMapping("/test")
 	public String test() {
