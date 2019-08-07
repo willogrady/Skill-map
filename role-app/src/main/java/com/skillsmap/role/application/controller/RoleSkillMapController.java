@@ -3,6 +3,7 @@ package com.skillsmap.role.application.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
@@ -103,6 +104,7 @@ public class RoleSkillMapController {
 	}
 	
 	//---SFIA Related requests ---
+	
 	// fetching only SFIA skill info via skill_id
 	@GetMapping(path = "/sfia_skill", produces = MediaType.APPLICATION_JSON)
 	public String getSfiaSkillviaID(@BeanParam RoleSkillMap roleSkillMap) throws JSONException, IOException {
@@ -117,7 +119,14 @@ public class RoleSkillMapController {
 		return dao.mapRoleWithSkillInfo(roleSkillMap);
 	}
 	
-//	// fetching role and skill data via putting in role_id and showing associated skills
+	// fetching only the skill_id related to role_id input
+	@GetMapping(path = "/skill_id_for_one_role", produces = MediaType.APPLICATION_JSON)
+	public List<Object[]> getSkill_ids(@BeanParam RoleSkillMap roleSkillMap,
+			@RequestParam int role_id) throws IOException {
+		return dao.getSkillviaRoleId(role_id);
+	}
+	
+	// fetching role and skill data via putting in role_id and showing associated skills
 	@GetMapping(path = "/skill_by_role", produces = MediaType.APPLICATION_JSON)
 	public String getSkillviaRole(@BeanParam RoleSkillMap roleSkillMap,
 			@RequestParam int role_id) throws IOException {
