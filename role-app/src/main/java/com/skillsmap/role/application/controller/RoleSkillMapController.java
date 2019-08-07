@@ -68,7 +68,7 @@ public class RoleSkillMapController {
 	}
 	
 	@GetMapping("/role_id")
-	public @ResponseBody RoleSkillMap getRoleSkillMapViaRole(
+	public List<RoleSkillMap> getRoleSkillMapViaRole(
 			@RequestParam int role_id){
 		return getRsmRepo().findByRoleId(role_id);
 	}
@@ -117,7 +117,7 @@ public class RoleSkillMapController {
 	@GetMapping(path = "/skill_by_role", produces = MediaType.APPLICATION_JSON)
 	public String getSkillviaRole(@BeanParam RoleSkillMap roleSkillMap,
 			@RequestParam int role_id) throws IOException {
-		return (String) dao.mapSkillWithRoleInfo(roleSkillMap, role_id);
+		return dao.mapSkillWithRoleInfo(roleSkillMap, role_id);
 	}
 
 }

@@ -44,7 +44,7 @@ public class RoleSkillMap {
         this.role_skill_map_id = role_skill_map_id;
     }
     public int getRole_id() {
-        return role_id;
+    	return role_id;
     }
     public void setRole_id(int role_id) {
         this.role_id = role_id;

@@ -2,6 +2,7 @@ package com.skillsmap.role.application.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +25,9 @@ public interface RoleSkillMapDAO {
 	
 	// ---methods for skill_by_role---
 //	public String getRoleViaRoleID(RoleSkillMap roleSkillMap) throws IOException;
+	//public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException;
 	public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException;
+	List<RoleSkillMap> getRoleinDao(RoleSkillMap roleSkillMap, int role_id) throws IOException;
 
 
 
