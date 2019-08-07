@@ -118,7 +118,7 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 		String roleResponse = getRolefromRole(roleSkillMap);
 		
 		String url = find_skill_list_from_role+"?role_id="+roleSkillMap.role_id;
-		String skillResponse = readStringFromUrl(url);
+		String skillResponse = "Skills: "+readStringFromUrl(url);
 		
 		return roleResponse+skillResponse;
 	}
