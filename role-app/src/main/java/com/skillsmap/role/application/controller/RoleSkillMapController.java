@@ -3,12 +3,12 @@ package com.skillsmap.role.application.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -54,25 +54,28 @@ public class RoleSkillMapController {
 		return getRsmRepo().findAll();
 	}
 
-
+	// fetch role skill map table data via role_skill_map_id
 	@GetMapping("/id/{role_skill_map_id}")
 	public RoleSkillMap getRoleMapById(@PathVariable int role_skill_map_id){
 		return getRsmRepo().findById(role_skill_map_id).get();
 	}
 
+	// fetch role skill map table data via skill_id
 	@GetMapping("/skill_id")
 	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaSkill(
 			@RequestParam int skill_id){
-		return (List<RoleSkillMap>) getRsmRepo().findBySkillId(skill_id);
+		return getRsmRepo().findBySkillId(skill_id);
 
 	}
 	
-	@GetMapping("/role_id")
-	public List<RoleSkillMap> getRoleSkillMapViaRole(
+	// fetch role skill map table data via role_id
+	@GetMapping(path="/role_id", produces = MediaType.APPLICATION_JSON)
+	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaRole(
 			@RequestParam int role_id){
 		return getRsmRepo().findByRoleId(role_id);
 	}
 	
+	// fetch all sfia skills
 	@GetMapping(path = "/sfia", produces = MediaType.APPLICATION_JSON)
 	public String getSfiaSkill() throws JSONException, IOException {
 		return dao.getSfiaRequest();
@@ -101,19 +104,29 @@ public class RoleSkillMapController {
 	}
 	
 	//---SFIA Related requests ---
-
+	
+	// fetching only SFIA skill info via skill_id
 	@GetMapping(path = "/sfia_skill", produces = MediaType.APPLICATION_JSON)
 	public String getSfiaSkillviaID(@BeanParam RoleSkillMap roleSkillMap) throws JSONException, IOException {
 		return dao.getSkillviaSkillId(roleSkillMap);
 
 	}
 	
+	// fetching role and skill data via putting in skill_id and showing associated roles
 	@GetMapping(path = "/role_by_skill", produces = MediaType.APPLICATION_JSON) 
 	public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap, 
 			@RequestParam int skill_id) throws JSONException, IOException {
 		return dao.mapRoleWithSkillInfo(roleSkillMap);
 	}
 	
+	// fetching only the skill_id related to role_id input
+	@GetMapping(path = "/skill_id_for_one_role", produces = MediaType.APPLICATION_JSON)
+	public List<Object[]> getSkill_ids(@BeanParam RoleSkillMap roleSkillMap,
+			@RequestParam int role_id) throws IOException {
+		return dao.getSkillviaRoleId(role_id);
+	}
+	
+	// fetching role and skill data via putting in role_id and showing associated skills
 	@GetMapping(path = "/skill_by_role", produces = MediaType.APPLICATION_JSON)
 	public String getSkillviaRole(@BeanParam RoleSkillMap roleSkillMap,
 			@RequestParam int role_id) throws IOException {
