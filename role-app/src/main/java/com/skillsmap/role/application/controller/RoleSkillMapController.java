@@ -117,7 +117,7 @@ public class RoleSkillMapController {
 		return dao.mapRoleWithSkillInfo(roleSkillMap);
 	}
 	
-	// fetching role and skill data via putting in role_id and showing associated skills
+//	// fetching role and skill data via putting in role_id and showing associated skills
 	@GetMapping(path = "/skill_by_role", produces = MediaType.APPLICATION_JSON)
 	public String getSkillviaRole(@BeanParam RoleSkillMap roleSkillMap,
 			@RequestParam int role_id) throws IOException {

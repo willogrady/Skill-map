@@ -48,8 +48,7 @@ public class RoleController {
 	}
 	
 	@GetMapping("/id/{role_id}")
-	public @ResponseBody Role getRoleById(
-			@RequestParam int role_id) {
+	public Role getRoleById(@PathVariable int role_id) {
 		return getRepo().findById(role_id).get();		
 	}
 

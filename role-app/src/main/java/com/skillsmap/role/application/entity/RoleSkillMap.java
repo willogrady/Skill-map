@@ -53,7 +53,7 @@ public class RoleSkillMap {
         return skill_id;
     }
     public void setSkill_id(int skill_id) {
-        this.skill_id = skill_id;
+    		this.skill_id = skill_id;
     }
     public int getLevel() {
         return level;
