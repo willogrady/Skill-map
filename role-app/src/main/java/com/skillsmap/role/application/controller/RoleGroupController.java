@@ -1,7 +1,8 @@
 package com.skillsmap.role.application.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skillsmap.role.application.entity.Role;
 import com.skillsmap.role.application.entity.RoleGroup;
 import com.skillsmap.role.application.repository.RoleGroupRepository;
 
@@ -35,24 +35,23 @@ public class RoleGroupController {
 	public void setRgRepo(RoleGroupRepository rgRepo) {
 		this.rgRepo = rgRepo;
 	}
-	
-	//tested
+
 	@GetMapping("/test")
 	public String test() {
 		return "testing testing 123";
 	}
-	//tested
+	
 	@GetMapping("/list")
 	public Iterable<RoleGroup> getRoleGroup() {
 		return getRgRepo().findAll();
 	}
 	
 	@GetMapping("/id/{role_group_id}")
-	public @ResponseBody RoleGroup getRoleGroupById
+	public @ResponseBody Optional<RoleGroup> getRoleGroupById
 			(@PathVariable int role_group_id) {
-		return getRgRepo().findById(role_group_id).get();		
+		return getRgRepo().findById(role_group_id);		
 	}
-	//tested
+	
 	@PostMapping(path="/create")
 	public @ResponseBody String createRoleGroup(
 			@RequestParam String role_group,

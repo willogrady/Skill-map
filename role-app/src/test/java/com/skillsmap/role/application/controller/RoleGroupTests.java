@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -48,12 +49,22 @@ public class RoleGroupTests {
 	@Test
 	public void listTest() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/role_group/list"))
+			.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
 			.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	@Test
+	public void listIDTest() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:9901/role_group/id/{role_group_id}",
+				"1"))
+		.andDo(MockMvcResultHandlers.print())
+		.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 		
 	@Test
 	public void postTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.post("http://localhost:9901/role_group/create?role_group=Testing&version_id=1"))
+		mockMvc.perform(MockMvcRequestBuilders.post("http://localhost:9901/role_group/create?role_group={role_group}&version_id={version_id}",
+				"Testing","1"))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
 		.andExpect(MockMvcResultMatchers.content().string("Created and saved"));
@@ -61,7 +72,8 @@ public class RoleGroupTests {
 	
 	@Test
 	public void deleteTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.delete("http://localhost:9901/role_group/delete/9"))
+		mockMvc.perform(MockMvcRequestBuilders.delete("http://localhost:9901/role_group/delete/{role_group_id}",
+				"9"))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
 		.andExpect(MockMvcResultMatchers.content().string("Role group deleted"));
@@ -69,7 +81,8 @@ public class RoleGroupTests {
 	
 	@Test
 	public void putTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.put("http://localhost:9901/role_group/edit?role_group=Testing&role_group_id=9"))
+		mockMvc.perform(MockMvcRequestBuilders.put("http://localhost:9901/role_group/edit?role_group={role_group}&role_group_id={role_group_id}",
+				"Testing","9"))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
 		.andExpect(MockMvcResultMatchers.content().string("Updated role_group"));
