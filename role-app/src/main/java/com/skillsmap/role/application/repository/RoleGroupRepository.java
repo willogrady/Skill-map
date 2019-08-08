@@ -17,7 +17,8 @@ public interface RoleGroupRepository extends JpaRepository<RoleGroup, Integer>{
 
 	@Modifying
 	@Transactional
-	@Query(value="UPDATE RoleGroup SET role_group = ?1 WHERE role_group_id = ?2")
-	public void updateRoleGroup(@Param("role_group") String role_group, @Param("role_group_id") int role_group_id);
-	
+	@Query(value="UPDATE RoleGroup SET role_group = ?1, version_id = ?2 WHERE role_group_id = ?3")
+	public void updateRoleGroup(@Param("role_group") String role_group,
+			@Param("version_id") int version_id,
+			@Param("role_group_id") int role_group_id);
 }

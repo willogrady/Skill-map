@@ -14,7 +14,6 @@ import com.skillsmap.role.application.entity.RoleSkillMap;
 public interface RoleSkillMapDAO {
 	public String readAll(Reader rd);
 	public String readStringFromUrl(String url) throws IOException;
-	public String getSfiaRequest() throws IOException, JSONException;
 	
 	// ---methods for role_by_skill---
 	public String getRoleViaSkill(RoleSkillMap roleSkillMap) throws IOException;

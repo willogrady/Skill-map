@@ -1,5 +1,7 @@
 package com.skillsmap.role.application.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skillsmap.role.application.entity.Role;
 import com.skillsmap.role.application.entity.RoleGroup;
 import com.skillsmap.role.application.repository.RoleGroupRepository;
 
@@ -34,7 +35,7 @@ public class RoleGroupController {
 	public void setRgRepo(RoleGroupRepository rgRepo) {
 		this.rgRepo = rgRepo;
 	}
-	
+
 	@GetMapping("/test")
 	public String test() {
 		return "testing testing 123";
@@ -45,13 +46,13 @@ public class RoleGroupController {
 		return getRgRepo().findAll();
 	}
 	
-	@GetMapping("/id")
-	public @ResponseBody RoleGroup getRoleGroupById(
-			@RequestParam int role_group_id) {
-		return getRgRepo().findById(role_group_id).get();		
+	@GetMapping("/id/{role_group_id}")
+	public @ResponseBody Optional<RoleGroup> getRoleGroupById
+			(@PathVariable int role_group_id) {
+		return getRgRepo().findById(role_group_id);		
 	}
 	
-	@PostMapping("/create")
+	@PostMapping(path="/create")
 	public @ResponseBody String createRoleGroup(
 			@RequestParam String role_group,
 			@RequestParam int version_id) {
@@ -68,14 +69,15 @@ public class RoleGroupController {
 	@DeleteMapping("/delete/{role_group_id}")
 	public String deleteRole(@PathVariable int role_group_id) {
 		getRgRepo().deleteById(role_group_id);
-		return "role group deleted ";
+		return "Role group deleted";
 	}
 	
 	@PutMapping("/edit")
 	public @ResponseBody String updateRoleGroup(
+			@RequestParam int version_id,
 			@RequestParam String role_group,
 			@RequestParam int role_group_id) {
-		getRgRepo().updateRoleGroup(role_group, role_group_id);
-		return "updated role_group";
+		getRgRepo().updateRoleGroup(role_group,version_id, role_group_id);
+		return "Updated role_group";
 	}
 }

@@ -1,4 +1,0 @@
-ALTER TABLE svcrolesdb.role DROP COLUMN role_id;
-ALTER TABLE svcrolesdb.role ADD COLUMN role_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT FIRST;
-
-myroletable.mysql

@@ -63,14 +63,6 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 		      is.close();
 		    }
 	}
-	
-	// ---method returning the whole SFIA DB---
-	@Override
-	public String getSfiaRequest() throws IOException, JSONException {
-		String strResponse = readStringFromUrl(sfia_url);
-		return strResponse;
-
-	}
 
 	// ---methods for role_by_skill---
 	@Override

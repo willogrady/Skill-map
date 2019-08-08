@@ -4,6 +4,7 @@ package com.skillsmap.role.application.controller;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
@@ -32,10 +33,7 @@ public class RoleSkillMapController {
 	
 	@Autowired
 	private RoleSkillMapRepository rsmRepo;
-	
-	@Autowired
-	private RoleSkillMapDAO dao;
-	
+		
 	public RoleSkillMapRepository getRsmRepo() {
 		return rsmRepo;
 	}
@@ -44,44 +42,40 @@ public class RoleSkillMapController {
 		this.rsmRepo = rsmRepo;
 	}
 	
+	@Autowired
+	private RoleSkillMapDAO dao;
+	//tested
 	@GetMapping("/test")
 	public String test() {
 		return "testing testing 456";
 	}
-	
+	//tested
 	@GetMapping("/list")
 	public Iterable<RoleSkillMap> getRoleSkillMap() {
 		return getRsmRepo().findAll();
 	}
-
+	//tested
 	// fetch role skill map table data via role_skill_map_id
 	@GetMapping("/id/{role_skill_map_id}")
-	public RoleSkillMap getRoleMapById(@PathVariable int role_skill_map_id){
-		return getRsmRepo().findById(role_skill_map_id).get();
+	public Optional<RoleSkillMap> getRoleMapById(@PathVariable int role_skill_map_id){
+		return getRsmRepo().findById(role_skill_map_id);
 	}
-
+	//tested
 	// fetch role skill map table data via skill_id
-	@GetMapping("/skill_id")
+	@GetMapping(path="/skill_id", produces = MediaType.APPLICATION_JSON)
 	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaSkill(
 			@RequestParam int skill_id){
 		return getRsmRepo().findBySkillId(skill_id);
 
 	}
-	
+	//tested
 	// fetch role skill map table data via role_id
 	@GetMapping(path="/role_id", produces = MediaType.APPLICATION_JSON)
 	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaRole(
 			@RequestParam int role_id){
 		return getRsmRepo().findByRoleId(role_id);
 	}
-	
-	// fetch all sfia skills
-	@GetMapping(path = "/sfia", produces = MediaType.APPLICATION_JSON)
-	public String getSfiaSkill() throws JSONException, IOException {
-		return dao.getSfiaRequest();
-
-	}
-	
+	//tested	
 	@PostMapping("/create")
 	public @ResponseBody String createRoleSkillMap(
 			@RequestParam int role_skill_map_id,
