@@ -52,7 +52,7 @@ public class RoleGroupTests {
 	
 	@Test
 	public void listIDTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:9901/role_group/id/{role_group_id}",
+		mockMvc.perform(MockMvcRequestBuilders.get("/role_group/id/{role_group_id}",
 				"1"))
 		.andDo(MockMvcResultHandlers.print())
 		.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
@@ -61,7 +61,7 @@ public class RoleGroupTests {
 		
 	@Test
 	public void postTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.post("http://localhost:9901/role_group/create?role_group={role_group}"
+		mockMvc.perform(MockMvcRequestBuilders.post("/role_group/create?role_group={role_group}"
 				+ "&version_id={version_id}",
 				"Testing","1"))
 		.andExpect(MockMvcResultMatchers.status().isOk())
@@ -71,7 +71,7 @@ public class RoleGroupTests {
 	
 	@Test
 	public void deleteTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.delete("http://localhost:9901/role_group/delete/{role_group_id}",
+		mockMvc.perform(MockMvcRequestBuilders.delete("/role_group/delete/{role_group_id}",
 				"9"))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
@@ -80,7 +80,7 @@ public class RoleGroupTests {
 	
 	@Test
 	public void putTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.put("http://localhost:9901/role_group/edit?role_group={role_group}"
+		mockMvc.perform(MockMvcRequestBuilders.put("/role_group/edit?role_group={role_group}"
 				+ "&role_group_id={role_group_id}"
 				+ "&version_id={version_id}",
 				"Testing","9","1"))
