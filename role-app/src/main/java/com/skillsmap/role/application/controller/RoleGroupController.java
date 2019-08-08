@@ -36,11 +36,12 @@ public class RoleGroupController {
 		this.rgRepo = rgRepo;
 	}
 	
+	//tested
 	@GetMapping("/test")
 	public String test() {
 		return "testing testing 123";
 	}
-	
+	//tested
 	@GetMapping("/list")
 	public Iterable<RoleGroup> getRoleGroup() {
 		return getRgRepo().findAll();
@@ -51,7 +52,7 @@ public class RoleGroupController {
 			(@PathVariable int role_group_id) {
 		return getRgRepo().findById(role_group_id).get();		
 	}
-	
+	//tested
 	@PostMapping(path="/create")
 	public @ResponseBody String createRoleGroup(
 			@RequestParam String role_group,
@@ -69,7 +70,7 @@ public class RoleGroupController {
 	@DeleteMapping("/delete/{role_group_id}")
 	public String deleteRole(@PathVariable int role_group_id) {
 		getRgRepo().deleteById(role_group_id);
-		return "role group deleted ";
+		return "Role group deleted";
 	}
 	
 	@PutMapping("/edit")
@@ -77,6 +78,6 @@ public class RoleGroupController {
 			@RequestParam String role_group,
 			@RequestParam int role_group_id) {
 		getRgRepo().updateRoleGroup(role_group, role_group_id);
-		return "updated role_group";
+		return "Updated role_group";
 	}
 }
