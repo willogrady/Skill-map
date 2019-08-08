@@ -81,8 +81,8 @@ public class RoleGroupTests {
 	
 	@Test
 	public void putTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.put("http://localhost:9901/role_group/edit?role_group={role_group}&role_group_id={role_group_id}",
-				"Testing","9"))
+		mockMvc.perform(MockMvcRequestBuilders.put("http://localhost:9901/role_group/edit?role_group={role_group}&role_group_id={role_group_id}&version_id={version_id}",
+				"Testing","9","1"))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
 		.andExpect(MockMvcResultMatchers.content().string("Updated role_group"));

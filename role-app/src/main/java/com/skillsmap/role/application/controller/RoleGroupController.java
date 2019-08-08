@@ -74,9 +74,10 @@ public class RoleGroupController {
 	
 	@PutMapping("/edit")
 	public @ResponseBody String updateRoleGroup(
+			@RequestParam int version_id,
 			@RequestParam String role_group,
 			@RequestParam int role_group_id) {
-		getRgRepo().updateRoleGroup(role_group, role_group_id);
+		getRgRepo().updateRoleGroup(role_group,version_id, role_group_id);
 		return "Updated role_group";
 	}
 }
