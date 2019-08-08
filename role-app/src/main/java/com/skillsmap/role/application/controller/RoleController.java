@@ -1,6 +1,7 @@
 package com.skillsmap.role.application.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -48,8 +49,8 @@ public class RoleController {
 	}
 	
 	@GetMapping("/id/{role_id}")
-	public Role getRoleById(@PathVariable int role_id) {
-		return getRepo().findById(role_id).get();		
+	public Optional<Role> getRoleById(@PathVariable int role_id) {
+		return getRepo().findById(role_id);		
 	}
 
 	
@@ -82,6 +83,31 @@ public class RoleController {
 		getRepo().updateRoleGroupId(role_group_id,role_id);
 		return "updated role_group_id";
 	}
+	
+	@PutMapping("/edit/role_title")
+	public @ResponseBody String updateRoleGroupId(
+			@RequestParam String role_title,
+			@RequestParam int role_id) {
+		getRepo().updateRoleTitle(role_title,role_id);
+		return "updated role title";
+	}
+	
+	@PutMapping("/edit/role_grade")
+	public @ResponseBody String updateRoleGrade(
+			@RequestParam String role_grade,
+			@RequestParam int role_id) {
+		getRepo().updateRoleGrade(role_grade,role_id);
+		return "updated role grade";
+	}
+	
+	@PutMapping("/edit/role_summary")
+	public @ResponseBody String updateRoleSummary(
+			@RequestParam String role_summary,
+			@RequestParam int role_id) {
+		getRepo().updateRoleSummary(role_summary, role_id);
+		return "updated role summary";
+	}
+	
 	
 	@DeleteMapping("/delete/{role_id}")
 	public String deleteRole(@PathVariable int role_id) {
