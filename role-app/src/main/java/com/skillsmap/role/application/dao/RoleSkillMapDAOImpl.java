@@ -22,8 +22,8 @@ import com.skillsmap.role.application.repository.RoleSkillMapRepository;
 public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	
 	private String sfia_url = "http://localhost:9900/sfia/list";
-	private String sfia_skill_id_url = "http://localhost:9900/sfia/id/";
-	private String find_role_from_skill_url = "http://localhost:9901/role_skill_map/skill_id";
+	private String sfia_skill_code_url = "http://localhost:9900/sfia/skillcode/";
+	private String find_role_from_skill_url = "http://localhost:9901/role_skill_map/skillcode";
 	private String find_role_url = "http://localhost:9901/role/id/";
 	private String find_skill_list_from_role = "http://localhost:9901/role_skill_map/skill_id_for_one_role";
 	
@@ -67,14 +67,14 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 	// ---methods for role_by_skill---
 	@Override
 	public String getRoleViaSkill(RoleSkillMap roleSkillMap) throws IOException {
-		String url =  find_role_from_skill_url+"?skill_id="+roleSkillMap.skill_id;
+		String url =  find_role_from_skill_url+"?skillcode="+roleSkillMap.skillcode;
 		String strResponse = readStringFromUrl(url);
 		return strResponse;
 	}
 	
 	@Override
 	public String getSkillviaSkillId(RoleSkillMap roleSkillMap) throws IOException {
-		String url = sfia_skill_id_url+roleSkillMap.skill_id;
+		String url = sfia_skill_code_url+roleSkillMap.skillcode;
 		String strResponse = readStringFromUrl(url);
 		return strResponse; 
 		}

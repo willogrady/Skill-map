@@ -62,10 +62,10 @@ public class RoleSkillMapController {
 	}
 	//tested
 	// fetch role skill map table data via skill_id
-	@GetMapping(path="/skill_id", produces = MediaType.APPLICATION_JSON)
+	@GetMapping(path="/skillcode", produces = MediaType.APPLICATION_JSON)
 	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaSkill(
-			@RequestParam int skill_id){
-		return getRsmRepo().findBySkillId(skill_id);
+			@RequestParam String skillcode){
+		return getRsmRepo().findBySkillCode(skillcode);
 
 	}
 	//tested
@@ -80,7 +80,7 @@ public class RoleSkillMapController {
 	public @ResponseBody String createRoleSkillMap(
 			@RequestParam int role_skill_map_id,
 			@RequestParam int role_id,
-			@RequestParam int skill_id,
+			@RequestParam String skillcode,
 			@RequestParam int level,
 			@RequestParam int version_id) {
 
@@ -88,7 +88,7 @@ public class RoleSkillMapController {
 		RoleSkillMap rsm = new RoleSkillMap();
 		rsm.setRole_skill_map_id(role_skill_map_id);
 		rsm.setRole_id(role_id);
-		rsm.setSkill_id(skill_id);
+		rsm.setSkillcode(skillcode);
 		rsm.setLevel(level);
 		rsm.setVersion_id(version_id);
 		
@@ -109,7 +109,7 @@ public class RoleSkillMapController {
 	// fetching role and skill data via putting in skill_id and showing associated roles
 	@GetMapping(path = "/role_by_skill", produces = MediaType.APPLICATION_JSON) 
 	public String getRoleviaSkill(@BeanParam RoleSkillMap roleSkillMap, 
-			@RequestParam int skill_id) throws JSONException, IOException {
+			@RequestParam String skillcode) throws JSONException, IOException {
 		return dao.mapRoleWithSkillInfo(roleSkillMap);
 	}
 	
