@@ -3,19 +3,19 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "apiManagementServiceName": {
-      "value": "APIM-MSM"
+      "value": "APIM-SkillsMap"
     },
     "publisherEmail": {
       "value": "mark.oates@mastek.com"
   },
     "hostingPlanName": {
-      "value": "spMSM"
+      "value": "spSM"
   },
     "siteName": {
-      "value": "svcApproval"
+      "value": "svccompanyroles"
   },
     "resourceGroupName": {
-      "value": "rgMastekSkillsMap"
+      "value": "rgSkillsMap"
   },
     "administratorLogin": {
       "value": "msmadmin"
@@ -23,13 +23,13 @@
     "administratorLoginPassword": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/911cc3b3-99f2-4ccc-88d1-b580cb4dcace/resourceGroups/rgMastekSkillsMap/providers/Microsoft.KeyVault/vaults/kvMSM"
+          "id": "/subscriptions/911cc3b3-99f2-4ccc-88d1-b580cb4dcace/resourceGroups/rgSkillsMap/providers/Microsoft.KeyVault/vaults/kvSM"
         },
-        "secretName": "kvMSMsecret"
+        "secretName": "kvSMsecret"
       }
     },
     "keyVaultName": {
-      "value": "kvMSM"
+      "value": "kvSM"
     },
     "objectId": {
       "value": "5b1a5aea-3845-4808-a9af-863e13c090d7"
@@ -38,7 +38,7 @@
       "value": {
         "secrets": [
           {
-            "secretName": "kvMSMsecret",
+            "secretName": "kvSMsecret",
             "secretValue": "Mastek2019#"
           }
         ]
