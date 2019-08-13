@@ -1,5 +1,6 @@
 package com.skillsmap.role.application.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,11 @@ public class RoleGroupController {
 	public @ResponseBody Optional<RoleGroup> getRoleGroupById
 			(@PathVariable int role_group_id) {
 		return getRgRepo().findById(role_group_id);		
+	}
+	
+	@GetMapping("/listgroup")
+	public List<String> listCategories() {
+		return getRgRepo().findGroup();
 	}
 	
 	@PostMapping(path="/create")

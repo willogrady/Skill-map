@@ -58,6 +58,12 @@ public class RoleGroupTests {
 		.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
 		.andExpect(MockMvcResultMatchers.status().isOk());
 	}
+	
+	@Test
+	public void listGroupTest() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/role_group/listgroup"))
+		.andExpect(MockMvcResultMatchers.status().isOk());
+	}
 		
 	@Test
 	public void postTest() throws Exception {

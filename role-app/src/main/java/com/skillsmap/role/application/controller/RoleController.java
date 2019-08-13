@@ -52,8 +52,6 @@ public class RoleController {
 	public Optional<Role> getRoleById(@PathVariable int role_id) {
 		return getRepo().findById(role_id);		
 	}
-
-	
 	
 	@PostMapping("/create")
 	public @ResponseBody String createRole(
