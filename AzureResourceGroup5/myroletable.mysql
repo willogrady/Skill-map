@@ -3,3 +3,4 @@ ALTER TABLE svccompanyrolesdb.role DROP COLUMN role_id;
 ALTER TABLE svccompanyrolesdb.role ADD COLUMN role_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT FIRST;
 ALTER TABLE `svccompanyrolesdb`.`role_skill_map` ADD CONSTRAINT `fkroleid`
 FOREIGN KEY (`role_id`)
+REFERENCES `svccompanyrolesdb`.`role` (`role_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
