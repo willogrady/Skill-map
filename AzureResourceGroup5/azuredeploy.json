@@ -1,10 +1,10 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {
+  "parameters": { 
     "keyVaultName": {
       "type": "string",
-      "metadata": {
+      "metadata": { 
         "description": "Specifies the name of the key vault."
       }
     },
@@ -239,7 +239,7 @@
     },
     "hostingPlanName": {
       "type": "string",
-      "metadata": {
+      "metadata": { 
         "description": "Name of app service plan"
       }
     }
@@ -301,55 +301,44 @@
       "properties": {
         "name": "[variables('hostingPlanName')]",
         "workerSizeId": "1",
-        "reserved": true,
-        "numberOfWorkers": 0,
-        "hostingEnvironment": ""
+        "reserved": false,
+        "numberOfWorkers": 0
       },
-      "sku": {
+      "sku": { 
         "Tier": "Standard",
         "Name": "S1"
       }
     },
     {
-			"apiVersion": "2016-08-01",
-			"name": "[parameters('siteName')]",
-			"type": "Microsoft.Web/sites",
-			"location": "[parameters('location')]",
-			"dependsOn": [
-				"[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
-			],
-			"properties": {
-				"name": "[parameters('siteName')]",
-				"serverFarmId": "[variables('hostingPlanName')]",
-				"hostingEnvironment": ""
-			},
-			"resources": [{
-				"apiVersion": "2016-08-01",
-				"name": "connectionstrings",
-				"type": "config",
-				"dependsOn": [
-					"[concat('Microsoft.Web/sites/', parameters('siteName'))]"
-				],
-				"properties": {
-					"defaultConnection": {
-						"value": "[concat('Database=', variables('databaseName'), ';Data Source=', reference(resourceId('Microsoft.DBforMySQL/servers',variables('serverName'))).fullyQualifiedDomainName, ';User Id=', parameters('administratorLogin'),'@', variables('serverName'),';Password=', parameters('administratorLoginPassword'))]",
-						"type": "MySql"
-					}
-				}
-			},
-      {
-          "apiVersion": "2015-08-01",
-          "name": "[parameters('MSMVnet')]",
-          "type": "virtualNetworkConnections",
-          "location": "[resourceGroup().location]",
+      "apiVersion": "2016-08-01",
+      "name": "[parameters('siteName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+      ],
+      "properties": {
+        "name": "[parameters('siteName')]",
+        "serverFarmId": "[variables('hostingPlanName')]",
+        "hostingEnvironment": ""
+      },
+      "resources": [
+        {
+          "apiVersion": "2016-08-01",
+          "name": "connectionstrings",
+          "type": "config",
           "dependsOn": [
-            "[concat('Microsoft.Web/sites/', variables('siteName'))]"
+            "[concat('Microsoft.Web/sites/', parameters('siteName'))]"
           ],
           "properties": {
-            "vnetResourceId": "[concat(resourceGroup().id, '/providers/Microsoft.Network/virtualNetworks/', variables('MSMVnet'))]"
+            "defaultConnection": {
+              "value": "[concat('Database=', variables('databaseName'), ';Data Source=', reference(resourceId('Microsoft.DBforMySQL/servers',variables('serverName'))).fullyQualifiedDomainName, ';User Id=', parameters('administratorLogin'),'@', variables('serverName'),';Password=', parameters('administratorLoginPassword'))]",
+              "type": "MySql"
+            }
           }
-      }]
-		},
+        }
+      ]
+    },
     {
       "type": "Microsoft.KeyVault/vaults",
       "name": "[parameters('keyVaultName')]",
@@ -467,7 +456,7 @@
       "name": "MSMVnet",
       "type": "Microsoft.Network/virtualNetworks",
       "location": "[resourceGroup().location]",
-      "apiVersion": "2016-03-30",
+      "apiVersion": "2018-04-01",
       "dependsOn": [ ],
       "tags": {
         "displayName": "MSMVnet"
@@ -491,4 +480,3 @@
     }
   ]
 }
-  
