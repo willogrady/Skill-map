@@ -42,7 +42,7 @@ public class RoleController {
 	public String test() {
 		return "heyo captain jack";
 	}
-
+	
 	@GetMapping("/list")
 	public Iterable<Role> getRoles() {
 		return getRepo().findAll();
@@ -51,6 +51,11 @@ public class RoleController {
 	@GetMapping("/id/{role_id}")
 	public Optional<Role> getRoleById(@PathVariable int role_id) {
 		return getRepo().findById(role_id);		
+	}
+	
+	@GetMapping("/role_group/{role_group_id}")
+	public List<Role> getRolesByGroup(@PathVariable int role_group_id) {
+		return getRepo().findRoleGroupId(role_group_id);
 	}
 	
 	@PostMapping("/create")
