@@ -42,7 +42,7 @@ public class RoleController {
 	public String test() {
 		return "heyo captain jack";
 	}
-
+	
 	@GetMapping("/list")
 	public Iterable<Role> getRoles() {
 		return getRepo().findAll();
