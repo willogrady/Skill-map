@@ -19,8 +19,6 @@ import com.skillsmap.role.application.entity.Role;
 @Component
 public interface RoleRepository extends JpaRepository<Role, Integer> {
 	
-	
-	
 	@Query(value="SELECT * FROM role WHERE role_group = ?1", nativeQuery = true)
 	public Role findByRoleGroup(@Param("role_group") String roleGroup);
 
@@ -48,5 +46,6 @@ public interface RoleRepository extends JpaRepository<Role, Integer> {
 	@Transactional
 	@Query(value="UPDATE Role SET role_summary = ?1 WHERE role_id = ?2")
 	public void updateRoleSummary(@Param("role_summary")String role_summary, @Param("role_id") int role_id);
+	
 	
 }
