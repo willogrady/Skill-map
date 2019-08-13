@@ -47,6 +47,12 @@ public class RoleTests {
 	}
 	
 	@Test
+	public void testRoleGroupId() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:9901/role/role_group/{role_group_id}", "5"))
+		.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	@Test
 	public void deleteRole() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.delete("http://localhost:9901/role/delete/{role_id}", "30"))
 		.andExpect(MockMvcResultMatchers.status().isOk())

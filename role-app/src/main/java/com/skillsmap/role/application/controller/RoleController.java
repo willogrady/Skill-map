@@ -53,6 +53,11 @@ public class RoleController {
 		return getRepo().findById(role_id);		
 	}
 	
+	@GetMapping("/role_group/{role_group_id}")
+	public List<Role> getRolesByGroup(@PathVariable int role_group_id) {
+		return getRepo().findRoleGroupId(role_group_id);
+	}
+	
 	@PostMapping("/create")
 	public @ResponseBody String createRole(
 			@RequestParam String role_title,
