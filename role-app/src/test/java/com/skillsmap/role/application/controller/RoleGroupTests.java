@@ -49,7 +49,7 @@ public class RoleGroupTests {
 			.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
 			.andExpect(MockMvcResultMatchers.status().isOk());
 	}
-	
+	 
 	@Test
 	public void listIDTest() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/role_group/id/{role_group_id}",
