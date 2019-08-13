@@ -2,6 +2,7 @@ package com.skillsmap.role.application.repository;
 
 import java.sql.Array;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +17,7 @@ import com.skillsmap.role.application.entity.RoleSkillMap;
 public interface RoleSkillMapRepository extends JpaRepository<RoleSkillMap, Integer> {
 	
 	@Query(value="SELECT * FROM role_skill_map WHERE skillcode = ?1", nativeQuery = true)
-	public List<RoleSkillMap> findBySkillCode(@Param("skillcode") String skillcode);
+	public Iterable<RoleSkillMap> findBySkillCode(@Param("skillcode") String skillcode);
 	
 	@Query(value="SELECT * FROM role_skill_map WHERE role_id = ?1", nativeQuery = true)
 	public List<RoleSkillMap> findByRoleId(@Param("role_id") int role_id);

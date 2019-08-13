@@ -63,7 +63,7 @@ public class RoleSkillMapController {
 	//tested
 	// fetch role skill map table data via skill_id
 	@GetMapping(path="/skillcode", produces = MediaType.APPLICATION_JSON)
-	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaSkill(
+	public @ResponseBody Iterable<RoleSkillMap> getRoleSkillMapViaSkill(
 			@RequestParam String skillcode){
 		return getRsmRepo().findBySkillCode(skillcode);
 
