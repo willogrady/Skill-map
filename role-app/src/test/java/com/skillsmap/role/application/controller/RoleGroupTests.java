@@ -35,13 +35,6 @@ public class RoleGroupTests {
 	public void setUp() throws Exception {
 		mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 	}
-
-	@Test
-	public void testTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/role_group/test"))
-			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andExpect(MockMvcResultMatchers.content().string("testing testing 123"));
-	}
 	
 	@Test
 	public void listTest() throws Exception {

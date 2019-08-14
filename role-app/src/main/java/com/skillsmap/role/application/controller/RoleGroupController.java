@@ -36,11 +36,6 @@ public class RoleGroupController {
 	public void setRgRepo(RoleGroupRepository rgRepo) {
 		this.rgRepo = rgRepo;
 	}
-
-	@GetMapping("/test")
-	public String test() {
-		return "testing testing 123";
-	}
 	
 	@GetMapping("/list")
 	public Iterable<RoleGroup> getRoleGroup() {
