@@ -35,9 +35,6 @@ public class RoleSkillMapController {
 		this.rsmRepo = rsmRepo;
 	}
 	
-	@Autowired
-	private RoleSkillMapDAO dao;
-
 	@GetMapping("/list")
 	public Iterable<RoleSkillMap> getRoleSkillMap() {
 		return getRsmRepo().findAll();
