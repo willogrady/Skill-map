@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skillsmap.role.application.dao.RoleSkillMapDAO;
 import com.skillsmap.role.application.entity.RoleSkillMap;
 import com.skillsmap.role.application.repository.RoleSkillMapRepository;
 

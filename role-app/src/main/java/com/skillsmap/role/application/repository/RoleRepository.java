@@ -22,8 +22,6 @@ public interface RoleRepository extends JpaRepository<Role, Integer> {
 	@Query(value="SELECT * FROM role WHERE role_group_id = ?1", nativeQuery = true)
 	public List<Role> findRoleGroupId(@Param("role_group_id") int role_group_id);
 	
-	// ---- UPDATE QUERIES ----
-	
 	@Modifying
 	@Transactional
 	@Query(value="UPDATE Role SET role_group_id = ?1 WHERE role_id = ?2")
