@@ -25,6 +25,6 @@ public interface RoleSkillMapDAO {
 	List<RoleSkillMap> getRoleinDao(RoleSkillMap roleSkillMap, int role_id) throws IOException;
 
 	String getRolefromRole(RoleSkillMap roleSkillMap) throws IOException;
-	List<Object[]> getSkillviaRoleId(int role_id) throws IOException;
+	List<RoleSkillMap> getSkillviaRoleId(int role_id) throws IOException;
 
 }

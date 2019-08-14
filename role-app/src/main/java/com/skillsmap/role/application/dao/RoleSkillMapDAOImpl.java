@@ -98,20 +98,17 @@ public class RoleSkillMapDAOImpl implements RoleSkillMapDAO {
 		return strResponse;
 	}
 
-	
 	@Override
-	public List<Object[]> getSkillviaRoleId(int role_id) throws IOException {	
-		List<Object[]> response = getRsmRepo().findSkillsByRoleId(role_id);
+	public List<RoleSkillMap> getSkillviaRoleId(int role_id) throws IOException {	
+		List<RoleSkillMap> response = getRsmRepo().findSkillsByRoleId(role_id);
 		return response;
-		}
+	}
 	
 	@Override		
 	public String mapSkillWithRoleInfo(RoleSkillMap roleSkillMap, int role_id) throws IOException {
 		String roleResponse = getRolefromRole(roleSkillMap);
-		
 		String url = find_skill_list_from_role+"?role_id="+roleSkillMap.role_id;
-		String skillResponse = "Skills: "+readStringFromUrl(url);
-		
+		String skillResponse = readStringFromUrl(url);
 		return roleResponse+skillResponse;
 	}
 	
