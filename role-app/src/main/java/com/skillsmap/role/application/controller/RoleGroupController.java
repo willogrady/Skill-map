@@ -23,7 +23,7 @@ import com.skillsmap.role.application.repository.RoleGroupRepository;
 @Component
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/role_group")
-public class RoleGroupController {
+public class RoleGroupController { 
 
 	@Autowired
 	private RoleGroupRepository rgRepo;
