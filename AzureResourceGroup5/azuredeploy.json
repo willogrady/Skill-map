@@ -1,7 +1,7 @@
-{
+ {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": { 
+  "parameters": {  
     "keyVaultName": {
       "type": "string",
       "metadata": { 
@@ -320,7 +320,36 @@
       "properties": {
         "name": "[parameters('siteName')]",
         "serverFarmId": "[variables('hostingPlanName')]",
-        "hostingEnvironment": ""
+        "hostingEnvironment": "",
+        "siteConfig": {
+          "clientAffinityEnabled": false,
+          "httpsOnly": true,
+          "alwaysOn": true,
+          "virtualApplications": [
+            {
+              "virtualPath": "/",
+              "physicalPath": "site\\wwwroot",
+              "preloadEnabled": true
+            }
+          ],
+          
+            
+              "name": "ipSecurityRestrictions",
+              "input": {
+               // "vnetSubnetResourceId": "[/subscriptions/911cc3b3-99f2-4ccc-88d1-b580cb4dcace/resourceGroups/rgSkillsMap/providers/Microsoft.Network/virtualNetworks/MSMVnet(rgSkillsMap, 'Microsoft.Network/virtualNetworks/subnets', 'MSMVnet', variables('MSMVnetSubnet1Name')]",
+                //"vnetSubnetResourceId": "/subscriptions/911cc3b3-99f2-4ccc-88d1-b580cb4dcace/resourceGroups/rgSkillsMap/providers/Microsoft.Network/virtualNetworks/subnets/MSMVnet/MSMSubnet",
+                "subscription": "CTO-MCL-PoC",
+                "type": "Virtual Network",
+                "virtualNetwork": "MSMVnet",
+                "subnet": "MSMSubnet",
+                "action": "Allow",
+                "priority": "1",
+                "name": "[variables('MSMVnetSubnet1Name')]"
+                //"description": "[concat(variables('MSMVnetSubnet1Name')[copyIndex('ipSecurityRestrictions')], ' subnet')]"
+              }
+            
+          
+        }
       },
       "resources": [
         {
@@ -452,31 +481,31 @@
         }
       ]
     }
-    // {
-    //   "name": "MSMVnet",
-    //   "type": "Microsoft.Network/virtualNetworks",
-    //   "location": "[resourceGroup().location]",
-    //   "apiVersion": "2018-04-01",
-    //   "dependsOn": [ ],
-    //   "tags": {
-    //     "displayName": "MSMVnet"
-    //   },
-    //   "properties": {
-    //     "addressSpace": {
-    //       "addressPrefixes": [
-    //         "[variables('MSMVnetPrefix')]"
-    //       ]
-    //     },
-    //     "subnets": [
-    //       {
-    //         "name": "[variables('MSMVnetSubnet1Name')]",
-    //         "properties": {
-    //           "addressPrefix": "[variables('MSMVnetSubnet1Prefix')]"
-    //         }
-    //       }
+    /*{
+      "name": "MSMVnet",
+      "type": "Microsoft.Network/virtualNetworks",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2018-04-01",
+      "dependsOn": [ ],
+      "tags": {
+        "displayName": "MSMVnet"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[variables('MSMVnetPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[variables('MSMVnetSubnet1Name')]",
+            "properties": {
+              "addressPrefix": "[variables('MSMVnetSubnet1Prefix')]"
+            }
+          }
           
-    //     ]
-    //   }
-    // }
+        ]
+      }
+    }*/
   ]
 }
