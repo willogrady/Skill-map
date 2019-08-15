@@ -74,4 +74,4 @@ FOREIGN KEY (`role_group_id`)
 REFERENCES `role_group` (`role_group_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 ALTER TABLE `svccompanyrolesdb`.`role_skill_map` ADD CONSTRAINT `skillcode`
 FOREIGN KEY (`skillcode`)
-REFERENCES `svcsfiaskilldb`.`sfia_skill` (`skillcode`), ENGINE=InnoDB DEFAULT CHARSET=utf8;
+REFERENCES `svcsfiaskilldb`.`sfia_skill` (`skillcode`), ENGINE=InnoDB DEFAULT CHARSET=utf8; 
