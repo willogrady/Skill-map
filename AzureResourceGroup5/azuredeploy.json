@@ -452,31 +452,31 @@
         }
       ]
     },
-    {
-      "name": "MSMVnet",
-      "type": "Microsoft.Network/virtualNetworks",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2018-04-01",
-      "dependsOn": [ ],
-      "tags": {
-        "displayName": "MSMVnet"
-      },
-      "properties": {
-        "addressSpace": {
-          "addressPrefixes": [
-            "[variables('MSMVnetPrefix')]"
-          ]
-        },
-        "subnets": [
-          {
-            "name": "[variables('MSMVnetSubnet1Name')]",
-            "properties": {
-              "addressPrefix": "[variables('MSMVnetSubnet1Prefix')]"
-            }
-          }
+    // {
+    //   "name": "MSMVnet",
+    //   "type": "Microsoft.Network/virtualNetworks",
+    //   "location": "[resourceGroup().location]",
+    //   "apiVersion": "2018-04-01",
+    //   "dependsOn": [ ],
+    //   "tags": {
+    //     "displayName": "MSMVnet"
+    //   },
+    //   "properties": {
+    //     "addressSpace": {
+    //       "addressPrefixes": [
+    //         "[variables('MSMVnetPrefix')]"
+    //       ]
+    //     },
+    //     "subnets": [
+    //       {
+    //         "name": "[variables('MSMVnetSubnet1Name')]",
+    //         "properties": {
+    //           "addressPrefix": "[variables('MSMVnetSubnet1Prefix')]"
+    //         }
+    //       }
           
-        ]
-      }
-    }
+    //     ]
+    //   }
+    // }
   ]
 }
