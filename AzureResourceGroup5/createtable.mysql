@@ -69,9 +69,9 @@ INSERT INTO `svccompanyrolesdb`.`role_group` (`role_group`) VALUES ('Testing');
 ALTER TABLE `svccompanyrolesdb`.`role_skill_map` ADD CONSTRAINT `fkroleid`
 FOREIGN KEY (`role_id`)
 REFERENCES `svccompanyrolesdb`.`role` (`role_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-ALTER TABLE `svccompanyrolesdb`.`role_skill_map` ADD CONSTRAINT `fkskillcode`
-FOREIGN KEY (`skillcode`)
-REFERENCES `svcsfiadb`.`sfia_skill` (`skillcode`), ENGINE=InnoDB CHARSET=utf8;
 ALTER TABLE `svccompanyrolesdb`.`role` ADD CONSTRAINT `rolesibfk_1` 
 FOREIGN KEY (`role_group_id`) 
 REFERENCES `role_group` (`role_group_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+ALTER TABLE `svccompanyrolesdb`.`role_skill_map` ADD CONSTRAINT `skillcode`
+FOREIGN KEY (`skillcode`)
+REFERENCES `svcsfiaskilldb`.`sfia_skill` (`skillcode`), ENGINE=InnoDB DEFAULT CHARSET=utf8;
