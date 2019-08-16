@@ -85,8 +85,8 @@
  				<version>1.6.0</version>
 				<configuration>
       				<schemaVersion>V2</schemaVersion>
-      				<resourceGroup>rgMastekSkillsMap</resourceGroup>
-      				<appName>RoleSite</appName>
+      				<resourceGroup>rgSkillsMap</resourceGroup>
+      				<appName>svcCompanyRoles</appName>
       				<region>northeurope</region>
       				<pricingTier>S1V1</pricingTier>
 					<!-- Begin of App Settings  -->
