@@ -21,8 +21,8 @@ import com.skillsmap.role.application.repository.RoleGroupRepository;
 
 @RestController
 @Component
-//@CrossOrigin(origins = "http://localhost:4200")
-@CrossOrigin(origins = "https://skillsmapportal.azurewebsites.net")
+@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "https://skillsmapportal.azurewebsites.net")
 @RequestMapping("/role_group")
 public class RoleGroupController { 
 

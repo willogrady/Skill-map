@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS  `svccompanyrolesdb`.`role`;
-FLUSH TABLES  `svccompanyrolesdb`.`role` ; 
+FLUSH TABLES  `svccompanyrolesdb`.`role` ;
 CREATE TABLE `svccompanyrolesdb`.`role` (
   `role_id` INT NOT NULL AUTO_INCREMENT,
   `role_title` VARCHAR(45) NOT NULL,
@@ -15,14 +15,15 @@ FLUSH TABLES  `svccompanyrolesdb`.`role_skill_map` ;
 CREATE TABLE `svccompanyrolesdb`.`role_skill_map` (
   `role_skill_map_id` INT NOT NULL AUTO_INCREMENT,
   `role_id` INT NOT NULL,
-  `skillcode` VARCHAR(45) NOT NULL,
+  `skillcode` VARCHAR(45) NULL,
+  `competency_id` INT NULL,
   `level` INT NOT NULL,
   `required` TINYINT NOT NULL DEFAULT 1,
   `version_id` INT NOT NULL,
   PRIMARY KEY (`role_skill_map_id`),
   UNIQUE INDEX `role_skill_map_id_UNIQUE` (`role_skill_map_id` ASC));
 DROP TABLE IF EXISTS  `svccompanyrolesdb`.`role_group`;
-FLUSH TABLES  `svccompanyrolesdb`.`role_group` ; 
+FLUSH TABLES  `svccompanyrolesdb`.`role_group` ;
 CREATE TABLE `svccompanyrolesdb`.`role_group` (
   `role_group_id` INT NOT NULL AUTO_INCREMENT,
   `role_group` VARCHAR(45) NOT NULL,
@@ -69,6 +70,9 @@ INSERT INTO `svccompanyrolesdb`.`role_group` (`role_group`) VALUES ('Testing');
 ALTER TABLE `svccompanyrolesdb`.`role_skill_map` ADD CONSTRAINT `fkroleid`
 FOREIGN KEY (`role_id`)
 REFERENCES `svccompanyrolesdb`.`role` (`role_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+ALTER TABLE `svccompanyrolesdb`.`role_skill_map` ADD CONSTRAINT `fkcompetencyid`
+FOREIGN KEY (`competency_id`)
+REFERENCES `svccompetenciesdb`.`competency` (`competency_id`),ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 ALTER TABLE `svccompanyrolesdb`.`role` ADD CONSTRAINT `rolesibfk_1` 
 FOREIGN KEY (`role_group_id`) 
 REFERENCES `role_group` (`role_group_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
