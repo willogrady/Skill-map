@@ -99,11 +99,11 @@
       				<!-- End of App Settings  -->
 					  
                <!-- WAR deployment -->
-              <deploymentType>war</deploymentType>
+<!--              <deploymentType>war</deploymentType>-->
                <!-- Specify the war file location, optional if the war file location is: ${project.build.directory}/${project.build.finalName}.war -->
-               <warFile></warFile>
+ <!--              <warFile></warFile>-->
                <!-- Specify context path, optional if you want to deploy to ROOT -->
-               <path>/tutorial-hibernate-jpa</path>
+  <!--             <path>/tutorial-hibernate-jpa</path> -->
      		</configuration>
 			</plugin>
             <plugin>
