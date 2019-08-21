@@ -1,3 +1,16 @@
+DROP TABLE IF EXISTS  `svccompanyrolesdb`.`role_skill_map`;
+FLUSH TABLES  `svccompanyrolesdb`.`role_skill_map` ;
+CREATE TABLE `svccompanyrolesdb`.`role_skill_map` (
+  `role_skill_map_id` INT NOT NULL AUTO_INCREMENT,
+  `role_id` INT NOT NULL,
+  `skillcode` VARCHAR(45) NULL,
+  `competency_id` INT NULL,
+  `company_skill_id` INT NULL,
+  `level` INT NOT NULL,
+  `required` TINYINT NOT NULL DEFAULT 1,
+  `version_id` INT NOT NULL,
+  PRIMARY KEY (`role_skill_map_id`),
+  UNIQUE INDEX `role_skill_map_id_UNIQUE` (`role_skill_map_id` ASC));
 DROP TABLE IF EXISTS  `svccompanyrolesdb`.`role`;
 FLUSH TABLES  `svccompanyrolesdb`.`role` ;
 CREATE TABLE `svccompanyrolesdb`.`role` (
@@ -10,19 +23,6 @@ CREATE TABLE `svccompanyrolesdb`.`role` (
   PRIMARY KEY (`role_id`),
   UNIQUE INDEX `role_id_UNIQUE` (`role_id` ASC),
   UNIQUE INDEX `role_title_UNIQUE` (`role_title` ASC));
-DROP TABLE IF EXISTS  `svccompanyrolesdb`.`role_skill_map`;
-FLUSH TABLES  `svccompanyrolesdb`.`role_skill_map` ; 
-CREATE TABLE `svccompanyrolesdb`.`role_skill_map` (
-  `role_skill_map_id` INT NOT NULL AUTO_INCREMENT,
-  `role_id` INT NOT NULL,
-  `skillcode` VARCHAR(45) NULL,
-  `competency_id` INT NULL,
-  `company_skill_id` INT NULL,
-  `level` INT NOT NULL,
-  `required` TINYINT NOT NULL DEFAULT 1,
-  `version_id` INT NOT NULL,
-  PRIMARY KEY (`role_skill_map_id`),
-  UNIQUE INDEX `role_skill_map_id_UNIQUE` (`role_skill_map_id` ASC));
 DROP TABLE IF EXISTS  `svccompanyrolesdb`.`role_group`;
 FLUSH TABLES  `svccompanyrolesdb`.`role_group` ;
 CREATE TABLE `svccompanyrolesdb`.`role_group` (
