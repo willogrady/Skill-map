@@ -39,6 +39,12 @@ public class RoleSkillMapController {
 	public Iterable<RoleSkillMap> getRoleSkillMap() {
 		return getRsmRepo().findAll();
 	}
+	
+	@GetMapping(path="/competency_id", produces = MediaType.APPLICATION_JSON)
+	public @ResponseBody Iterable<RoleSkillMap> getRoleSkillMapViaCompetency(
+			@RequestParam String competency_id){
+		return getRsmRepo().findByCompetency(competency_id);
+	}
 
 	@GetMapping(path="/skillcode", produces = MediaType.APPLICATION_JSON)
 	public @ResponseBody Iterable<RoleSkillMap> getRoleSkillMapViaSkill(
@@ -58,6 +64,7 @@ public class RoleSkillMapController {
 			@RequestParam int role_skill_map_id,
 			@RequestParam int role_id,
 			@RequestParam String skillcode,
+			@RequestParam String competency_id,
 			@RequestParam int level,
 			@RequestParam int version_id) {
 
@@ -66,6 +73,7 @@ public class RoleSkillMapController {
 		rsm.setRole_skill_map_id(role_skill_map_id);
 		rsm.setRole_id(role_id);
 		rsm.setSkillcode(skillcode);
+		rsm.setCompetency_id(competency_id);
 		rsm.setLevel(level);
 		rsm.setVersion_id(version_id);
 		

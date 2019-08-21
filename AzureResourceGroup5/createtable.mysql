@@ -17,6 +17,7 @@ CREATE TABLE `svccompanyrolesdb`.`role_skill_map` (
   `role_id` INT NOT NULL,
   `skillcode` VARCHAR(45) NULL,
   `competency_id` INT NULL,
+  `company_skill_id` INT NULL,
   `level` INT NOT NULL,
   `required` TINYINT NOT NULL DEFAULT 1,
   `version_id` INT NOT NULL,
@@ -76,6 +77,9 @@ REFERENCES `svccompetenciesdb`.`competency` (`competency_id`),ENGINE=InnoDB AUTO
 ALTER TABLE `svccompanyrolesdb`.`role` ADD CONSTRAINT `rolesibfk_1` 
 FOREIGN KEY (`role_group_id`) 
 REFERENCES `role_group` (`role_group_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+ALTER TABLE `svccompanyrolesdb`.`role_skill_map` ADD CONSTRAINT `company_skill_id`
+FOREIGN KEY (`company_skill_id`) 
+REFERENCES `svccompanyskillsdb`.`company_skill` (`company_skill_id`), ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 ALTER TABLE `svccompanyrolesdb`.`role_skill_map` ADD CONSTRAINT `skillcode`
 FOREIGN KEY (`skillcode`)
 REFERENCES `svcsfiaskilldb`.`sfia_skill` (`skillcode`), ENGINE=InnoDB DEFAULT CHARSET=utf8;
