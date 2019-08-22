@@ -1,7 +1,15 @@
  {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {  
+  "parameters": {
+    "azure_sql_db_name":{
+      "defaultValue":"svcsfiaskilldb",
+      "type":"String"
+    },
+    "azure_sql_server_name": {
+          "defaultValue": "skillsmapdbserver",
+          "type": "String"
+    },  
     "keyVaultName": {
       "type": "string",
       "metadata": { 
@@ -480,7 +488,54 @@
           }
         }
       ]
-    }
+    },
+     {
+          "type": "Microsoft.Sql/servers",
+          "kind": "v12.0",
+          "name": "[parameters('azure_sql_server_name')]",
+          "apiVersion": "2015-05-01-preview",
+          "location": "[parameters('location')]",
+          "properties": {
+              "administratorLogin": "[parameters('administratorLogin')]",
+              "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+              "version": "12.0"
+          },
+          "resources":[
+            {
+          "name": "[concat(parameters('azure_sql_server_name'),'/AllowAllWindowsAzureIps')]",
+          "type": "Microsoft.Sql/servers/firewallRules",
+          "location": "[parameters('location')]",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', parameters('azure_sql_server_name'))]"
+          ],
+          "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "0.0.0.0"
+          }
+        },
+            {
+          "name": "[concat(parameters('azure_sql_server_name'),'/',parameters('azure_sql_db_name'))]",
+          "type": "Microsoft.Sql/servers/databases",
+          "location": "[parameters('location')]",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', parameters('azure_sql_server_name'))]"
+          ],
+          "properties": {
+            "edition": "Basic",
+            "collation": "SQL_Latin1_General_CP1_CI_AS",
+            "maxSizeBytes": "1073741824",
+            "requestedServiceObjectiveName": "Basic"
+          },
+          "tags": {
+            "displayName": "dbname"
+          }
+          
+        }
+        ],
+          "dependsOn": []
+      }
     /*{
       "name": "MSMVnet",
       "type": "Microsoft.Network/virtualNetworks",
