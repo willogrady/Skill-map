@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "azure_sql_db_name":{
-      "defaultValue":"svcsfiaskilldb",
+      "defaultValue":"svccompanyrolesdb",
       "type":"String"
     },
     "azure_sql_server_name": {
