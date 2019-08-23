@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.skillsmap.role.application.entity.RoleCompetencyMap;
-import com.skillsmap.role.application.entity.RoleSkillMap;
 
 public interface RoleCompetencyMapRepository extends JpaRepository<RoleCompetencyMap, Integer>{
 
