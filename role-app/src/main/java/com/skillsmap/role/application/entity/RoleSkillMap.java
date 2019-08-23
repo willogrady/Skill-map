@@ -20,8 +20,6 @@ public class RoleSkillMap {
 	public int role_id;
     @FormParam("skill_id")
     public String skillcode;
-    @FormParam("competency_id")
-    public String competency_id;
     @FormParam("level")
     int level;
     @FormParam("version_id")
@@ -57,12 +55,6 @@ public class RoleSkillMap {
     public void setSkillcode(String skillcode) {
     		this.skillcode = skillcode;
     }
-    public String getCompetency_id() {
-		return competency_id;
-	}
-	public void setCompetency_id(String competency_id) {
-		this.competency_id = competency_id;
-	}
 	public int getLevel() {
         return level;
     }
