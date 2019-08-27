@@ -33,11 +33,13 @@ public class RoleCompanySkillMap {
 	public Role getRole() {
 		return role;
 	}
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getRole_skill_map_id() {
 		return role_skill_map_id;
 	}
