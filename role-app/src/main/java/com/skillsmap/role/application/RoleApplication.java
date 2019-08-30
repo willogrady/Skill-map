@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,7 +27,14 @@ public class RoleApplication extends SpringBootServletInitializer {
 		ConfigurableApplicationContext ctx = 
 		SpringApplication.run(RoleApplication.class, args);
 	}
-
+	
+	@Controller
+	class WebController{
+		@GetMapping
+		public String home() {
+			return "index";
+		}
+	}
  
     
 }

@@ -21,6 +21,7 @@ import com.skillsmap.role.application.repository.RoleRepository;
 @RestController
 @Component
 @CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "https://skillsmapportal.azurewebsites.net")
 @RequestMapping("/role")
 public class RoleController {
 	

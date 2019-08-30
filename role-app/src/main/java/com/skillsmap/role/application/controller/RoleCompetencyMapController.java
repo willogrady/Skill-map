@@ -14,65 +14,62 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skillsmap.role.application.entity.RoleSkillMap;
-import com.skillsmap.role.application.repository.RoleSkillMapRepository;
+import com.skillsmap.role.application.entity.RoleCompetencyMap;
+import com.skillsmap.role.application.repository.RoleCompetencyMapRepository;
 
 @RestController
 @Component
 @CrossOrigin(origins = "http://localhost:4200") 
-//@CrossOrigin(origins = "https://skillsmapportal.azurewebsites.net")
-@RequestMapping("/role_skill_map")
-public class RoleSkillMapController {
+@RequestMapping("/role_competency_skill_map")
+public class RoleCompetencyMapController {
 	
 	@Autowired
-	private RoleSkillMapRepository rsmRepo;
-		
-	public RoleSkillMapRepository getRsmRepo() {
-		return rsmRepo;
+	private RoleCompetencyMapRepository rcmRepo;
+
+	public RoleCompetencyMapRepository getRcmRepo() {
+		return rcmRepo;
 	}
 
-	public void setRsmRepo(RoleSkillMapRepository rsmRepo) {
-		this.rsmRepo = rsmRepo;
+	public void setRcmRepo(RoleCompetencyMapRepository rcmRepo) {
+		this.rcmRepo = rcmRepo;
 	}
 	
 	@GetMapping("/list")
-	public Iterable<RoleSkillMap> getRoleSkillMap() {
-		return getRsmRepo().findAll();
+	public Iterable<RoleCompetencyMap> getRoleSkillMap() {
+		return getRcmRepo().findAll();
 	}
-
-	@GetMapping(path="/skillcode", produces = MediaType.APPLICATION_JSON)
-	public @ResponseBody Iterable<RoleSkillMap> getRoleSkillMapViaSkill(
-			@RequestParam String skillcode){
-		return getRsmRepo().findBySkillCode(skillcode);
-
+	
+	@GetMapping(path="/competency", produces = MediaType.APPLICATION_JSON)
+	public @ResponseBody Iterable<RoleCompetencyMap> getRoleCompetencyMapViaCompetency(
+			@RequestParam int competency_id){
+		return getRcmRepo().findByCompetency(competency_id);
 	}
-
+	
 	@GetMapping(path="/role_id", produces = MediaType.APPLICATION_JSON)
-	public @ResponseBody List<RoleSkillMap> getRoleSkillMapViaRole(
+	public @ResponseBody List<RoleCompetencyMap> getRoleCompetencyMapViaRole(
 			@RequestParam int role_id){
-		return getRsmRepo().findByRoleId(role_id);
+		return getRcmRepo().findByRoleId(role_id);
 	}
-
+	
 	@PostMapping("/create")
-	public @ResponseBody String createRoleSkillMap(
+	public @ResponseBody String createRoleCompetencyMap(
 			@RequestParam int role_skill_map_id,
 			@RequestParam int role_id,
-			@RequestParam String skillcode,
+			@RequestParam int competency_id,
 			@RequestParam int level,
 			@RequestParam int version_id) {
 
 		
-		RoleSkillMap rsm = new RoleSkillMap();
+		RoleCompetencyMap rsm = new RoleCompetencyMap();
 		rsm.setRole_skill_map_id(role_skill_map_id);
 		rsm.setRole_id(role_id);
-		rsm.setSkillcode(skillcode);
+		rsm.setCompetency_id(competency_id);
 		rsm.setLevel(level);
 		rsm.setVersion_id(version_id);
 		
-		rsmRepo.save(rsm);
+		rcmRepo.save(rsm);
 		
 		return "Created and saved";
 	}
-	
-	
+
 }

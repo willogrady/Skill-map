@@ -55,7 +55,7 @@ public class RoleSkillMap {
     public void setSkillcode(String skillcode) {
     		this.skillcode = skillcode;
     }
-    public int getLevel() {
+	public int getLevel() {
         return level;
     }
     public void setLevel(int level) {
