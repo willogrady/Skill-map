@@ -11,7 +11,6 @@
 	
 	<groupId>com.skillsmap.role-app</groupId>
 	<artifactId>role-app</artifactId>
-	<packaging>war</packaging>
 	<name>Role App</name>
 
 	<properties>
