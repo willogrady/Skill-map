@@ -24,3 +24,4 @@ public interface RoleSkillMapRepository extends JpaRepository<RoleSkillMap, Inte
 	public List<RoleSkillMap> findByCompetency(@Param("competency_id") String competency_id);
 
 }
+
