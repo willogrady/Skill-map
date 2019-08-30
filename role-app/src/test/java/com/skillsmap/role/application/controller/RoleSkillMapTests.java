@@ -34,26 +34,10 @@ public class RoleSkillMapTests {
 	}
 	
 	@Test
-	public void testTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/role_skill_map/test"))
-			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andExpect(MockMvcResultMatchers.content().string("testing testing 456"));
-	}
-	
-	@Test
 	public void listTest() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/role_skill_map/list"))
 			.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
 			.andExpect(MockMvcResultMatchers.status().isOk());
-	}
-	
-	@Test
-	public void listIDTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/role_skill_map/id/{role_skill_map_id}",
-				"1"))
-		.andDo(MockMvcResultHandlers.print())
-		.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
-		.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 	
 	@Test
@@ -86,12 +70,6 @@ public class RoleSkillMapTests {
 		.andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
 		.andExpect(MockMvcResultMatchers.content().string("Created and saved"));
 	}
-	
-//	@Test
-//	public void getSFIAviaSkill() throws Exception {
-//		mockMvc.perform(MockMvcRequestBuilders.get("/role_skill_map/sfia_skill?skill_id={skill_id}",
-//				"10"))
-//		.andExpect(MockMvcResultMatchers.status().isOk());
-//	}
+
 
 }
