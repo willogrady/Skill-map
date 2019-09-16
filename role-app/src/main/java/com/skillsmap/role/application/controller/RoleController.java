@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.skillsmap.role.application.entity.Role;
 import com.skillsmap.role.application.repository.RoleRepository;
-
+//
 @RestController
 @Component
 @CrossOrigin(origins = "http://localhost:4200")
