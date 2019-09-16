@@ -1,6 +1,11 @@
 USE svccompanyrolesdb
 
+DROP TABLE IF EXISTS  [role_competency_skill_map];
+DROP TABLE IF EXISTS  [role_company_skill_map];
 DROP TABLE IF EXISTS  [role_skill_map];
+DROP TABLE IF EXISTS  [role];
+DROP TABLE IF EXISTS  [role_group];
+
 CREATE TABLE role_skill_map (
   [role_skill_map_id] INT NOT NULL IDENTITY,
   [role_id] INT NOT NULL,
@@ -11,7 +16,7 @@ CREATE TABLE role_skill_map (
   PRIMARY KEY ([role_skill_map_id]));
 
 
-DROP TABLE IF EXISTS  [role];
+
 CREATE TABLE role (
   [role_id] INT NOT NULL IDENTITY,
   [role_title] VARCHAR(45) NOT NULL,
@@ -22,7 +27,7 @@ CREATE TABLE role (
   PRIMARY KEY ([role_id]));
 
 
-DROP TABLE IF EXISTS  [role_group];
+
 CREATE TABLE role_group (
   [role_group_id] INT NOT NULL IDENTITY,
   [role_group] VARCHAR(45) NOT NULL,
@@ -69,7 +74,6 @@ INSERT INTO role_group ([role_group]) VALUES ('Support & Operations');
 INSERT INTO role_group ([role_group]) VALUES ('Testing');
 
 
-DROP TABLE IF EXISTS  [role_company_skill_map];
 CREATE TABLE role_company_skill_map (
   [role_skill_map_id_company] INT NOT NULL IDENTITY,
   [role_id] INT NOT NULL,
@@ -80,7 +84,7 @@ CREATE TABLE role_company_skill_map (
   PRIMARY KEY ([role_skill_map_id_company]));
 
 
-DROP TABLE IF EXISTS  [role_competency_skill_map];
+
 CREATE TABLE role_competency_skill_map (
   [role_skill_map_id_competency] INT NOT NULL IDENTITY,
   [role_id] INT NOT NULL,
