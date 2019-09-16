@@ -3,15 +3,15 @@ DROP TABLE IF EXISTS  [role_skill_map];
 CREATE TABLE role_skill_map (
   [role_skill_map_id] INT NOT NULL IDENTITY,
   [role_id] INT NOT NULL,
-  [skillcode] VARCHAR(45) NULL,
-  [competency_id] INT NULL,
-  [company_skill_id] INT NULL,
+  [skillcode] VARCHAR(45) NOT NULL,
   [level] INT NOT NULL,
   [required] SMALLINT NOT NULL DEFAULT 1,
-  [version_id] INT NOT NULL,
+  [version_id] INT NOT NULL DEFAULT 1,
   PRIMARY KEY ([role_skill_map_id]),
   CONSTRAINT [role_skill_map_id_UNIQUE] UNIQUE  ([role_skill_map_id] ASC));
 DROP TABLE IF EXISTS  [role];
+
+
 CREATE TABLE role (
   [role_id] INT NOT NULL IDENTITY,
   [role_title] VARCHAR(45) NOT NULL,
@@ -23,10 +23,12 @@ CREATE TABLE role (
   CONSTRAINT [role_id_UNIQUE] UNIQUE  ([role_id] ASC),
   CONSTRAINT [role_title_UNIQUE] UNIQUE  ([role_title] ASC));
 DROP TABLE IF EXISTS  [role_group];
+
+
 CREATE TABLE role_group (
   [role_group_id] INT NOT NULL IDENTITY,
   [role_group] VARCHAR(45) NOT NULL,
-  [version_id] VARCHAR(45) NOT NULL,
+  [version_id] VARCHAR(45) NOT NULL DEFAULT 1,
   PRIMARY KEY ([role_group_id]),
   CONSTRAINT [role_group_idUNIQUE] UNIQUE  ([role_group_id] ASC));
 INSERT INTO role ([role_title],[role_group_id]) VALUES ('Technical Architect',1);
@@ -66,18 +68,27 @@ INSERT INTO role_group ([role_group]) VALUES ('Finance');
 INSERT INTO role_group ([role_group]) VALUES ('Human Resources');
 INSERT INTO role_group ([role_group]) VALUES ('Support & Operations');
 INSERT INTO role_group ([role_group]) VALUES ('Testing');
-ALTER TABLE [role_skill_map] ADD CONSTRAINT [fkroleid]
-FOREIGN KEY ([role_id])
-REFERENCES role ([role_id]);
-ALTER TABLE [role_skill_map] ADD CONSTRAINT [fkcompetencyid]
-FOREIGN KEY ([competency_id])
-REFERENCES competency ([competency_id]);
-ALTER TABLE [role] ADD CONSTRAINT [rolesibfk_1] 
-FOREIGN KEY ([role_group_id]) 
-REFERENCES role_group ([role_group_id]);
-ALTER TABLE [role_skill_map] ADD CONSTRAINT [company_skill_id]
-FOREIGN KEY ([company_skill_id]) 
-REFERENCES company_skill ([company_skill_id]);
-ALTER TABLE [role_skill_map] ADD CONSTRAINT [skillcode]
-FOREIGN KEY ([skillcode])
-REFERENCES sfia_skill ([skillcode]);
+DROP TABLE IF EXISTS  [role_company_skill_map];
+
+
+CREATE TABLE role_company_skill_map (
+  [role_skill_map_id_company] INT NOT NULL IDENTITY,
+  [role_id] INT NOT NULL,
+  [company_skill_id] INT NOT NULL,
+  [level] INT NOT NULL,
+  [required] SMALLINT NOT NULL DEFAULT 1,
+  [version_id] INT NOT NULL DEFAULT 1,
+  PRIMARY KEY ([role_skill_map_id_company]),
+  CONSTRAINT [role_skill_map_id_company_UNIQUE] UNIQUE  ([role_skill_map_id_company] ASC));
+DROP TABLE IF EXISTS  [role_competency_skill_map];
+
+
+CREATE TABLE role_competency_skill_map (
+  [role_skill_map_id_competency] INT NOT NULL IDENTITY,
+  [role_id] INT NOT NULL,
+  [competency_id] INT NOT NULL,
+  [level] INT NOT NULL,
+  [required] SMALLINT NOT NULL DEFAULT 1,
+  [version_id] INT NOT NULL DEFAULT 1,
+  PRIMARY KEY ([role_skill_map_id_competency]),
+  CONSTRAINT [role_skill_map_id_competency_UNIQUE] UNIQUE  ([role_skill_map_id_competency] ASC));
