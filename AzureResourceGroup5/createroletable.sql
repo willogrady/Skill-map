@@ -7,8 +7,7 @@ CREATE TABLE role_skill_map (
   [level] INT NOT NULL,
   [required] SMALLINT NOT NULL DEFAULT 1,
   [version_id] INT NOT NULL DEFAULT 1,
-  PRIMARY KEY ([role_skill_map_id]),
-  CONSTRAINT [role_skill_map_id_UNIQUE] UNIQUE  ([role_skill_map_id] ASC));
+  PRIMARY KEY ([role_skill_map_id]));
 DROP TABLE IF EXISTS  [role];
 
 
@@ -19,9 +18,7 @@ CREATE TABLE role (
   [version_id] INT NOT NULL DEFAULT 1,
   [role_summary] VARCHAR(45) NULL,
   [role_group_id] INT NOT NULL,
-  PRIMARY KEY ([role_id]),
-  CONSTRAINT [role_id_UNIQUE] UNIQUE  ([role_id] ASC),
-  CONSTRAINT [role_title_UNIQUE] UNIQUE  ([role_title] ASC));
+  PRIMARY KEY ([role_id]));
 DROP TABLE IF EXISTS  [role_group];
 
 
@@ -29,8 +26,7 @@ CREATE TABLE role_group (
   [role_group_id] INT NOT NULL IDENTITY,
   [role_group] VARCHAR(45) NOT NULL,
   [version_id] VARCHAR(45) NOT NULL DEFAULT 1,
-  PRIMARY KEY ([role_group_id]),
-  CONSTRAINT [role_group_idUNIQUE] UNIQUE  ([role_group_id] ASC));
+  PRIMARY KEY ([role_group_id]));
 INSERT INTO role ([role_title],[role_group_id]) VALUES ('Technical Architect',1);
 INSERT INTO role ([role_title],[role_group_id]) VALUES ('Solution Architect',1);
 INSERT INTO role ([role_title],[role_group_id]) VALUES ('Data Architect',1);
@@ -78,8 +74,7 @@ CREATE TABLE role_company_skill_map (
   [level] INT NOT NULL,
   [required] SMALLINT NOT NULL DEFAULT 1,
   [version_id] INT NOT NULL DEFAULT 1,
-  PRIMARY KEY ([role_skill_map_id_company]),
-  CONSTRAINT [role_skill_map_id_company_UNIQUE] UNIQUE  ([role_skill_map_id_company] ASC));
+  PRIMARY KEY ([role_skill_map_id_company]));
 DROP TABLE IF EXISTS  [role_competency_skill_map];
 
 
@@ -90,5 +85,4 @@ CREATE TABLE role_competency_skill_map (
   [level] INT NOT NULL,
   [required] SMALLINT NOT NULL DEFAULT 1,
   [version_id] INT NOT NULL DEFAULT 1,
-  PRIMARY KEY ([role_skill_map_id_competency]),
-  CONSTRAINT [role_skill_map_id_competency_UNIQUE] UNIQUE  ([role_skill_map_id_competency] ASC));
+  PRIMARY KEY ([role_skill_map_id_competency]));
