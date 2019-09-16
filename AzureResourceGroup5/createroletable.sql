@@ -1,4 +1,5 @@
 USE svccompanyrolesdb
+
 DROP TABLE IF EXISTS  [role_skill_map];
 CREATE TABLE role_skill_map (
   [role_skill_map_id] INT NOT NULL IDENTITY,
@@ -8,9 +9,9 @@ CREATE TABLE role_skill_map (
   [required] SMALLINT NOT NULL DEFAULT 1,
   [version_id] INT NOT NULL DEFAULT 1,
   PRIMARY KEY ([role_skill_map_id]));
+
+
 DROP TABLE IF EXISTS  [role];
-
-
 CREATE TABLE role (
   [role_id] INT NOT NULL IDENTITY,
   [role_title] VARCHAR(45) NOT NULL,
@@ -19,14 +20,16 @@ CREATE TABLE role (
   [role_summary] VARCHAR(45) NULL,
   [role_group_id] INT NOT NULL,
   PRIMARY KEY ([role_id]));
+
+
 DROP TABLE IF EXISTS  [role_group];
-
-
 CREATE TABLE role_group (
   [role_group_id] INT NOT NULL IDENTITY,
   [role_group] VARCHAR(45) NOT NULL,
   [version_id] VARCHAR(45) NOT NULL DEFAULT 1,
   PRIMARY KEY ([role_group_id]));
+
+
 INSERT INTO role ([role_title],[role_group_id]) VALUES ('Technical Architect',1);
 INSERT INTO role ([role_title],[role_group_id]) VALUES ('Solution Architect',1);
 INSERT INTO role ([role_title],[role_group_id]) VALUES ('Data Architect',1);
@@ -64,9 +67,9 @@ INSERT INTO role_group ([role_group]) VALUES ('Finance');
 INSERT INTO role_group ([role_group]) VALUES ('Human Resources');
 INSERT INTO role_group ([role_group]) VALUES ('Support & Operations');
 INSERT INTO role_group ([role_group]) VALUES ('Testing');
+
+
 DROP TABLE IF EXISTS  [role_company_skill_map];
-
-
 CREATE TABLE role_company_skill_map (
   [role_skill_map_id_company] INT NOT NULL IDENTITY,
   [role_id] INT NOT NULL,
@@ -75,9 +78,9 @@ CREATE TABLE role_company_skill_map (
   [required] SMALLINT NOT NULL DEFAULT 1,
   [version_id] INT NOT NULL DEFAULT 1,
   PRIMARY KEY ([role_skill_map_id_company]));
+
+
 DROP TABLE IF EXISTS  [role_competency_skill_map];
-
-
 CREATE TABLE role_competency_skill_map (
   [role_skill_map_id_competency] INT NOT NULL IDENTITY,
   [role_id] INT NOT NULL,
