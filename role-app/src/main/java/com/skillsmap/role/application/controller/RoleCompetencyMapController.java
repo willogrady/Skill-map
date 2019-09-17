@@ -20,7 +20,8 @@ import com.skillsmap.role.application.repository.RoleCompetencyMapRepository;
 @RestController
 @Component
 //@CrossOrigin(origins = "http://localhost:4200") 
-@CrossOrigin(origins = "https://apim-skillsmap.azure-api.net/role")
+//@CrossOrigin(origins = "https://apim-skillsmap.azure-api.net/role")
+@CrossOrigin(origins = "*")
 @RequestMapping("/role_competency_skill_map")
 public class RoleCompetencyMapController {
 	
