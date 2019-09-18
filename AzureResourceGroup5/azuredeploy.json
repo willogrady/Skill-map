@@ -161,6 +161,14 @@
         "description": "Database administrator password"
       }
     },
+    "APISubscriptionKey": {
+      "type":"securestring",
+      "minLength": 8,
+      "maxLength": 128,
+      "metadata": {
+        "description": "API management subscription key"
+      }
+    },
     "databaseSkucapacity": {
       "type": "int",
       "defaultValue": 1,
