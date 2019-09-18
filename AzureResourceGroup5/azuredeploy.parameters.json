@@ -28,6 +28,14 @@
         "secretName": "kvSMsecret"
       }
     },
+    "APISubscriptionKey": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/911cc3b3-99f2-4ccc-88d1-b580cb4dcace/resourceGroups/rgSkillsMap/providers/Microsoft.KeyVault/vaults/kvSM"
+        },
+        "secretName": "APIKey"
+      }
+    },
     "keyVaultName": {
       "value": "kvSM"
     },
@@ -40,6 +48,10 @@
           {
             "secretName": "kvSMsecret",
             "secretValue": "Mastek2019#"
+          },
+          {
+            "secretName": "APIKey",
+            "secretValue": "af6f724869754c9288149244a7a023ee"
           }
         ]
       }
